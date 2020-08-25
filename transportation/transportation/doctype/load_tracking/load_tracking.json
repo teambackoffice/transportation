@@ -1,10 +1,12 @@
 {
  "actions": [],
+ "autoname": "format:{series}{YYYY}-{#####}",
  "creation": "2020-08-14 18:46:55.029626",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "series",
   "status",
   "customer",
   "customer_name",
@@ -42,8 +44,10 @@
   {
    "fieldname": "customer",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Customer ",
-   "options": "Customer"
+   "options": "Customer",
+   "reqd": 1
   },
   {
    "fetch_from": "customer.customer_name",
@@ -169,11 +173,19 @@
    "options": "Load Tracking",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Series",
+   "options": "TLT-",
+   "reqd": 1
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2020-08-24 11:36:48.336788",
+ "modified": "2020-08-25 13:57:52.077639",
  "modified_by": "Administrator",
  "module": "Transportation",
  "name": "Load Tracking",
