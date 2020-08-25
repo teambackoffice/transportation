@@ -1,0 +1,199 @@
+{
+ "actions": [],
+ "creation": "2020-08-14 18:46:55.029626",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "status",
+  "customer",
+  "customer_name",
+  "customer_address",
+  "column_break_5",
+  "quotation",
+  "source_location",
+  "destination_location",
+  "section_break_4",
+  "items",
+  "total",
+  "section_break_6",
+  "material_item",
+  "clearance_by_section",
+  "customer_clearance",
+  "customer_name_clearance",
+  "column_break_16",
+  "address",
+  "contact_number",
+  "driver_information_section",
+  "driver_name",
+  "driver_number",
+  "vehicle_number",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "allow_on_submit": 1,
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Collecting\nCollected\nIn Transit\nBay Bill\nDelivered",
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer ",
+   "options": "Customer"
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer_address",
+   "fieldtype": "Data",
+   "label": "Customer Address"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quotation",
+   "fieldtype": "Link",
+   "label": "Quotation",
+   "options": "Quotation"
+  },
+  {
+   "fetch_from": "quotation.source_location",
+   "fieldname": "source_location",
+   "fieldtype": "Data",
+   "label": "Source Location",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "quotation.destination_location",
+   "fieldname": "destination_location",
+   "fieldtype": "Data",
+   "label": "Destination Location",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Quotation Item"
+  },
+  {
+   "default": "0",
+   "fieldname": "total",
+   "fieldtype": "Currency",
+   "label": "Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_6",
+   "fieldtype": "Section Break",
+   "label": "Loaded Materials"
+  },
+  {
+   "fieldname": "material_item",
+   "fieldtype": "Table",
+   "label": "Material Item",
+   "options": "Material Item"
+  },
+  {
+   "fieldname": "clearance_by_section",
+   "fieldtype": "Section Break",
+   "label": "Clearance By"
+  },
+  {
+   "fieldname": "customer_clearance",
+   "fieldtype": "Data",
+   "label": "Customer"
+  },
+  {
+   "fetch_from": "customer_clearance.customer_name",
+   "fieldname": "customer_name_clearance",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_16",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Link",
+   "label": "Address",
+   "options": "Address"
+  },
+  {
+   "fieldname": "contact_number",
+   "fieldtype": "Data",
+   "label": "Contact Number"
+  },
+  {
+   "fieldname": "driver_information_section",
+   "fieldtype": "Section Break",
+   "label": "Driver Information"
+  },
+  {
+   "fieldname": "driver_name",
+   "fieldtype": "Data",
+   "label": "Driver Name"
+  },
+  {
+   "fieldname": "driver_number",
+   "fieldtype": "Data",
+   "label": "Driver Number"
+  },
+  {
+   "fieldname": "vehicle_number",
+   "fieldtype": "Data",
+   "label": "Vehicle Number"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Load Tracking",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2020-08-24 11:36:48.336788",
+ "modified_by": "Administrator",
+ "module": "Transportation",
+ "name": "Load Tracking",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

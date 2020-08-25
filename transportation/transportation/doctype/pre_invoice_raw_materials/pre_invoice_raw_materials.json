@@ -1,0 +1,96 @@
+{
+ "actions": [],
+ "creation": "2020-08-24 16:33:18.651006",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_code_raw",
+  "item_name",
+  "warehouse",
+  "available_qty_raw",
+  "column_break_5",
+  "umo",
+  "qty_raw",
+  "rate_raw",
+  "amount_raw",
+  "cost_center"
+ ],
+ "fields": [
+  {
+   "fetch_from": "item_code_raw.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Item Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "umo",
+   "fieldtype": "Link",
+   "label": "UMO",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "item_code_raw",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item"
+  },
+  {
+   "default": "0",
+   "fieldname": "available_qty_raw",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Available Qty"
+  },
+  {
+   "default": "1",
+   "fieldname": "qty_raw",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty"
+  },
+  {
+   "fieldname": "rate_raw",
+   "fieldtype": "Currency",
+   "label": "Rate"
+  },
+  {
+   "fieldname": "amount_raw",
+   "fieldtype": "Currency",
+   "label": "Amount",
+   "read_only": 1
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2020-08-24 16:51:33.726530",
+ "modified_by": "Administrator",
+ "module": "Transportation",
+ "name": "Pre Invoice Raw Materials",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
