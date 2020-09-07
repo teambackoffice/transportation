@@ -10,6 +10,7 @@
   "status",
   "customer",
   "customer_name",
+  "mobile_number",
   "customer_address",
   "column_break_5",
   "quotation",
@@ -74,9 +75,8 @@
   {
    "fetch_from": "quotation.source_location",
    "fieldname": "source_location",
-   "fieldtype": "Data",
-   "label": "Source Location",
-   "read_only": 1
+   "fieldtype": "Geolocation",
+   "label": "Source Location"
   },
   {
    "fetch_from": "quotation.destination_location",
@@ -181,11 +181,17 @@
    "label": "Series",
    "options": "TLT-",
    "reqd": 1
+  },
+  {
+   "fetch_from": "customer.mobile_no",
+   "fieldname": "mobile_number",
+   "fieldtype": "Data",
+   "label": "Mobile Number"
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2020-08-25 13:57:52.077639",
+ "modified": "2020-09-07 21:23:07.538470",
  "modified_by": "Administrator",
  "module": "Transportation",
  "name": "Load Tracking",

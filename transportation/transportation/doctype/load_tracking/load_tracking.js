@@ -30,53 +30,18 @@ frappe.ui.form.on('Load Tracking', {
                             cur_frm.doc.status === "Bay Bill" ? "Delivered" : ""
         if(status){
 	      frm.add_custom_button(__(status), () => {
-	          if(status === "Collected"){
-	              cur_frm.call({
-                        doc: cur_frm.doc,
-                        method: 'update_status',
-                          args: {status: status},
-                         async: false,
-                        callback: (r) => {
-                            cur_frm.reload_doc()
-                     }
-                    })
+              cur_frm.call({
+                    doc: cur_frm.doc,
+                    method: 'update_status',
+                      args: {status: status},
+                     async: false,
+                      freeze: true,
+                      freeze_message: "Changing Status...",
+                    callback: (r) => {
+                        cur_frm.reload_doc()
+                 }
+                })
 
-              } else if(status === "In Transit"){
-	              cur_frm.call({
-                        doc: cur_frm.doc,
-                        method: 'update_status',
-                          args: {status: status},
-                         async: false,
-                        callback: (r) => {
-                            cur_frm.reload_doc()
-                     }
-                    })
-
-
-              } else if(status === "Bay Bill"){
-	              cur_frm.call({
-                        doc: cur_frm.doc,
-                        method: 'update_status',
-                          args: {status: status},
-                         async: false,
-                        callback: (r) => {
-                            cur_frm.reload_doc()
-                     }
-                    })
-
-              } else if(status === "Delivered"){
-	              cur_frm.call({
-                        doc: cur_frm.doc,
-                        method: 'update_status',
-                          args: {status: status},
-                         async: false,
-                        callback: (r) => {
-                            cur_frm.reload_doc()
-                     }
-                    })
-
-
-              }
           });
         }
 

@@ -137,3 +137,19 @@ doctype_js = {
 #
 # auto_cancel_exempted_doctypes = ["Auto Repeat"]
 
+
+fixtures = [
+    {
+        "doctype": "Custom Field",
+        "filters": [
+            [
+                "name",
+                "in",
+                [
+                    "Quotation-destination_location",
+                    "Quotation-source_location",
+                ]
+            ]
+        ]
+    }
+]
