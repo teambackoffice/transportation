@@ -16,6 +16,8 @@
   "quotation",
   "source_location",
   "destination_location",
+  "shipment_number",
+  "customer_reference",
   "section_break_4",
   "items",
   "total",
@@ -75,8 +77,9 @@
   {
    "fetch_from": "quotation.source_location",
    "fieldname": "source_location",
-   "fieldtype": "Geolocation",
-   "label": "Source Location"
+   "fieldtype": "Data",
+   "label": "Source Location",
+   "read_only": 1
   },
   {
    "fetch_from": "quotation.destination_location",
@@ -187,11 +190,21 @@
    "fieldname": "mobile_number",
    "fieldtype": "Data",
    "label": "Mobile Number"
+  },
+  {
+   "fieldname": "shipment_number",
+   "fieldtype": "Data",
+   "label": "Shipment Number"
+  },
+  {
+   "fieldname": "customer_reference",
+   "fieldtype": "Data",
+   "label": "Customer Reference"
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2020-09-07 21:23:07.538470",
+ "modified": "2020-09-20 06:29:27.202436",
  "modified_by": "Administrator",
  "module": "Transportation",
  "name": "Load Tracking",
@@ -210,7 +223,6 @@
    "write": 1
   }
  ],
- "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1

@@ -1,0 +1,176 @@
+#page-customer-transportat .layout-main-section {
+    border: none; 
+    border-top: 0px;
+
+  }
+  #page-customer-transportat .page-body {
+    width: 96%;
+  }
+.modal-dialog{
+    width: 80%;
+}
+.declared_value_p{
+  display: none;
+}
+  .shp-cnt > div {
+    /* background: lightgrey; */
+    /* border: 1px solid #d1d8dd; */
+    overflow: hidden;
+  }
+  #print_all_btn{
+    width: 70%;
+  }
+
+  /* Tables Styling */
+  /*
+  Generic Styling, for Desktops/Laptops
+  */
+  .search-bar{
+    display: inline;
+    float: right;
+  }
+  #myTable .fa {
+    font-size: 22px;
+  }
+  #myTable .fa:hover {
+    font-size: 22px;
+    color: blue;
+  }
+  #myInput {
+    background-image: url('/css/searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 90%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+    margin-top: 12px;
+  }
+  @media(max-width: 768px){
+    .search-bar{
+      margin-top: 50px;
+    }
+  }
+
+  .firsttable{
+    width: 77%;
+    margin-left: -6.5%;
+    margin-top: 2.5%;
+    float: left;
+    overflow-x:auto;
+  }
+  /*.filter{*/
+    /*width: 120%;*/
+    /*margin-left: -20%;*/
+    /*margin-top: 1%;*/
+  /*}*/
+  #filter {
+    width: 120%;
+    margin-left: -21%;
+    margin-top: 1%;
+  }
+  table {
+   /* border-collapse: collapse;*/
+   border-spacing:0 1rem;
+   border-collapse:separate;
+    width: 100%;
+    border: 1px solid #ddd;
+    font-size: small;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  tr:nth-child(even)
+  {
+    background-color: #f2f2f2;
+    border: 1px solid green;
+  }
+  tr:nth-child(odd)
+  {
+    border: solid 2px;
+    border-color: red;
+  }
+  /* DAshboard Banners */
+
+  .dashboard-banners{
+  display:flex;
+  }
+  .single-product{
+    background-color: #312241;
+    padding: 15px 50px;
+    margin-bottom: 20px;
+    color: #fff;
+    flex: 1;
+    display:flex;
+  }
+  .icon{
+    flex: 1;
+    padding-right: 40px;
+    padding-top: 5px;
+
+  }
+  .desc{
+  flex:3;
+  }
+  span:disabled,
+span[disabled]{
+  color: lightgray;
+  /* display: none; */
+}
+
+.tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip-w:hover .tooltiptext {
+  visibility: visible;
+}
+.un-check{
+  display: none;
+}
+.fa-check{
+  color: green;
+}
+.action-print-check{
+  position: absolute;
+    margin-top: -0.5%;
+}
+#ps-detail-view .fa:hover{
+  color:blue;
+}
+.action-btn .fa:hover{
+  color:blue;
+}
+.table-d{
+  margin: 0px 0px;
+  border-spacing: 0px 0rem;
+}
+.dialog-bdy{
+  line-height: 12px;
+}
+#addr{
+  margin-top: -3%;
+}
+.summry .row .col {
+  padding: 0px;
+}
+.Row {
+    display: table;
+    width: 100%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    border-spacing: 10px; /*Optional*/
+}

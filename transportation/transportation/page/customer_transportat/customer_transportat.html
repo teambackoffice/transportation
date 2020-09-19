@@ -1,0 +1,420 @@
+
+<style>
+    /*for scrollable table ---- start*/
+.fixed_header tbody{
+  display:block;
+  overflow:auto;
+  height:500px;
+  width:100%;
+}
+#location tr:nth-child(even){background-color: white;}
+#list tr:nth-child(even){background-color: white;}
+
+.fixed_header thead tr{
+  display:block;
+    border-bottom-width: thin;
+    border-bottom-color: lightgray;
+    border-top:  none;
+    border-right:  none;
+    border-left:  none;
+
+}
+    .fixed_header th, .fixed_header td {
+  padding: 5px;
+  text-align: left;
+  width: 300px;
+
+}
+    /*for scrollable table ---- end*/
+.stepper {
+    position: relative;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.stepper__step {
+    width: 140px;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+    z-index: 1;
+}
+.stepper__line {
+    position: absolute;
+    top: 29px;
+    height: 4px;
+    width: 100%;
+}
+.stepper__step-icon--finish {
+    border-color: #2dc258;
+    color: #2dc258;
+}
+    .stepper__step-icon {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.875rem;
+    color: #e0e0e0;
+    background-color: #fff;
+    -webkit-transition: background-color .3s cubic-bezier(.4,0,.2,1) .7s,border-color .3s cubic-bezier(.4,0,.2,1) .7s,color .3s cubic-bezier(.4,0,.2,1) .7s;
+    transition: background-color .3s cubic-bezier(.4,0,.2,1) .7s,border-color .3s cubic-bezier(.4,0,.2,1) .7s,color .3s cubic-bezier(.4,0,.2,1) .7s;
+}
+    .stepper__step-text {
+    text-transform: capitalize;
+    font-size: 1.5rem;
+    color: rgba(0,0,0,.8);
+    line-height: 1.25rem;
+    margin: 1.25rem 0 .25rem;
+        font-weight: bold;
+}
+    .stepper__step-date {
+    font-size: .75rem;
+    color: rgba(0,0,0,.26);
+    height: .875rem;
+}
+.stepper__line-background {
+    background: #e0e0e0;
+}
+.stepper__line-background, .stepper__line-foreground {
+    position: absolute;
+    width: -webkit-calc(100% - 140px);
+    width: calc(100% - 140px);
+    margin: 0 70px;
+    height: 100%;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+</style>
+<div style="width: 120%;height:100%;margin-left: -20%">
+        <table style="border-width: inherit; width: 100%;height: 100%">
+            <td style="width: 50%; height: 100%">
+                <div style="width: 100%;height: 100%">
+                    <table class="fixed_header" id="list" style="width: 100%;height: 100%">
+                        <thead>
+                           <tr>
+                             <th style="background-color: lightgray;text-align: center">Load Tracking</th>
+                             <th style="background-color: lightgray;text-align: center">Status</th>
+                             <th style="background-color: lightgray;text-align: center">Source Location</th>
+                             <th style="background-color: lightgray;text-align: center">Destination Location</th>
+                           </tr>
+                       </thead>
+                        <tbody>
+                         {% if doc.length > 0 %}
+                           {% for data in doc.load_tracking_list %}
+                                {%if doc.selected == data.name %}
+                                    <tr {{data.view}} style="background-color: #9ea99d">
+                                {%else%}
+                                    <tr {{data.view}}>
+                                {%endif%}
+                                <td class="text-left" style="border-right: 1px solid lightgray;text-align: center"><a {{data.href}}>{{data.name}}</a></td>
+                                <td style="border-right: 1px solid lightgray;font-weight: bold;text-align: center"><i class="fa fa-circle" {{data.status_color}}></i>{{data.status}}</td>
+                                <td class="text-left" style="border-right: 1px solid lightgray">{{data.source_location}}</td>
+                                <td>{{data.destination_location}}</td>
+                               </tr>
+                            {%endfor%}
+                         {%endif%}
+                        </tbody>
+                </table>
+                </div>
+            </td>
+            {%if doc.selected_load_tracking_length > 0 %}
+                <td style="width: 50%; height: 100%">
+                    <div style="width: 100%;height: 100%;">
+                        <div style="width: 80%;display: inline-block;border-right: 1px solid lightgray;padding: 10px" >
+                            <div style="display:inline-block;">
+                                From <br>
+                                <b>{{doc.selected_load_tracking[0].source_location}}</b><br>
+                                28 April 2020
+                            </div>
+                            <div style="display:inline-block;float: right">
+                                Delivered To <br>
+                                <b>{{doc.selected_load_tracking[0].destination_location}}</b><br>
+                                28 April 2020
+                            </div>
+                            <div style="margin-top: 20px" class="stepper">
+
+                                <div class="stepper__step stepper__step--finish">
+                                    <div class="stepper__step-icon stepper__step-icon--finish">
+                                        <svg enable-background="new 0 0 32 32" viewBox="0 0 32 32" x="0" y="0" class="shopee-svg-icon icon-order-order">
+                                                         {{doc.selected_load_tracking[0].collecting_image}}
+
+                                            <g>
+                                                <path d="m5 3.4v23.7c0 .4.3.7.7.7.2 0 .3 0 .3-.2.5-.4 1-.5 1.7-.5.9 0 1.7.4 2.2 1.1.2.2.3.4.5.4s.3-.2.5-.4c.5-.7 1.4-1.1 2.2-1.1s1.7.4 2.2 1.1c.2.2.3.4.5.4s.3-.2.5-.4c.5-.7 1.4-1.1 2.2-1.1.9 0 1.7.4 2.2 1.1.2.2.3.4.5.4s.3-.2.5-.4c.5-.7 1.4-1.1 2.2-1.1.7 0 1.2.2 1.7.5.2.2.3.2.3.2.3 0 .7-.4.7-.7v-23.7z" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3">
+
+                                                </path>
+                                                <g>
+                                                    <line fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" x1="10" x2="22" y1="11.5" y2="11.5">
+
+                                                    </line>
+                                                    <line fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" x1="10" x2="22" y1="18.5" y2="18.5">
+
+                                                    </line>
+                                                </g>
+
+                                            </g>
+                                        </svg>
+                                    </div>
+
+                                    {% if doc.selected_load_tracking[0].status == "Collecting"%}
+                                        <div class="stepper__step-text" style="background-color: green;padding: 10px">Collecting</div>
+                                    {% else %}
+                                    <div class="stepper__step-text" style="padding: 10px">Collecting</div>
+
+                                    {% endif %}
+                                    <div class="stepper__step-date"></div>
+                                </div>
+                                <div class="stepper__step stepper__step--finish">
+                                    <div class="stepper__step-icon stepper__step-icon--finish">
+                                        <svg enable-background="new 0 0 32 32" viewBox="0 0 32 32" x="0" y="0" class="shopee-svg-icon icon-order-paid">
+                                                          {{doc.selected_load_tracking[0].collected_image}}
+
+                                            <g>
+                                                <path clip-rule="evenodd" d="m24 22h-21c-.5 0-1-.5-1-1v-15c0-.6.5-1 1-1h21c .5 0 1 .4 1 1v15c0 .5-.5 1-1 1z" fill="none" fill-rule="evenodd" stroke-miterlimit="10" stroke-width="3">
+
+                                                </path>
+                                                <path clip-rule="evenodd" d="m24.8 10h4.2c.5 0 1 .4 1 1v15c0 .5-.5 1-1 1h-21c-.6 0-1-.4-1-1v-4" fill="none" fill-rule="evenodd" stroke-miterlimit="10" stroke-width="3">
+
+                                                </path>
+
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    {% if doc.selected_load_tracking[0].status == "Collected"%}
+                                        <div class="stepper__step-text" style="background-color: green;padding: 10px">Collected</div>
+                                    {% else %}
+                                        <div class="stepper__step-text" style="padding: 10px">Collected</div>
+                                    {% endif %}
+                                    <div class="stepper__step-date"></div>
+                                </div>
+                                <div class="stepper__step stepper__step--finish">
+                                <div class="stepper__step-icon stepper__step-icon--finish">
+                                    <svg enable-background="new 0 0 32 32" viewBox="0 0 32 32" x="0" y="0" class="shopee-svg-icon icon-order-shipping">
+                                         {{doc.selected_load_tracking[0].in_transit_image}}
+                                        <g>
+                                            <line fill="none" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3" x1="18.1" x2="9.6" y1="20.5" y2="20.5">
+
+                                            </line>
+                                                <circle cx="7.5" cy="23.5" fill="none" r="4" stroke-miterlimit="10" stroke-width="3">
+
+                                                </circle>
+                                                <circle cx="20.5" cy="23.5" fill="none" r="4" stroke-miterlimit="10" stroke-width="3">
+
+                                                </circle>
+                                            <line fill="none" stroke-miterlimit="10" stroke-width="3" x1="19.7" x2="30" y1="15.5" y2="15.5">
+
+                                            </line>
+                                            <polyline fill="none" points="4.6 20.5 1.5 20.5 1.5 4.5 20.5 4.5 20.5 18.4" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3">
+
+                                            </polyline>
+                                            <polyline fill="none" points="20.5 9 29.5 9 30.5 22 24.7 22" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3">
+
+                                            </polyline>
+                                        </g>
+                                    </svg>
+                                </div>
+                                     {% if doc.selected_load_tracking[0].status == "In Transit"%}
+                                        <div class="stepper__step-text" style="background-color: green;padding: 10px">In Transit</div>
+                                    {% else %}
+                                    <div class="stepper__step-text" style="padding: 10px">In Transit</div>
+
+                                    {% endif %}
+                                    <div class="stepper__step-date"></div>
+                                </div>
+                                <div class="stepper__step stepper__step--pending">
+                                <div class="stepper__step-icon stepper__step-icon--pending">
+                                    <svg enable-background="new 0 0 32 32" viewBox="0 0 32 32" x="0" y="0" class="shopee-svg-icon icon-order-received" style="border-radius: 50%;">
+                                                 {{doc.selected_load_tracking[0].bay_bill_image}}
+                                        <g >
+                                            <polygon fill="none" points="2 28 2 19.2 10.6 19.2 11.7 21.5 19.8 21.5 20.9 19.2 30 19.1 30 28" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3">
+
+                                            </polygon>
+                                            <polyline fill="none" points="21 8 27 8 30 19.1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3">
+
+                                            </polyline>
+                                            <polyline fill="none" points="2 19.2 5 8 11 8" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3">
+
+                                            </polyline>
+                                            <line fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3" x1="16" x2="16" y1="4" y2="14">
+
+                                            </line>
+
+                                        </g>
+                                    </svg>
+                                </div>
+                                     {% if doc.selected_load_tracking[0].status == "Bay Bill"%}
+                                        <div class="stepper__step-text" style="background-color: green;padding: 10px">Delivering</div>
+                                    {% else %}
+                                    <div class="stepper__step-text" style="padding: 10px">Delivering</div>
+
+                                    {% endif %}
+                                    <div class="stepper__step-date">
+
+                                    </div>
+                                </div>
+                                <div class="stepper__step">
+                                    <div class="stepper__step-icon">
+                                        <svg enable-background="new 0 0 32 32" viewBox="0 0 32 32" x="0" y="0" class="shopee-svg-icon icon-order-rating">
+                                     {{doc.selected_load_tracking[0].delivered_image}}
+
+                                            <polygon fill="none" points="16 3.2 20.2 11.9 29.5 13 22.2 19 24.3 28.8 16 23.8 7.7 28.8 9.8 19 2.5 13 11.8 11.9" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3">
+
+                                            </polygon>
+                                        </svg>
+                                    </div>
+                                     {% if doc.selected_load_tracking[0].status == "Delivered" %}
+                                        <div class="stepper__step-text" style="background-color: green;padding: 10px">Delivered</div>
+                                    {% else %}
+                                        <div class="stepper__step-text" style="padding: 10px">Delivered</div>
+                                    {% endif %}
+                                    <div class="stepper__step-date"></div>
+                                </div>
+
+                                <div class="stepper__line">
+                                    <div class="stepper__line-background" style="background: rgb(224, 224, 224);">
+
+                                    </div>
+                                    <div class="stepper__line-foreground" {{doc.selected_load_tracking[0].foreground    }}>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="width: 20%;display: inline-block;float: right; padding-left: 10px; padding-top: 10px">
+                            Shipment Number <br>
+                            {% if doc.selected_load_tracking[0].shipment_number %}
+                                <b>12309098012389</b><br><br>
+                            {%else%}
+                                <br><br>
+                            {%endif%}
+                            Customer Reference<br>
+                            {% if doc.selected_load_tracking[0].customer_reference %}
+                                <b>LS 129387</b> <br><br>
+                            {%else%}
+                                <br><br>
+                            {%endif%}
+
+                            Shipment Infor <br>
+                            <b>{{doc.selected_load_tracking_length}}</b>
+                        </div>
+                        <div style="width: 100%;">
+                            <table class="fixed_header" id="location" style="width: 100%;height: 100%">
+                                <thead>
+                                   <tr>
+                                     <th style=";padding-left: 40px">Local Time</th>
+                                     <th style="text-align: center;padding-left: 40px">Location</th>
+                                     <th style="text-align: center">Action</th>
+                                   </tr>
+                               </thead>
+                                <!--<tbody>-->
+                                 <!--{% if doc.length > 0 %}-->
+                                   <!--{% for data in doc.load_tracking_list %}-->
+                                       <!--<tr >-->
+                                        <!--<td style="width: 1%;border-bottom: 1px solid lightgray;text-align: left;padding-left: 40px"><a {{data.href}}>{{data.name}}</a></td>-->
+                                        <!--<td style="width: 1%;border-bottom: 1px solid lightgray;color: gray;font-weight: bold;text-align: left;padding-left: 40px"><i class="fa fa-circle" {{data.status_color}}></i>{{data.status}}</td>-->
+                                        <!--<td style="width: 1%;border-bottom: 1px solid lightgray;">{{data.source_location}}</td>-->
+                                       <!--</tr>-->
+                                 <!--{%endfor%}-->
+                                 <!--{%endif%}-->
+                                <!--</tbody>-->
+                            </table>
+                        </div>
+                    </div>
+                </td>
+            {%else%}
+                    <td style="width: 50%; height: 100%">
+                        <div style="border: 1px solid lightgray;width: 100%;height: 100%">
+                            Please Select Load Tracking<br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+                            s <br>
+
+                        </div>
+                    </td>
+            {%endif%}
+
+        </table>
+
+
+
+</div>
