@@ -2,12 +2,13 @@ import frappe
 
 @frappe.whitelist()
 def get_customer_transportation_list(customer_email,role, name):
-    customer = frappe.db.sql(""" SELECT * FROM `tabCustomer` WHERE user_id=%s """, customer_email, as_dict=1)
     condition = ""
     selected_load_tracking = []
     selected = ""
 
     if not role:
+        customer = frappe.db.sql(""" SELECT * FROM `tabCustomer` WHERE user_id=%s """, customer_email, as_dict=1)
+
         if len(customer) > 0:
             load_tracking = frappe.db.sql(""" SELECT * FROM `tabLoad Tracking` WHERE customer=%s and docstatus = 1""", customer[0].name, as_dict=1)
             if len(load_tracking) > 0:
