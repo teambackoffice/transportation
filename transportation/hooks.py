@@ -148,6 +148,7 @@ fixtures = [
                 [
                     "Quotation-destination_location",
                     "Quotation-source_location",
+                    "Customer-user_id",
                 ]
             ]
         ]

@@ -29,9 +29,14 @@ def get_customer_transportation_list(customer_email,role, name):
                     selected = name
                     selected_load_tracking = frappe.db.sql(""" SELECT * FROM `tabLoad Tracking` WHERE customer=%s and name=%s""",
                                                            (customer[0].name, name), as_dict=1)
+                    selected_load_tracking[0]['load_tracking_locations'] = frappe.db.sql(
+                        """ SELECT * FROM `tabLoad Tracking Locations` WHERE parent=%s ORDER BY idx ASC""", name, as_dict=1)
+
                 else:
                     selected = load_tracking[0].name
                     selected_load_tracking.append(load_tracking[0])
+                    selected_load_tracking[0]['load_tracking_locations'] = frappe.db.sql(
+                        """ SELECT * FROM `tabLoad Tracking Locations` WHERE parent=%s ORDER BY idx ASC""", selected, as_dict=1)
 
                 selected_load_tracking[0]['foreground'] = 'style="width: calc((100% - 140px) * 0.00); background: rgb(45, 194, 88);"' if selected_load_tracking[0].status == "Collecting" \
                                                             else 'style="width: calc((100% - 140px) * 0.25); background: rgb(45, 194, 88);"' if selected_load_tracking[0].status == "Collected" \
@@ -77,6 +82,7 @@ def get_customer_transportation_list(customer_email,role, name):
                     "length": len(load_tracking),
                     "selected_load_tracking": selected_load_tracking,
                     "selected_load_tracking_length": len(selected_load_tracking),
+                    "selected_load_tracking_locations_length": len(selected_load_tracking[0].load_tracking_locations),
                     "selected": selected
                 }
             else:
@@ -102,10 +108,14 @@ def get_customer_transportation_list(customer_email,role, name):
         selected = name
 
         selected_load_tracking = frappe.db.sql(""" SELECT * FROM `tabLoad Tracking` WHERE name=%s and docstatus = 1""",name, as_dict=1)
+        selected_load_tracking[0]['load_tracking_locations'] = frappe.db.sql(""" SELECT * FROM `tabLoad Tracking Locations` WHERE parent=%s ORDER BY idx ASC""", name, as_dict=1)
+
     else:
         selected = load_tracking[0].name
 
         selected_load_tracking.append(load_tracking[0])
+        selected_load_tracking[0]['load_tracking_locations'] = frappe.db.sql(""" SELECT * FROM `tabLoad Tracking Locations` WHERE parent=%s ORDER BY idx ASC""", selected, as_dict=1)
+
 
     selected_load_tracking[0][
         'foreground'] = 'style="width: calc((100% - 140px) * 0.00); background: rgb(45, 194, 88);"' if \
@@ -131,11 +141,13 @@ def get_customer_transportation_list(customer_email,role, name):
                                                     else '<img src="files/check2.png" height="55" width="55" />' if selected_load_tracking[0].status in [ "Delivered"] \
                                                     else '<img src="files/check4.jpg" height="55" width="55" />'
     selected_load_tracking[0]['delivered_image'] = '<img src="files/check3.png" height="55" width="55" />' if selected_load_tracking[0].status == "Delivered" \
-                                                    else '<img src="files/check4.jpg" height="55" width="55" />'
+                                                 else '<img src="files/check4.jpg" height="55" width="55" />'
     return {
         "load_tracking_list": load_tracking,
         "length": len(load_tracking),
         "selected_load_tracking": selected_load_tracking,
         "selected_load_tracking_length": len(selected_load_tracking),
+        "selected_load_tracking_locations": selected_load_tracking[0].load_tracking_locations,
+        "selected_load_tracking_locations_length": len(selected_load_tracking[0].load_tracking_locations),
         "selected": selected
     }

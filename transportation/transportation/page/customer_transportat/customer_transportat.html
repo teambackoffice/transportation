@@ -1,17 +1,17 @@
 
 <style>
     /*for scrollable table ---- start*/
-.fixed_header tbody{
+    .fixed_header1 tbody{
   display:block;
   overflow:auto;
-  height:500px;
+  height:580px;
   width:100%;
 }
 #location tr:nth-child(even){background-color: white;}
 #list tr:nth-child(even){background-color: white;}
 
-.fixed_header thead tr{
-  display:block;
+.fixed_header1 thead tr{
+    display:block;
     border-bottom-width: thin;
     border-bottom-color: lightgray;
     border-top:  none;
@@ -19,7 +19,32 @@
     border-left:  none;
 
 }
-    .fixed_header th, .fixed_header td {
+.fixed_header1 th, .fixed_header td {
+  padding: 5px;
+  text-align: left;
+  width: 300px;
+
+}
+
+.fixed_header tbody{
+  display:block;
+  overflow:auto;
+  height:700px;
+  width:100%;
+}
+#location tr:nth-child(even){background-color: white;}
+#list tr:nth-child(even){background-color: white;}
+
+.fixed_header thead tr{
+    display:block;
+    border-bottom-width: thin;
+    border-bottom-color: lightgray;
+    border-top:  none;
+    border-right:  none;
+    border-left:  none;
+
+}
+.fixed_header th, .fixed_header td {
   padding: 5px;
   text-align: left;
   width: 300px;
@@ -128,9 +153,9 @@
 </style>
 <div style="width: 120%;height:100%;margin-left: -20%">
         <table style="border-width: inherit; width: 100%;height: 100%">
-            <td style="width: 50%; height: 100%">
+            <td style="width: 40%">
                 <div style="width: 100%;height: 100%">
-                    <table class="fixed_header" id="list" style="width: 100%;height: 100%">
+                    <table class="fixed_header" id="list" style="width: 100%;height: 70%">
                         <thead>
                            <tr>
                              <th style="background-color: lightgray;text-align: center">Load Tracking</th>
@@ -159,7 +184,7 @@
                 </div>
             </td>
             {%if doc.selected_load_tracking_length > 0 %}
-                <td style="width: 50%; height: 100%">
+                <td style="width: 60%; height: 100%">
                     <div style="width: 100%;height: 100%;">
                         <div style="width: 80%;display: inline-block;border-right: 1px solid lightgray;padding: 10px" >
                             <div style="display:inline-block;">
@@ -322,14 +347,14 @@
                         </div>
                         <div style="width: 20%;display: inline-block;float: right; padding-left: 10px; padding-top: 10px">
                             Shipment Number <br>
-                            {% if doc.selected_load_tracking[0].shipment_number %}
-                                <b>12309098012389</b><br><br>
+                            {% if "shipment_number" in doc.selected_load_tracking[0]%}
+                                <b>{{doc.selected_load_tracking[0].shipment_number}}</b><br><br>
                             {%else%}
                                 <br><br>
                             {%endif%}
                             Customer Reference<br>
-                            {% if doc.selected_load_tracking[0].customer_reference %}
-                                <b>LS 129387</b> <br><br>
+                            {% if "customer_reference" in doc.selected_load_tracking[0] %}
+                                <b>{{doc.selected_load_tracking[0].customer_reference}}</b> <br><br>
                             {%else%}
                                 <br><br>
                             {%endif%}
@@ -338,25 +363,37 @@
                             <b>{{doc.selected_load_tracking_length}}</b>
                         </div>
                         <div style="width: 100%;">
-                            <table class="fixed_header" id="location" style="width: 100%;height: 100%">
-                                <thead>
+                            <table id="location" style="width: 100%;">
                                    <tr>
-                                     <th style=";padding-left: 40px">Local Time</th>
-                                     <th style="text-align: center;padding-left: 40px">Location</th>
-                                     <th style="text-align: center">Action</th>
+                                     <th style="background-color: lightgray;text-align: left; padding-left: 20px;width: 20%">Local Time</th>
+                                     <th style="background-color: lightgray;text-align: left;width: 35%">Location</th>
+                                     <th style="background-color: lightgray;text-align: left; padding-left: 30px;width: 45%">Action</th>
                                    </tr>
-                               </thead>
-                                <!--<tbody>-->
-                                 <!--{% if doc.length > 0 %}-->
-                                   <!--{% for data in doc.load_tracking_list %}-->
-                                       <!--<tr >-->
-                                        <!--<td style="width: 1%;border-bottom: 1px solid lightgray;text-align: left;padding-left: 40px"><a {{data.href}}>{{data.name}}</a></td>-->
-                                        <!--<td style="width: 1%;border-bottom: 1px solid lightgray;color: gray;font-weight: bold;text-align: left;padding-left: 40px"><i class="fa fa-circle" {{data.status_color}}></i>{{data.status}}</td>-->
-                                        <!--<td style="width: 1%;border-bottom: 1px solid lightgray;">{{data.source_location}}</td>-->
-                                       <!--</tr>-->
-                                 <!--{%endfor%}-->
-                                 <!--{%endif%}-->
-                                <!--</tbody>-->
+                                 {% if doc.selected_load_tracking_locations_length > 0 %}
+                                    {%for location in doc.selected_load_tracking_locations%}
+                                       <tr>
+                                           {%if location.location_time%}
+                                                <td  style="border-right: 1px solid lightgray;text-align: left; padding-left: 20px;width: 20%">
+                                                    {{location.location_time}}
+                                                </td>
+                                           {%else%}
+                                               <td style="border-right: 1px solid lightgray;text-align: left; padding-left: 20px;width: 20%"></td>
+                                           {%endif%}
+
+                                          {%if location.location%}
+                                            <td style="border-right: 1px solid lightgray;text-align: left;width:35% ">{{location.location}}</td>
+                                           {%else%}
+                                               <td style="border-right: 1px solid lightgray;text-align: left;width:35% "></td>
+                                           {%endif%}
+                                            <td style="text-align: left;width: 45%">
+                                                {{location.status}}
+                                            </td>
+                                       </tr>
+                                    {% endfor %}
+                                    {%else%}
+                                 <tr style="height: 515px">
+                                       </tr>
+                                 {% endif %}
                             </table>
                         </div>
                     </div>

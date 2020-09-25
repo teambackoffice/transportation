@@ -18,6 +18,8 @@
   "destination_location",
   "shipment_number",
   "customer_reference",
+  "section_break_13",
+  "load_tracking_locations",
   "section_break_4",
   "items",
   "total",
@@ -200,11 +202,23 @@
    "fieldname": "customer_reference",
    "fieldtype": "Data",
    "label": "Customer Reference"
+  },
+  {
+   "fieldname": "section_break_13",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "eval: doc.docstatus == 1",
+   "fieldname": "load_tracking_locations",
+   "fieldtype": "Table",
+   "label": "Load Tracking Locations",
+   "options": "Load Tracking Locations"
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2020-09-20 06:29:27.202436",
+ "modified": "2020-09-24 07:25:13.095002",
  "modified_by": "Administrator",
  "module": "Transportation",
  "name": "Load Tracking",
