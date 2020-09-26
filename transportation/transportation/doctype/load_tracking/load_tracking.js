@@ -64,8 +64,24 @@ cur_frm.reload_doc()
 });
 
 cur_frm.cscript.form_render = function (frm, cdt, cdn) {
+ $.getScript("https://cdn.jsdelivr.net/npm/places.js@1.19.0", function () {
+              var placesAutocomplete = places({
+                appId: 'plAZSGZU5TP8',
+                apiKey: '7e4ad27c79270c079fd22a9bbd7dd9fe',
+                container: document.querySelectorAll('[data-fieldname = "location"]')[3]
+              });
+
+          var $address = document.querySelectorAll('[data-fieldname = "location"]')[3]
+          placesAutocomplete.on('change', function(e) {
+            $address.textContent = e.suggestion.value
+          });
+
+          placesAutocomplete.on('clear', function() {
+            $address.textContent = 'none';
+          });
+        })
     var d = locals[cdt][cdn]
-        var locations = frappe.meta.get_docfield("Load Tracking Locations", "location", cur_frm.doc.name);
+    var locations = frappe.meta.get_docfield("Load Tracking Locations", "location", cur_frm.doc.name);
 
     if(d.status !== cur_frm.doc.status){
         locations.read_only = 1
@@ -76,3 +92,6 @@ cur_frm.cscript.form_render = function (frm, cdt, cdn) {
 
     }
 }
+
+
+
