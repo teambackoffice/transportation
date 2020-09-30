@@ -1,0 +1,62 @@
+footer.section.footer-modern.context-dark
+	.footer-modern-line
+		.container: .row.row-50
+			.col-md-6.col-lg-4
+				h5.footer-modern-title.oh-desktop: span.d-inline-block.wow.slideInLeft What We Offer
+				ul.footer-modern-list.d-inline-block.d-sm-block.wow.fadeInUp
+					each itemList in ['Transportation', 'Logistics', 'Towing Service', 'Air Freight', 'Ocean Freight', 'Road Transportation']
+						li: a(href='#')=itemList
+			
+			.col-md-6.col-lg-4.col-xl-3
+				h5.footer-modern-title.oh-desktop: span.d-inline-block.wow.slideInLeft Information
+				ul.footer-modern-list.d-inline-block.d-sm-block.wow.fadeInUp
+					li: a(href='about-us.html') About us
+					li: a(href='grid-blog.html') Latest News
+					li: a(href='services.html') Services
+					li: a(href='#') Careers
+					li: a(href='#') FAQ
+					li: a(href='contacts.html') Contacts Us
+			
+			.col-lg-4.col-xl-5
+				h5.footer-modern-title.oh-desktop: span.d-inline-block.wow.slideInLeft Newsletter
+				p.wow.fadeInRight Sign up today for the latest news from our company.
+				// RD Mailform
+				form.rd-form.rd-mailform.rd-form-inline.rd-form-inline-sm.oh-desktop(data-form-output="form-output-global", data-form-type='subscribe', method='post', action='bat/rd-mailform.php')
+					.form-wrap.wow.slideInUp
+						input.form-input(id="subscribe-form-2-email" type="email" name="email" data-constraints="@Email @Required")
+						label.form-label(for="subscribe-form-2-email") Enter your E-mail
+					.form-button.form-button-2.wow.slideInRight
+						button.button.button-sm.button-icon-3.button-primary.button-winona(type="submit")
+							span.d-none.d-xl-inline-block Subscribe
+							span.icon.mdi.mdi-telegram.d-xl-none
+	
+	.footer-modern-line-2: .container: .row.row-30.align-items-center
+		.col-sm-6.col-md-7.col-lg-4.col-xl-4: .row.row-30.align-items-center.text-lg-center
+			.col-md-7.col-xl-6
+				a.brand(href='index.html'): +img( logo.inverse, { retina: true } )
+			.col-md-5.col-xl-6
+				.iso-1
+					span iso
+					span.iso-1-big 9001
+		
+		.col-sm-6.col-md-12.col-lg-8.col-xl-8.oh-desktop
+			.group-xmd.group-sm-justify
+				.footer-modern-contacts.wow.slideInUp
+					.unit.unit-spacing-sm.align-items-center
+						.unit-left
+							span.icon.icon-24.mdi.mdi-phone
+						.unit-body
+							a.phone(href='tel:#') +1 718-999-3939
+				.footer-modern-contacts.wow.slideInDown
+					.unit.unit-spacing-sm.align-items-center
+						.unit-left
+							span.icon.mdi.mdi-email
+						.unit-body
+							a.mail(href='mailto:#') info@demolink.org
+				div.wow.slideInRight: +widget-list([], '', 'footer-social-list footer-social-list-2 footer-social-list-3')
+	
+	.footer-modern-line-3: .container: .row.row-10.justify-content-between
+		.col-md-6
+			a(href='#') 514 S. Magnolia St. Orlando, FL 32806
+		.col-md-auto
+			+rights

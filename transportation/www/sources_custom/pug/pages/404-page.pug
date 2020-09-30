@@ -1,0 +1,26 @@
+extends  ../_skeleton
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = '404 Page'
+
+block title
+	title=pageName
+
+block page
+	section.section.section-single.box-transform-wrap.novi-background.novi-background.context-dark
+		.section-single-inner
+			//-Page Header
+			include ../sections/_section-header-base-transparent
+			
+			//- Page Main
+			.section-single-main
+				.container
+					.title-modern 404
+					h4.text-spacing-0.text-transform-none Page Not Found
+					a.button.button-lg.button-primary.button-winona(href='index.html') Go to home page
+			
+			//-Page Footer
+			include ../sections/_section-footer-base-transparent
+		
+		.box-transform(style='background-image: url(images/bg-404.jpg);')

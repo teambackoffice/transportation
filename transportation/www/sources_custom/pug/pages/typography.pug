@@ -1,0 +1,114 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-quote
+
+block variables
+  - var activeCategory = 'pages'
+  - var pageName = 'Typography'
+
+block page 
+  // Page Header
+  include ../sections/_header-classic
+
+  +breadcrumbs({
+    category: activeCategory,
+    path: [pageName],
+    bgImage: 'bg-typography'
+  })
+
+  // Base typography
+  section.section.section-sm.section-first.bg-default.section-style-2.text-md-left
+    .container
+      .row.row-50
+        .col-lg-8
+          ul.list-xl.box-typography
+            li
+              h1 H1 Heading
+              p Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page.
+            li
+              h2 H2 Heading
+              p Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page.
+            li
+              h3 H3 Heading
+              p Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page.
+            li
+              h4 H4 Heading
+              p Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page.
+            li
+              h5 H5 Heading
+              p Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page.
+            li
+              h6 H6 Heading
+              p Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page.
+        .col-lg-4
+          .box-typography-description
+            .box-typography-description-item
+              p.heading-7 Google Fonts
+              h3.text-transform-none.text-spacing-50 Roboto
+            .box-typography-description-item
+              p.heading-7 Used colors
+              .box-color
+                .box-color-line
+                  .box-color-item.bg-primary
+                  .box-color-item.bg-secondary
+                  .box-color-item.bg-gray-800
+                  .box-color-item.bg-gray-600
+                .box-color-line
+                  .box-color-item.bg-gray-300
+                  .box-color-item.bg-gray-200
+                .box-color-line
+                  .box-color-item.bg-gray-100
+  ='\n'
+
+  // HTML Text Elements
+  section.section.section-sm.bg-default.section-style-2.text-md-left
+    .container
+      h4 HTML Text Elements
+      p.text-block Welcome to our wonderful world. This is a bold text
+        mark This is a highlighted text
+        | We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login
+        span.tooltip-custom(data-toggle='tooltip' data-placement="top" title="Default text") Tooltips
+        | widgets, you will definitely have a great experience of using our web page.
+        span.text-strike This is a strikethrough text
+        span.text-underline This is an underlined text.
+        a(href='#') Link
+        a(href='#').link-hover Hover link
+        a(href='#').link-active Press link
+  ='\n'
+
+  // Lists and Blockquote
+  section.section.section-sm.bg-default.section-style-2.text-md-left
+    .container
+      h4 Ordered & Unordered Lists
+      .row: .col-lg-10.col-xl-7: .row.row-30
+        .col-md-6
+          ul.list-marked.d-inline-block.d-inline-md-block
+            li Welcome to our wonderful world
+            li With advanced features
+            li We sincerely hope that each
+            li Great experience of using
+            li Lorem ipsum dolor sit amet
+        .col-md-6
+          ol.list-ordered.d-inline-block.d-inline-md-block
+            li Welcome to our wonderful world
+            li With advanced features
+            li We sincerely hope that each
+            li Great experience of using
+            li Lorem ipsum dolor sit amet
+  ='\n'
+
+  // Blockquote
+  section.section.section-sm.section-last.bg-default.section-style-2.text-md-left
+    .container
+      .row.row-50
+        .col-lg-10.col-xl-7
+          h4 Blockquote
+          +quote-classic({
+            text: 'Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what you need.',
+            author: 'Stephen Adams'
+          })
+
+
+  // Page Footer
+  include ../sections/_footer-modern

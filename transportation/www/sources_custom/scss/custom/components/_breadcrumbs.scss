@@ -1,0 +1,122 @@
+/*
+*
+* Breadcrumbs
+*/
+$breadcrumb-padding-vertical: 8px;
+$breadcrumb-padding-horizontal: 15px;
+$breadcrumb-bg: $primary;
+$breadcrumb-color: $body-color;
+$breadcrumb-active-color: $gray-800;
+$breadcrumb-separator: '\f14f';
+
+.breadcrumbs-custom {
+	position: relative;
+	padding: 50px 0;
+	text-align: center;
+	background-color: $breadcrumb-bg;
+}
+
+.breadcrumbs-custom-title {
+	font-weight: 700;
+}
+
+.breadcrumbs-custom-decor {
+	font-size: 0;
+	line-height: 0;
+
+	&::before {
+		display: inline-block;
+		content: '';
+		width: 72px;
+		height: 4px;
+		background: rgba($white, .6);
+	}
+}
+
+.breadcrumbs-custom-path {
+	padding: 10px 0;
+	@include spacingX(34px);
+
+	a {
+		display: inline;
+		vertical-align: middle;
+		&,
+		&:active,
+		&:focus {
+			color: $breadcrumb-color;
+		}
+	}
+
+	li {
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 12px;
+		line-height: 1.5;
+		font-weight: 500;
+		letter-spacing: .13em;
+		text-transform: uppercase;
+
+		&::after {
+			position: absolute;
+			content: $breadcrumb-separator;
+			top: 46%;
+			right: -8px;
+			display: inline-block;
+			font-size: 14px;
+			line-height: 1;
+			font-style: normal;
+			font-family: $mdi;
+			color: $breadcrumb-active-color;
+			transform: translate3d(0, -50%, 0);
+		}
+	}
+
+	li:last-child {
+		&:after {
+			display: none;
+		}
+	}
+
+	a:hover {
+		color: $primary;
+	}
+
+	li.active {
+		font-weight: 900;
+		color: $breadcrumb-active-color;
+	}
+}
+
+* + .breadcrumbs-custom-path {margin-top: 14px;}
+* + .breadcrumbs-custom-decor {margin-top: 20px;}
+
+@include media-breakpoint-up(sm) {
+	.breadcrumbs-custom {
+		padding: 70px 0;
+	}
+}
+
+@include media-breakpoint-up(md) {
+	.breadcrumbs-custom {
+		padding: 80px 0;
+	}
+
+	.breadcrumbs-custom-path {
+		padding: 20px 0;
+	}
+
+	* + .breadcrumbs-custom-decor {margin-top: 35px;}
+}
+
+@include media-breakpoint-up(lg) {
+	.breadcrumbs-custom {
+		padding: 90px 0;
+	}
+}
+
+@include media-breakpoint-up(xl) {
+	.breadcrumbs-custom {
+		padding: 116px 0;
+	}
+}

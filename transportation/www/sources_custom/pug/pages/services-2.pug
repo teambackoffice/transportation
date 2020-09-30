@@ -1,0 +1,70 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-box-services
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Services #2'
+
+block page  
+	// Page Header
+	include ../sections/_header-classic
+	
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'bg-typography'
+	})
+	
+	// Services 2
+	section.section.section-lg.bg-default
+		.container
+			.row.row-40.justify-content-center
+				.col-md-6.col-lg-5.col-xl-4
+					+services-classic({
+						img: 'services-1-370x274',
+						icon: 'linearicons-truck icon-52',
+						title: 'Transportation',
+						text: 'Reliable transportation solutions'
+					})
+				.col-md-6.col-lg-5.col-xl-4
+					+services-classic({
+						img: 'services-2-370x274',
+						icon: 'linearicons-dolly',
+						title: 'Logistics',
+						text: 'Professional Logistics services'
+					})
+				.col-md-6.col-lg-5.col-xl-4
+					+services-classic({
+						img: 'services-3-370x274',
+						icon: 'linearicons-trailer icon-53',
+						title: 'Towing Service',
+						text: 'Quality towing when you need it'
+					})
+				.col-md-6.col-lg-5.col-xl-4
+					+services-classic({
+						img: 'services-4-370x274',
+						icon: 'linearicons-ship2 icon-53',
+						title: 'Ocean Freight',
+						text: 'Sustainable shipping services'
+					})
+				.col-md-6.col-lg-5.col-xl-4
+					+services-classic({
+						img: 'services-5-370x274',
+						icon: 'linearicons-plane icon-54',
+						title: 'Air Freight',
+						text: 'Delivering your cargo worldwide'
+					})
+				.col-md-6.col-lg-5.col-xl-4
+					+services-classic({
+						img: 'services-6-370x274',
+						icon: 'linearicons-home',
+						title: 'Storage',
+						text: 'Secure warehousing'
+					})
+	='\n'
+	
+
+	// Page Footer
+	include ../sections/_footer-modern

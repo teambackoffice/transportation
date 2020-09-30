@@ -1,0 +1,20 @@
+/*
+*
+* Images
+*/
+
+// Standard img style
+img {
+	display: inline-block;
+	max-width: 100%;
+	height: auto;
+}
+
+.img-circle {
+	border-radius: 50%;
+}
+
+
+.img-responsive {
+	width: 100%;
+}

@@ -1,0 +1,199 @@
+/*
+*
+* Typography
+*/
+
+//
+// Body
+//
+body {
+	font-family: $font-family-base;
+	font-size: $font-size-base;
+	line-height: $line-height-base;
+	font-weight: $font-weight-base;
+	letter-spacing: .075em;
+	color: $body-color;
+	background-color: $body-bg;
+	-webkit-text-size-adjust: none;
+	-webkit-font-smoothing: subpixel-antialiased;
+}
+
+.section-style-2 {
+	color: $gray-800;
+	letter-spacing: .05em;
+}
+
+//
+// Headings
+//
+#{headings()} {
+	margin-top: 0;
+	margin-bottom: 0;
+	font-weight: $headings-font-weight;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	font-family: $headings-font-family;
+	color: $headings-color;
+
+	a {
+		color: inherit;
+
+		&:focus,
+		&:hover {
+			color: $primary;
+		}
+	}
+}
+
+h1,
+.heading-1 {
+	font-size: 50px;
+	line-height: $h1-line-height;
+	letter-spacing: .025em;
+
+	@include media-breakpoint-up(md) {
+		font-size: 70px;
+	}
+
+	@include media-breakpoint-up(lg) {
+		font-size: 90px;
+	}
+
+	@include media-breakpoint-up(xl) {
+		font-size: $h1-font-size;
+	}
+}
+
+h2,
+.heading-2 {
+	font-size: 36px;
+	line-height: $h2-line-height;
+	letter-spacing: .075em;
+
+	@include media-breakpoint-up(md) {
+		font-size: 46px;
+	}
+
+	@include media-breakpoint-up(lg) {
+		font-size: 54px;
+	}
+
+	@include media-breakpoint-up(xl) {
+		font-size: $h2-font-size;
+	}
+}
+
+h3,
+.heading-3 {
+	font-size: 30px;
+	line-height: $h3-line-height;
+	font-weight: 400;
+
+	@include media-breakpoint-up(md) {
+		font-size: 34px;
+	}
+
+	@include media-breakpoint-up(lg) {
+		font-size: 40px;
+	}
+
+	@include media-breakpoint-up(xl) {
+		font-size: $h3-font-size;
+	}
+}
+
+h4,
+.heading-4 {
+	font-size: 26px;
+	line-height: $h4-line-height;
+	font-weight: 400;
+
+	@include media-breakpoint-up(md) {
+		font-size: 30px;
+	}
+
+	@include media-breakpoint-up(xl) {
+		font-size: $h4-font-size;
+	}
+}
+
+h5,
+.heading-5 {
+	font-size: 20px;
+	line-height: $h5-line-height;
+
+	@include media-breakpoint-up(md) {
+		font-size: $h5-font-size;
+	}
+}
+
+h6,
+.heading-6 {
+	font-size: 16px;
+	line-height: $h6-line-height;
+
+	// Medium ≥768px
+	@include media-breakpoint-up(md) {
+		font-size: $h6-font-size;
+	}
+}
+
+.heading-7 {
+	font-size: 16px;
+	line-height: 1.5;
+	font-weight: 400;
+	letter-spacing: .2em;
+	color: $body-color;
+}
+
+//
+// Emphasis
+//
+small,
+.small {
+	display: block;
+	font-size: $font-size-sm;
+	line-height: $line-height-sm;
+}
+
+mark,
+.mark {
+	padding: 3px 5px;
+	color: $white-invariable;
+	background: $secondary;
+}
+
+// Big text
+.big {
+	font-size: $font-size-lg;
+	line-height: $line-height-lg;
+}
+
+.lead {
+	font-size: $lead-font-size;
+	line-height: $lead-line-height;
+	font-weight: $lead-font-weight;
+}
+
+code {
+	padding: $code-padding-y $code-padding-x;
+	border-radius: $border-radius-sm;
+	font-size: $code-font-size;
+	color: $code-color;
+	background: $code-bg;
+}
+
+.tooltip-inner {
+	background-color: $gray-800;
+}
+
+//
+// Paragraph
+//
+p {
+
+	[style*='max-width'] {
+		display: inline-block;
+	}
+}
+

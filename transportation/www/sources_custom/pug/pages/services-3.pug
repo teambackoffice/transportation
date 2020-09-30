@@ -1,0 +1,64 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-box-icon
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Services #3'
+
+block page  
+	// Page Header
+	include ../sections/_header-classic
+	
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'bg-typography'
+	})
+	
+	// Services 3
+	section.section.section-inset-5.bg-default
+		.container
+			.row.no-md-gutters.justify-content-center.bordered-2
+				.col-sm-6.col-lg-4
+					.services-modern
+						+box-icon-modern({
+							icon: 'mdi mdi-truck',
+							title: 'Transportation'
+						})
+				.col-sm-6.col-lg-4
+					.services-modern
+						+box-icon-modern({
+							icon: 'mdi mdi-package-variant icon-32',
+							title: 'Logistics'
+						})
+				.col-sm-6.col-lg-4
+					.services-modern
+						+box-icon-modern({
+							icon: 'mdi mdi-teamviewer icon-39',
+							title: 'Towing Service'
+						})
+				.col-sm-6.col-lg-4
+					.services-modern
+						+box-icon-modern({
+							icon: 'mdi mdi-ferry icon-30',
+							title: 'Ocean Freight'
+						})
+				.col-sm-6.col-lg-4
+					.services-modern
+						+box-icon-modern({
+							icon: 'mdi mdi-airplane icon-28',
+							title: 'Air Freight'
+						})
+				.col-sm-6.col-lg-4
+					.services-modern
+						+box-icon-modern({
+							icon: 'mdi mdi-home icon-30',
+							title: 'Storage'
+						})
+	='\n'
+	
+	
+	// Page Footer
+	include ../sections/_footer-modern

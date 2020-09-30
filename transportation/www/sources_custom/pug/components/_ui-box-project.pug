@@ -1,0 +1,12 @@
+//- Project
+
+mixin project-classic(obj)
+  // Project Classic
+  article.project-classic(class=obj.mod)&attributes(attributes)
+    a.project-classic-figure(href='additional-service-page.html'): +jpg(obj.img)
+    .project-classic-caption
+      h5.project-classic-title: a(href='additional-service-page.html')=obj.title
+      .project-classic-location
+        span.icon.mdi.mdi-map-marker
+        span=obj.location
+      p.project-classic-text=obj.text

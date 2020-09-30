@@ -1,0 +1,94 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-thumbnail
+
+block variables
+	- var activeCategory = 'projects'
+	- var pageName = 'Grid Gallery'
+
+block page  
+	// Page Header
+	include ../sections/_header-classic
+	
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'bg-typography'
+	})
+	
+	// Grid Gallery
+	section.section.section-lg.bg-default
+		.container
+			.isotope-filters.isotope-filters-horizontal
+				//- Isotope Filters
+				button.isotope-filters-toggle.button.button-sm.button-icon.button-icon-right.button-gray-3(data-custom-toggle='.isotope-filters-list', data-custom-toggle-hide-on-blur='true')
+					span.icon.mdi.mdi-chevron-down
+					| Filter
+				ul.isotope-filters-list
+					li: a.active(href='#', data-isotope-filter='*', data-isotope-group='gallery') All
+					li: a(href='#', data-isotope-filter='Type 1', data-isotope-group='gallery') shipping
+					li: a(href='#', data-isotope-filter='Type 2', data-isotope-group='gallery') trucking
+		.container-fluid.container-inset-0
+			.row.row-30.row-desktop-8.gutters-8.isotope.hoverdir(data-isotope-layout='fitRows', data-isotope-group='gallery', data-lightgallery='group')
+				.col-sm-6.col-lg-4.col-xxl-3.isotope-item(data-filter='Type 2')
+					+thumbnail-modern({
+						nameImg: 'grid-gallery',
+						sizeImg: '474x355',
+						numberImg: '1',
+						badge: 'ocean freight'
+					}).hoverdir-item(data-hoverdir-target='.thumbnail-modern-caption')
+				.col-sm-6.col-lg-4.col-xxl-3.isotope-item(data-filter='Type 1')
+					+thumbnail-modern({
+						nameImg: 'grid-gallery',
+						sizeImg: '474x355',
+						numberImg: '2',
+						badge: 'railway shipping'
+					}).hoverdir-item(data-hoverdir-target='.thumbnail-modern-caption')
+				.col-sm-6.col-lg-4.col-xxl-3.isotope-item(data-filter='Type 2')
+					+thumbnail-modern({
+						nameImg: 'grid-gallery',
+						sizeImg: '474x355',
+						numberImg: '3',
+						badge: 'less than truckload'
+					}).hoverdir-item(data-hoverdir-target='.thumbnail-modern-caption')
+				.col-sm-6.col-lg-4.col-xxl-3.isotope-item(data-filter='Type 1')
+					+thumbnail-modern({
+						nameImg: 'grid-gallery',
+						sizeImg: '474x355',
+						numberImg: '4',
+						badge: 'cargo tracking'
+					}).hoverdir-item(data-hoverdir-target='.thumbnail-modern-caption')
+				.col-sm-6.col-lg-4.col-xxl-3.isotope-item(data-filter='Type 2')
+					+thumbnail-modern({
+						nameImg: 'grid-gallery',
+						sizeImg: '474x355',
+						numberImg: '5',
+						badge: 'warehousing'
+					}).hoverdir-item(data-hoverdir-target='.thumbnail-modern-caption')
+				.col-sm-6.col-lg-4.col-xxl-3.isotope-item(data-filter='Type 1')
+					+thumbnail-modern({
+						nameImg: 'grid-gallery',
+						sizeImg: '474x355',
+						numberImg: '6',
+						badge: 'long-haul shipping'
+					}).hoverdir-item(data-hoverdir-target='.thumbnail-modern-caption')
+				.col-sm-6.col-lg-4.col-xxl-3.isotope-item(data-filter='Type 2')
+					+thumbnail-modern({
+						nameImg: 'grid-gallery',
+						sizeImg: '474x355',
+						numberImg: '7',
+						badge: 'air freight'
+					}).hoverdir-item(data-hoverdir-target='.thumbnail-modern-caption')
+				.col-sm-6.col-lg-4.col-xxl-3.isotope-item(data-filter='Type 1')
+					+thumbnail-modern({
+						nameImg: 'grid-gallery',
+						sizeImg: '474x355',
+						numberImg: '8',
+						badge: 'local trucking'
+					}).hoverdir-item(data-hoverdir-target='.thumbnail-modern-caption')
+	='\n'
+	
+	
+	// Page Footer
+	include ../sections/_footer-modern

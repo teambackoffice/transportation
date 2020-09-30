@@ -1,0 +1,53 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-progress-bar-linear
+include ../components/_ui-coundown
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Progress Bars'
+
+block page  
+	// Page Header
+	include ../sections/_header-classic
+	
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'bg-typography'
+	})
+	
+	// Section Skill Bars and Time Circles
+	section.section.section-lg.bg-default
+		.container
+			.row.row-50.justify-content-center.justify-content-xl-between.align-items-lg-end
+				.col-md-10.col-lg-6
+					+progress-bar-linear({
+						mod: 'progress-orange',
+						title: "Dedication",
+						valueTo: "59"
+					})
+					+progress-bar-linear({
+						mod: 'progress-green',
+						title: "Knowledge",
+						valueTo: "78"
+					})
+					+progress-bar-linear({
+						title: "Professionalism",
+						valueTo: "69"
+					})
+				
+				.col-lg-6
+					+countdown({
+						mod: 'justify-content-xl-end',
+						from: '2018-05-25',
+						to: '2018-12-31',
+						array: ['Days', 'Hours', 'Minutes']
+					})
+	='\n'
+	
+	
+	
+	// Page Footer
+	include ../sections/_footer-modern

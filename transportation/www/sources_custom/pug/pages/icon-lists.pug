@@ -1,0 +1,126 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-box-icon
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Icon Lists'
+
+block page  
+	// Page Header
+	include ../sections/_header-classic
+	
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'bg-typography'
+	})
+	
+	// Icon Classic
+	section.section.section-lg.bg-default
+		.container
+			h3.font-weight-bold.text-spacing-50 #1
+			.row.row-md.row-50
+				.col-sm-6.col-xl-4
+					+box-icon-classic({
+						unit: 'flex-column text-center flex-md-row text-md-left',
+						icon: 'linearicons-thumbs-up',
+						title: 'Best Service'
+					})
+				.col-sm-6.col-xl-4
+					+box-icon-classic({
+						unit: 'flex-column text-center flex-md-row text-md-left',
+						icon: 'linearicons-star',
+						title: 'Reputation'
+					})
+				.col-sm-6.col-xl-4
+					+box-icon-classic({
+						unit: 'flex-column text-center flex-md-row text-md-left',
+						icon: 'linearicons-shield-check',
+						title: 'Safety & Security'
+					})
+	='\n'
+	
+	// Icon Creative
+	+parallax({
+		img: 'bg-icon',
+		innerClass: 'section-xxl context-dark'
+	})
+		.container
+			h3.font-weight-bold.text-spacing-200 #2
+			.row.row-lg.row-30
+				.col-sm-6.col-md-4.col-lg-3
+					+box-icon-creative({
+						icon: 'linearicons-rocket',
+						title: 'Fast <br> Delivery'
+					})
+				.col-sm-6.col-md-4.col-lg-3
+					+box-icon-creative({
+						icon: 'linearicons-headset',
+						title: '24/7 <br> Support'
+					})
+				.col-sm-6.col-md-4.col-lg-3
+					+box-icon-creative({
+						icon: 'linearicons-apartment',
+						title: '240 <br> offices'
+					})
+				.col-sm-6.col-md-4.col-lg-3
+					+box-icon-creative({
+						icon: 'linearicons-medal-empty icon-big',
+						title: 'ISO 9001:2008 Certified'
+					})
+	='\n'
+	
+	// Counter Modern
+	section.section.section-sm.section-first.bg-default
+		.container
+			h3.font-weight-bold.text-spacing-50 #3
+			.row.row-lg.row-50.bordered-1
+				.col-sm-6.col-lg-4
+					+box-icon-modern({
+						icon: 'mdi mdi-thumb-up-outline',
+						title: 'Individual Approach'
+					})
+				.col-sm-6.col-lg-4
+					+box-icon-modern({
+						icon: 'mdi mdi-account-multiple icon-32',
+						title: 'Qualified Employees'
+					})
+				.col-sm-6.col-lg-4
+					+box-icon-modern({
+						icon: 'mdi mdi-credit-card icon-39',
+						title: 'Payment Methods'
+					})
+	='\n'
+	
+	// Counter Modern
+	section.section.section-sm.section-last.bg-default
+		.container
+			h3.font-weight-bold.text-spacing-50 #4
+			.row.row-30.row-desktop-0
+				.col-sm-6.col-lg-4.col-xl-3
+					+box-icon-megan({
+						icon: 'linearicons-shield-check icon-46',
+						title: 'Reliable Services'
+					})
+				.col-sm-6.col-lg-4.col-xl-3
+					+box-icon-megan({
+						icon: 'linearicons-trophy2',
+						title: '7 Awards Won'
+					})
+				.col-sm-6.col-lg-4.col-xl-3
+					+box-icon-megan({
+						icon: 'linearicons-wallet icon-53',
+						title: 'Affordable Prices'
+					})
+				.col-sm-6.col-lg-4.col-xl-3
+					+box-icon-megan({
+						icon: 'linearicons-users2',
+						title: 'Qualified Team'
+					})
+	='\n'
+	
+	
+	// Page Footer
+	include ../sections/_footer-modern

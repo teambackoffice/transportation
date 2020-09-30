@@ -1,0 +1,122 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-box-services
+include ../components/_ui-card
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Single Service'
+
+block page  
+	// Page Header
+	include ../sections/_header-classic
+	
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'bg-typography'
+	})
+	
+	// Services
+	section.section.section-sm.section-first.bg-default.text-left
+		.container
+			.row.row-60
+				.col-md-7.col-xl-8: .single-service
+					+jpg('single-service-1-770x426')
+					h4 Transportation
+					p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.
+					p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised.
+					.row.row-50.flex-xl-row-reverse
+						.col-xl-5
+							article.team-classic
+								a.team-classic-figure(href='#'): +jpg('team-17-270x182')
+								.team-classic-title Feel free to contact us, we are ready to help you!
+								.team-classic-name
+									a(href='#') Alice Parker
+									| , #[span Manager]
+						.col-xl-7
+							// Bootstrap collapse
+							#accordion3.card-group-custom.card-group-corporate(role='tablist' aria-multiselectable='false')
+								+card({
+									show: true,
+									cardClass: 'card-corporate',
+									parentId: 'accordion3',
+									number: '1',
+									header: 'High Quality Guarantee'
+								})
+									p Ecce. Vae, grandis bromium! Armarium de altus ionicis tormento, locus urbs! Cum nix congregabo, omnes abactores experientia peritus, camerarius
+								+card({
+									cardClass: 'card-corporate',
+									parentId: 'accordion3',
+									number: '2',
+									header: 'Qualified Team'
+								})
+									p Ecce. Vae, grandis bromium! Armarium de altus ionicis tormento, locus urbs! Cum nix congregabo, omnes abactores experientia peritus, camerarius
+								+card({
+									cardClass: 'card-corporate',
+									parentId: 'accordion3',
+									number: '3',
+									header: '24/7 Support'
+								})
+									p Ecce. Vae, grandis bromium! Armarium de altus ionicis tormento, locus urbs! Cum nix congregabo, omnes abactores experientia peritus, camerarius
+								+card({
+									cardClass: 'card-corporate',
+									parentId: 'accordion3',
+									number: '4',
+									header: 'Extensive Fleet'
+								})
+									p Ecce. Vae, grandis bromium! Armarium de altus ionicis tormento, locus urbs! Cum nix congregabo, omnes abactores experientia peritus, camerarius
+				
+				.col-md-5.col-xl-4
+					.aside.aside-services
+						.row.row-60
+							.aside-item.col-12
+								h5.aside-services-title Solutions for your business
+								ul.list-category
+									li.list-category-item: a.active(href='#') All services
+									li.list-category-item: a(href='#') Transportation
+									li.list-category-item: a(href='#') Logistics
+									li.list-category-item: a(href='#') Towing Service
+									li.list-category-item: a(href='#') Ocean Freight
+									li.list-category-item: a(href='#') Air Freight
+									li.list-category-item: a(href='#') Storage
+							
+							.aside-item.col-sm-6.col-md-12
+								h5.aside-services-title Our contacts
+								include ../sections/_box-contacts
+							
+							.aside-item.col-sm-6.col-md-12
+								h5.aside-services-title Our brochure
+								a.button.button-lg.button-icon.button-icon-left.button-primary.button-winona(href='contacts.html')
+									span.icon.mdi.mdi-download
+									span Download
+	='\n'
+	
+	// Contact us
+	section.section.section-sm.section-last.bg-default.text-left
+		.container: .row: .col-lg-10.col-xl-8
+			h4 Any questions? Contact us
+			form.rd-form.rd-mailform
+				.row.row-20.gutters-20
+					.col-md-6: .form-wrap
+						input.form-input(id='contact-your-name-4' type='text' name='name' data-constraints='@Required')
+						label.form-label(for='contact-your-name-4') Your Name*
+					.col-md-6: .form-wrap
+						input.form-input(id='contact-email-4' type='email' name='email' data-constraints='@Email @Required')
+						label.form-label(for='contact-email-4') Your E-mail*
+					.col-md-6: .form-wrap
+						input.form-input(id='contact-company-name-4' type='text' name='name' data-constraints='@Required')
+						label.form-label(for='contact-company-name-4') Your Company Name*
+					.col-md-6: .form-wrap
+						input.form-input(id='contact-phone-4' type='text' name='phone' data-constraints='@Numeric')
+						label.form-label(for='contact-phone-4') Your Phone*
+					.col-12: .form-wrap
+						label.form-label(for='contact-message-4') Your message
+						textarea.form-input.textarea-lg(id='contact-message-4' name='message' data-constraints='@Required')
+				button.button.button-primary.button-winona(type='submit') Send request
+	='\n'
+	
+	
+	// Page Footer
+	include ../sections/_footer-modern

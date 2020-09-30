@@ -1,0 +1,37 @@
+//- box icon
+
+mixin box-icon-creative(obj)
+  article.box-icon-creative(class=obj.mod)&attributes(attributes)
+    .box-icon-creative-body
+      .box-icon-creative-icon(class=obj.icon)
+      p.box-icon-creative-title: a(href='#')!=obj.title
+
+mixin box-icon-modern(obj)
+  article.box-icon-modern(class=obj.mod)&attributes(attributes)
+    .box-icon-modern-icon(class=obj.icon)
+    h5.box-icon-modern-title: a(href='single-service.html')=obj.title
+    p.box-icon-modern-text=obj.text ? obj.text : 'Regius hippotoxota callide experientias tata est. Tolerare sensim ducunt ad lotus'
+    a.box-icon-modern-link(href='single-service.html') Read More
+      span.icon.mdi.mdi-arrow-right
+
+mixin box-icon-classic(obj)
+  article.box-icon-classic(class=obj.mod)
+    .unit.unit-spacing-lg(class=obj.unit)
+      .unit-left: .box-icon-classic-icon(class=obj.icon)
+      .unit-body
+        h5.box-icon-classic-title: a(href='single-service.html')=obj.title
+        p.box-icon-classic-text=obj.text ? obj.text : 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh'
+
+mixin box-icon-megan(obj)
+  article.box-icon-megan(class=obj.mod)&attributes(attributes)
+    .box-icon-megan-header: .box-icon-megan-icon(class=obj.icon)
+    h5.box-icon-megan-title: a(href='single-service.html')=obj.title
+    p.box-icon-megan-text=obj.text ? obj.text : 'Etiam lacinia quis nisl id malesuada. Sed eget ultrices nisi. Vivamus ac ornare'
+
+mixin box-icon-erin(obj)
+  article.box-icon-erin(class=obj.mod)
+    .box-icon-erin-icon
+      block
+    h6.box-icon-erin-title: a(href='single-service.html')=obj.title
+    .box-icon-erin-decor
+    p.box-icon-erin-text=obj.text

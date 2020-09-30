@@ -1,0 +1,354 @@
+/*
+*
+* Lists
+*/
+
+//
+// List inline
+//
+.list-inline {
+	> li {
+		display: inline-block;
+	}
+}
+
+html {
+	.list-inline-xs {
+		@include spacing(6px, 8px);
+	}
+
+	.list-inline-sm {
+		@include spacing(10px, 8px);
+	}
+
+	.list-inline-md {
+		@include spacing(22px, 10px);
+	}
+
+	.list-inline-xl {
+		@include spacing(34px, 14px);
+	}
+}
+
+//
+// List terms
+//
+.list-terms {
+	dt + dd {
+		margin-top: 20px;
+	}
+	dd + dt {
+		margin-top: 40px;
+	}
+}
+
+* + .list-terms {margin-top: 50px;}
+
+//
+// Index list
+//
+.index-list {
+	counter-reset: li;
+
+	> li {
+		.list-index-counter {
+			&:before {
+				content: counter(li, decimal-leading-zero);
+				counter-increment: li;
+			}
+		}
+	}
+}
+
+//
+// Marked list
+//
+.list-marked {
+	text-align: left;
+
+	> li {
+		text-indent: -24px;
+		padding-left: 24px;
+
+		&::before {
+			position: relative;
+			display: inline-block;
+			left: 0;
+			top: 0;
+			content: '';
+			height: 9px;
+			width: 9px;
+			margin-right: 15px;
+			border-radius: 50%;
+			background: $gray-1;
+		}
+	}
+
+	> li + li {
+		margin-top: 10px;
+	}
+}
+
+// Offsets
+* + .list-marked {margin-top: 15px;}
+p + .list-marked {margin-top: 10px;}
+
+
+.list-marked-2 {
+	text-align: left;
+	font-size: 14px;
+	line-height: 1.71;
+	letter-spacing: .05em;
+	color: $body-color;
+
+	> li {
+		text-indent: -21px;
+		padding-left: 21px;
+
+		&::before {
+			position: relative;
+			display: inline-block;
+			left: 0;
+			top: 0;
+			content: '';
+			height: 8px;
+			width: 8px;
+			margin-right: 13px;
+			background: $gray-300;
+			transition: all .3s ease-in-out;
+		}
+
+		&:hover {
+			color: $primary;
+
+		  &::before {
+				background: $primary;
+		  }
+		}
+	}
+
+	a {
+		color: inherit;
+	}
+
+	> li + li {
+		margin-top: 14px;
+	}
+}
+
+* + .list-marked-2 {margin-top: 30px;}
+
+
+
+//
+// Ordered List
+//
+.list-ordered {
+	counter-reset: li;
+	text-align: left;
+
+	> li {
+		position: relative;
+		text-indent: -18px;
+		padding-left: 18px;
+
+		&:before {
+			content: counter(li, decimal) '.';
+			counter-increment: li;
+			display: inline-block;
+			top: 0;
+			left: 0;
+			text-indent: 0;
+			min-width: 18px;
+			color: inherit;
+		}
+	}
+
+	> li + li {
+		margin-top: 10px;
+	}
+}
+
+* + .list-ordered {margin-top: 15px;}
+
+
+
+//
+// List Category
+//
+.list-category-2 {
+	li {
+		position: relative;
+		padding-right: 40px;
+	}
+}
+
+.list-category-number {
+	position: absolute;
+	right: 0;
+	font-size: 15px;
+	line-height: 1.6;
+	transition: all .25s ease-in-out;
+}
+
+
+
+//
+// Vertical list
+//
+.list {
+	> li + li {
+		margin-top: 10px;
+	}
+}
+
+.list-xs > li + li {
+	margin-top: 5px;
+}
+
+.list-sm > li + li {
+	margin-top: 10px;
+}
+
+.list-md > li + li {
+	margin-top: 18px;
+}
+
+.list-lg > li + li {
+	margin-top: 25px;
+}
+
+.list-xl > li + li {
+	margin-top: 40px;
+}
+
+// Medium ≥768px
+@include media-breakpoint-up(md) {
+	.list-xl > li + li {
+		margin-top: 50px;
+	}
+}
+
+@include media-breakpoint-up(lg) {
+	.list-xl > li + li {
+		margin-top: 60px;
+	}
+}
+
+
+
+//
+// List History
+//
+
+.list-history-wrap {
+	height: 72px;
+}
+
+.list-history {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	position: relative;
+	
+	&::before {
+		position: absolute;
+		content: '';
+		top: 17px;
+		right: 20px;
+		height: 6px;
+		width: 1000%;
+		background: $secondary;
+	}
+}
+
+// Medium ≥576px
+@include media-breakpoint-up(sm) {
+	.list-history {
+		padding-left: 20px;
+		max-width: 95%;
+	}
+}
+
+// Extra large ≥1200px
+@include media-breakpoint-up(xl) {
+	.list-history {
+		position: absolute;
+		right: calc(50% + 80px);
+		left: 0;
+		padding-left: 30px;
+		max-width: none;
+
+		&::before {
+			width: 100%;
+		}
+	}
+} 
+
+@media (min-width: 1400px) {
+	.list-history {
+		padding-left: 90px;
+	}
+}
+
+// Mega large ≥1600px
+@include media-breakpoint-up(xxl) {
+	.list-history {
+		right: calc(50% + 185px);
+		padding-left: 120px;
+	}
+} 
+
+.list-history-item {
+	position: relative;
+	padding-top: 54px;
+	font-size: 18px;
+	line-height: 1;
+	font-weight: 500;
+	letter-spacing: .05em;
+
+	a {@include link($gray-800, $primary);}
+
+	> .active {
+		.list-history-circle {
+			width: 40px;
+			height: 40px;
+
+			&::before {
+				width: 11px;
+				height: 11px;
+			}
+		}
+	}
+}
+
+.list-history-circle {
+	position: absolute;
+	display: inline-block;
+	top: 20px;
+	left: 50%;
+	font-size: 0;
+	line-height: 0;
+	width: 28px;
+	height: 28px;
+	background: $white;
+	border: 5px solid $secondary;
+	border-radius: 50%;
+	transform: translate3d(-50%,-50%,0);
+	transition: all .3s ease-in-out;
+
+	&::before {
+	  position: absolute;
+	  content: '';
+	  top: 50%;
+	  left: 50%;
+		width: 0;
+		height: 0;
+		background: $secondary;
+		border-radius: 50%;
+		transform: translate3d(-50%,-50%,0);
+		transition: inherit;
+	}
+}
+
+* + .list-history-wrap {margin-top: 50px;}

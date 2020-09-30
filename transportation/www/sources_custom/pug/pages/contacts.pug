@@ -1,0 +1,74 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-box-services
+
+block variables
+  - var activeCategory = 'pages'
+  - var pageName = 'Contacts'
+
+block page  
+  // Page Header
+  include ../sections/_header-classic
+
+  +breadcrumbs({
+    category: activeCategory,
+    path: [pageName],
+    bgImage: 'bg-typography'
+  })
+
+  // Contacts
+  section.section.section-lg.bg-default.text-md-left
+    .container
+      .row.row-60.justify-content-center
+        .col-lg-8
+          h4.text-spacing-25.text-transform-none Get in Touch
+          form.rd-form.rd-mailform(data-form-output='form-output-global', data-form-type='contact', method='post', action='bat/rd-mailform.php')
+            .row.row-20.gutters-20
+              .col-md-6: .form-wrap
+                input.form-input(id='contact-your-name-5' type='text' name='name' data-constraints='@Required')
+                label.form-label(for='contact-your-name-5') Your Name*
+              .col-md-6: .form-wrap
+                input.form-input(id='contact-email-5' type='email' name='email' data-constraints='@Email @Required')
+                label.form-label(for='contact-email-5') Your E-mail*
+              .col-md-6: .form-wrap
+                //Select 2
+                select.form-input(data-minimum-results-for-search="Infinity", data-constraints="@Required")
+                  option(value="1") Select a Service
+                  option(value="2") Transportation
+                  option(value="3") Air Freight
+                  option(value="4") Ocean Freight
+              .col-md-6: .form-wrap
+                input.form-input(id='contact-phone-5' type='text' name='phone' data-constraints='@Numeric')
+                label.form-label(for='contact-phone-5') Your Phone*
+              .col-12: .form-wrap
+                label.form-label(for='contact-message-5') Message
+                textarea.form-input.textarea-lg(id='contact-message-5' name='message' data-constraints='@Required')
+            button.button.button-secondary.button-winona(type='submit') Contact us
+
+        .col-lg-4
+          .aside-contacts: .row.row-30
+            .col-sm-6.col-lg-12.aside-contacts-item
+              p.aside-contacts-title Get social
+              +widget-list([], '', 'contacts-social-list list-inline-sm')
+            .col-sm-6.col-lg-12.aside-contacts-item
+              p.aside-contacts-title Phone
+              .unit.unit-spacing-xs.justify-content-center.justify-content-md-start
+                .unit-left: span.icon.mdi.mdi-phone
+                .unit-body: a.phone(href='tel:#') 1-800-1234-567
+            .col-sm-6.col-lg-12.aside-contacts-item
+              p.aside-contacts-title E-mail
+              .unit.unit-spacing-xs.justify-content-center.justify-content-md-start
+                .unit-left: span.icon.mdi.mdi-email-outline
+                .unit-body: a.mail(href='mailto:#') info@demolink.org
+            .col-sm-6.col-lg-12.aside-contacts-item
+              p.aside-contacts-title Address
+              .unit.unit-spacing-xs.justify-content-center.justify-content-md-start
+                .unit-left: span.icon.mdi.mdi-map-marker
+                .unit-body: a.address(href='#') 6036 Richmond hwy.,
+                  =' '
+                  br.d-md-none
+                  | Alexandria, VA, 2230
+  ='\n'
+  // Page Footer
+  include ../sections/_footer-modern

@@ -1,0 +1,39 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-inline-subscribe-form
+include ../components/_ui-coundown
+
+block variables
+  - var activeCategory = 'pages'
+  - var pageName = 'Coming Soon'
+
+block title
+  title=pageName
+
+block page
+  section.section.section-single.box-transform-wrap.novi-background.novi-background.context-dark
+    .section-single-inner
+      //-Page Header
+      include ../sections/_section-header-base-transparent
+
+      //- Page Main
+      .section-single-main
+        .container
+          h4 We’re Getting Ready To Launch In
+          // TimeCircles
+          +countdown({
+            from: '2018-05-25',
+            to: '2018-12-31',
+            array: ['Days', 'Hours', 'Minutes', 'Seconds']
+          })
+          p.big Stay tuned and subscribe to our newsletter
+          +inline-subscribe-form({
+            mod: 'rd-form-inline-lg rd-form-inline-spacing-12',
+            button: 'button-lg button-primary'
+          })
+
+      //-Page Footer
+      include ../sections/_section-footer-base-transparent
+
+    .box-transform(style='background-image: url(images/bg-soon.jpg);')

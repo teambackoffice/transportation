@@ -1,0 +1,15 @@
+mixin inline-subscribe-form(obj)
+	-  var uniquePrefix = subscribeFormCounter
+	if (obj.customUnique)
+		- var uniquePrefix = obj.customUnique
+	else
+		- subscribeFormCounter = subscribeFormCounter + 1
+
+
+	// RD Mailform
+	form.rd-form.rd-mailform.rd-form-inline.oh-desktop(class=obj.mod data-form-output="form-output-global", data-form-type='subscribe', method='post', action='bat/rd-mailform.php')&attributes(attributes)
+		.form-wrap.wow.slideInUp
+			input.form-input(id="subscribe-form-" + uniquePrefix + "-email" type="email" name="email" data-constraints="@Email @Required")
+			label.form-label(for="subscribe-form-" + uniquePrefix + "-email") Your E-mail*
+		.form-button.wow.slideInRight
+			button.button.button-winona(type="submit" class=obj.button) Subscribe

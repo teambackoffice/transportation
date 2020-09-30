@@ -1,0 +1,154 @@
+extends  ../_skeleton
+
+//- Includes
+
+block variables
+  - var activeCategory = 'pages'
+  - var pageName = 'Tables'
+
+block page
+  // Page Header
+  include ../sections/_header-classic
+
+  +breadcrumbs({
+    category: activeCategory,
+    path: [pageName],
+    bgImage: 'bg-typography'
+  })
+
+  // Tables
+  section.section.section-lg.bg-default
+    .container
+      .table-custom-responsive
+        table.table-custom.table-custom-primary
+          thead
+            tr
+              th Column 1
+              th Column 2
+              th Column 3
+              th Column 4
+
+          tbody
+            tr
+              td Item #1
+              td Description
+              td Subtotal
+              td $3.00
+            tr
+              td Item #2
+              td Description
+              td Discount
+              td $3.00
+            tr
+              td Item #3
+              td Description
+              td Shipping
+              td $3.00
+
+            tr
+              td Item #4
+              td Description
+              td Tax
+              td $4.00
+
+          tfoot
+            tr
+              td All Items
+              td Description
+              td Your Total
+              td $13.00
+  ='\n'
+
+  hr
+
+  // Tables
+  section.section.section-lg.bg-default
+    .container
+      .table-custom-responsive
+        table.table-custom.table-custom-bordered
+          thead
+            tr
+              th Column 1
+              th Column 2
+              th Column 3
+              th Column 4
+
+          tbody
+            tr
+              td Item #1
+              td Description
+              td Subtotal
+              td $3.00
+            tr
+              td Item #2
+              td Description
+              td Discount
+              td $3.00
+            tr
+              td Item #3
+              td Description
+              td Shipping
+              td $3.00
+
+            tr
+              td Item #4
+              td Description
+              td Tax
+              td $4.00
+
+          tfoot
+            tr
+              td All Items
+              td Description
+              td Your Total
+              td $13.00
+  ='\n'
+
+  hr
+
+  // Tables
+  section.section.section-lg.bg-default
+    .container
+      .table-custom-responsive
+        table.table-custom.table-custom-striped.table-custom-primary
+          thead
+            tr
+              th Column 1
+              th Column 2
+              th Column 3
+              th Column 4
+
+          tbody
+            tr
+              td Item #1
+              td Description
+              td Subtotal
+              td $3.00
+            tr
+              td Item #2
+              td Description
+              td Discount
+              td $3.00
+            tr
+              td Item #3
+              td Description
+              td Shipping
+              td $3.00
+
+            tr
+              td Item #4
+              td Description
+              td Tax
+              td $4.00
+
+          tfoot
+            tr
+              td All Items
+              td Description
+              td Your Total
+              td $13.00
+  ='\n'
+
+  
+  // Page Footer
+  include ../sections/_footer-modern

@@ -1,0 +1,16 @@
+/*
+* Trunk version 2.0.0
+*/
+@import "color-scheme/_colors-default";
+@import "color-scheme/_colors-shade";
+@import "main";
+
+[class*='ie-'] {
+	.aside-contacts {
+		[class*='col-'] {
+			flex: 0 1 auto;
+		}
+	}
+}
+
+

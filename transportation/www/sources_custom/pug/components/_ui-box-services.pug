@@ -1,0 +1,46 @@
+//- Services
+
+mixin services-classic(obj)
+  // Services Classic
+  article.services-classic(class=obj.mod)&attributes(attributes)
+    a.services-classic-figure(href='single-service.html'): +jpg(obj.img)
+    .services-classic-caption
+      .unit.align-items-lg-center
+        .unit-left
+          span.services-classic-icon(class=obj.icon)
+        .unit-body
+          h5.services-classic-title: a(href='single-service.html')=obj.title
+          p.services-classic-text=obj.text
+
+mixin services-creative(obj)
+  // Services Creative
+  article.services-creative(class=obj.mod)&attributes(attributes)
+    a.services-creative-figure(href='single-service.html'): +jpg(obj.img)
+    .services-creative-caption
+      h5.services-creative-title: a(href='single-service.html')=obj.title
+      p.services-creative-text=obj.text ? obj.text : 'Cadunt patienter ducunt ad secundus quadra. Detrius de placidus fuga, demitto'
+      span.services-creative-counter.box-ordered-item=obj.number ? obj.number : ''
+
+mixin services-tammy(obj)
+  // Services Tammy
+  article.services-tammy(class=obj.mod)&attributes(attributes)
+    span.services-tammy-counter.box-ordered-item=obj.number ? obj.number : ''
+    .services-tammy-caption
+      h5.services-tammy-title: a(href='single-service.html')=obj.title
+      a.services-tammy-figure(href='single-service.html'): +jpg(obj.img)
+      a.services-tammy-link(href='single-service.html') Read More
+
+mixin services-rose(obj)
+  // Services Rose
+  article.services-rose(class=obj.mod)&attributes(attributes)
+    .services-rose-caption
+      +jpg(obj.img)
+      p.services-rose-title: a(href='single-service.html')!=obj.title
+
+mixin services-terri(obj)
+  // Services Terri
+  article.services-terri(class=obj.mod)&attributes(attributes)
+    .services-terri-figure: +jpg(obj.img)
+    .services-terri-caption
+      span.services-terri-icon(class=obj.icon)
+      h5.services-terri-title: a(href='single-service.html')=obj.title

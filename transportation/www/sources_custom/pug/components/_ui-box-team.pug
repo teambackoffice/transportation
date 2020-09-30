@@ -1,0 +1,50 @@
+//- Team
+
+mixin team-modern(obj)
+  // Team Modern
+  article.team-modern(class=obj.mod)&attributes(attributes)
+    a.team-modern-figure(href='#'): +jpg(obj.img)
+    .team-modern-caption
+      h6.team-modern-name: a(href='#')=obj.name
+      .team-modern-status=obj.status
+      +widget-list([], '', 'team-modern-social-list')
+
+mixin team-creative(obj)
+  // Team Craetive
+  article.team-creative(class=obj.mod)
+    .unit.flex-column.flex-sm-row
+      .unit-left
+        a.team-creative-figure(href='#'): +jpg(obj.img)
+      .unit-body
+        .team-creative-body
+          h5.team-creative-name: a(href='#')=obj.name
+          .team-creative-status=obj.status
+          .team-creative-text=obj.text
+
+mixin team-ruth(obj)
+  // Team Ruth
+  article.team-ruth(class=obj.mod)&attributes(attributes)
+    .team-ruth-body
+      .team-ruth-header: p.team-ruth-title=obj.title
+      .unit.align-items-center(class=obj.unit)
+        .unit-left
+          a.team-ruth-figure(href='#'): +jpg(obj.img)
+        .unit-body
+          h5.team-ruth-name: a(href='#')=obj.name
+          if( obj.link )
+            a.team-ruth-link(href='mailto:#')=obj.link
+          else
+            +widget-list([], '', 'list-inline-xs team-ruth-social-list')
+      .team-ruth-footer: p.team-ruth-text=obj.text
+
+mixin team-abby(obj)
+  // Team Abby
+  article.team-abby(class=obj.mod)&attributes(attributes)
+    +jpg(obj.img)
+    .team-abby-caption: div
+      .team-abby-name: a(href='#')=obj.name
+      .team-abby-status=obj.status
+      ul.list-inline.list-inline-xs.team-abby-social-list
+        li: a(href='#' class='icon mdi mdi-twitter')
+        li: a(href='#' class='icon mdi mdi-facebook')
+        li: a(href='#' class='icon mdi mdi-instagram')
