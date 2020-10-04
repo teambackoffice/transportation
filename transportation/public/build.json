@@ -1,0 +1,7 @@
+{
+	"js/core-script.min.js": [
+		"public/js/core.min.js",
+		"public/js/html5shiv.min.js",
+		"public/js/pointer-events.min.js"
+	]
+}

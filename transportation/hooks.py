@@ -15,27 +15,24 @@ app_license = "MIT"
 # ------------------
 
 # include js, css_custom files in header of desk.html
-# app_include_css = "/assets/transportation/css_custom/transportation.css_custom"
-# app_include_js = "/assets/transportation/js_custom/transportation.js_custom"
+# app_include_css = "/assets/transportation/css/transportation.css"
 
-# include js, css_custom files in header of web template
-# web_include_css = "/assets/transportation/css_custom/transportation.css_custom"
-# web_include_js = "/assets/transportation/js_custom/transportation.js_custom"
+# include js, css files in header of web template
+# web_include_css = "/assets/transportation/css/transportation.css"
+# web_include_js = "/assets/transportation/js/transportation.js"
 
 # include js, css_custom files in header of web form
-# webform_include_js = {"doctype": "public/js_custom/doctype.js_custom"}
-# webform_include_css = {"doctype": "public/css_custom/doctype.css_custom"}
-
+# webform_include_js = {"doctype": "public/js/doctype.js"}
+# webform_include_css = {"doctype": "public/css/doctype.css"}
 # include js in page
-# page_js = {"page" : "public/js_custom/file.js_custom"}
-
+# page_js = {"page" : "public/js/file.js"}
 # include js in doctype views
 doctype_js = {
-    "Quotation" : "public/quotation.js_custom"
+    "Quotation" : "public/quotation.js"
 }
-# doctype_list_js = {"doctype" : "public/js_custom/doctype_list.js_custom"}
-# doctype_tree_js = {"doctype" : "public/js_custom/doctype_tree.js_custom"}
-# doctype_calendar_js = {"doctype" : "public/js_custom/doctype_calendar.js_custom"}
+# doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
+# doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
+# doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
 # Home Pages
 # ----------

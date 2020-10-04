@@ -65,21 +65,9 @@
 	$window.on('load', function () {
 		// Page loader & Page transition
 		if (plugins.preloader.length && !isNoviBuilder) {
-			pageTransition({
-				page: $('.page'),
-				animDelay: 500,
-				animDuration: 500,
-				animIn: 'fadeIn',
-				animOut: 'fadeOut',
-				conditions: function (event, link) {
-					return !/(\#|callto:|tel:|mailto:|:\/\/)/.test(link) && !event.currentTarget.hasAttribute('data-lightgallery');
-				},
-				onReady: function () {
-					clearTimeout(loaderTimeoutId);
+			clearTimeout(loaderTimeoutId);
 					plugins.preloader.addClass('loaded');
 					windowReady = true;
-				}
-			});
 		}
 
 		// Isotope
@@ -547,7 +535,7 @@
 		}
 
 		/**
-		 * @desc Initialize the gallery with set of images_custom
+		 * @desc Initialize the gallery with set of images
 		 * @param {object} itemsToInit - jQuery object
 		 * @param {string} addClass - additional gallery class
 		 */
@@ -566,7 +554,7 @@
 		}
 
 		/**
-		 * @desc Initialize the gallery with dynamic addition of images_custom
+		 * @desc Initialize the gallery with dynamic addition of images
 		 * @param {object} itemsToInit - jQuery object
 		 * @param {string} addClass - additional gallery class
 		 */
@@ -632,7 +620,7 @@
 
 		// Google ReCaptcha
 		if (plugins.captcha.length) {
-			$.getScript("//www.google.com/recaptcha/api.js_custom?onload=onloadCaptchaCallback&render=explicit&hl=en");
+			$.getScript("//www.google.com/recaptcha/api.js?onload=onloadCaptchaCallback&render=explicit&hl=en");
 		}
 
 		// Additional class on html if mac os.
@@ -647,7 +635,7 @@
 			}
 
 			if (isIE < 11) {
-				$.getScript('js_custom/pointer-events.min.js_custom')
+				$.getScript('js/pointer-events.min.js')
 				.done(function () {
 					$html.addClass("ie-10");
 					PointerEventsPolyfill.initialize({});
@@ -766,12 +754,12 @@
 
 		// RD Google Maps
 		if (plugins.rdGoogleMaps.length) {
-			$.getScript("//maps.google.com/maps/api/js_custom?key=AIzaSyCJ6TGinPyAKjE5fYA8DOea910G3UG5JeA&sensor=false&libraries=geometry,places&v=3.7", function () {
+			$.getScript("//maps.google.com/maps/api/js?key=AIzaSyCJ6TGinPyAKjE5fYA8DOea910G3UG5JeA&sensor=false&libraries=geometry,places&v=3.7", function () {
 				var head = document.getElementsByTagName('head')[0],
 						insertBefore = head.insertBefore;
 
 				head.insertBefore = function (newElement, referenceElement) {
-					if (newElement.href && newElement.href.indexOf('//fonts_custom.googleapis.com/css_custom?family=Roboto') !== -1 || newElement.innerHTML.indexOf('gm-style') !== -1) {
+					if (newElement.href && newElement.href.indexOf('//fonts.googleapis.com/css?family=Roboto') !== -1 || newElement.innerHTML.indexOf('gm-style') !== -1) {
 						return;
 					}
 					insertBefore.call(head, newElement, referenceElement);
@@ -903,7 +891,8 @@
 				}
 			}
 
-
+console.log("NAUNSA")
+console.log(plugins.rdNavbar)
 			plugins.rdNavbar.RDNavbar({
 				anchorNav: !isNoviBuilder,
 				stickUpClone: (plugins.rdNavbar.attr("data-stick-up-clone") && !isNoviBuilder) ? plugins.rdNavbar.attr("data-stick-up-clone") === 'true' : false,
@@ -942,7 +931,7 @@
 
 		// RD Search
 		if (plugins.search.length || plugins.searchResults) {
-			var handler = "bat_custom/rd-search.php";
+			var handler = "bat/rd-search.php";
 			var defaultTemplate = '<h5 class="search-title"><a target="_top" href="#{href}" class="search-link">#{title}</a></h5>' +
 					'<p>...#{token}...</p>' +
 					'<p class="match"><em>Terms matched: #{count} - URL: #{href}</em></p>';
@@ -1177,10 +1166,6 @@
 					}
 				})(s)).trigger("resize");
 			}
-		}
-
-		function formatIndex(index) {
-			return index < 10 ? '0' + index : index;
 		}
 
 		// Owl carousel
@@ -1435,7 +1420,7 @@
 
 								$.ajax({
 									method: "POST",
-									url: "bat_custom/reCaptcha.php",
+									url: "bat/reCaptcha.php",
 									data: {'g-recaptcha-response': captchaToken},
 									async: false
 								})
