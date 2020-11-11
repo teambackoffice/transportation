@@ -1,0 +1,125 @@
+mixin post-classic(obj)
+  // Post Classic
+  article.post.post-classic(class=obj.mod)&attributes(attributes)
+    .post-classic-figure: +jpg(obj.img)
+    .post-classic-content
+      p.post-classic-title
+        if(obj.blogPost == true)
+          =obj.title
+        else
+          a(href=links.post)=obj.title
+    time.post-classic-time(datetime=obj.time.datetime)=obj.time.dateText
+
+mixin post-modern(obj)
+  // Post Modern
+  article.post.post-modern(class=obj.mod)&attributes(attributes)
+    if(obj.img)
+      +jpg(obj.img, 'post-modern-image')
+    .post-modern-content
+      .post-modern-center
+        if(obj.video)
+          .post-modern-play-2: a.icon.mdi.mdi-play(data-lightbox='iframe', href=obj.video)
+        else
+          .post-modern-badge=obj.tag ? obj.tag : 'News'
+        p.post-modern-title: a(href=links.post)=obj.title
+      .group-xmd
+        .post-modern-views
+          span.icon.mdi.mdi-eye
+          span=obj.views ? obj.views : '253'
+        .post-modern-time
+          if(obj.time)
+            time(datetime=obj.time.datetime)=obj.time.dateText
+          else
+            time(datetime='2018-04-20') April 20, 2018
+    .post-modern-dummy
+
+mixin post-modern-2(obj)
+  // Post Modern
+  article.post.post-modern(class=obj.mod)&attributes(attributes)
+    .post-modern-body
+      a.post-modern-figure(href=links.post): +jpg(obj.imgLink)
+      .post-modern-content
+        .post-modern-center
+          .post-modern-badge=obj.tag ? obj.tag : 'News'
+          p.post-modern-title: a(href=links.post)=obj.title
+        .group-xmd
+          .post-modern-views
+            span.icon.mdi.mdi-eye
+            span=obj.views ? obj.views : '253'
+          .post-modern-time
+            if(obj.time)
+              time(datetime=obj.time.datetime)=obj.time.dateText
+            else
+              time(datetime='2018-04-20') April 20, 2018
+    .post-modern-dummy
+
+mixin post-modern-horizontal(obj)
+  // Post Modern Horizontal
+  article.post.post-modern(class=obj.mod)&attributes(attributes)
+    .post-modern-horizontal
+      .unit.flex-column.flex-sm-row.align-items-sm-stretch
+        .unit-left
+          a.post-modern-figure(href=links.post): +jpg(obj.img)
+        .unit-body
+          .post-modern-content
+            .post-modern-center
+              .post-modern-badge=obj.tag ? obj.tag : 'News'
+              p.post-modern-title: a(href=links.post)=obj.title
+            .group-md
+              .post-modern-views
+                span.icon.mdi.mdi-eye
+                span= obj.views ? obj.views : '253'
+              .post-modern-time
+                if(obj.time)
+                  time(datetime=obj.time.datetime)=obj.time.dateText
+                else
+                  time(datetime='2018-04-20') April 20, 2018
+    .post-modern-dummy
+
+mixin post-modern-big(obj)
+  // Post Modern Big
+  article.post.post-modern(class=obj.mod)&attributes(attributes)
+    if(obj.img)
+      +jpg(obj.img, 'post-modern-image')
+    .post-modern-content-2
+      .post-modern-header: .post-modern-badge=obj.tag ? obj.tag : 'News'
+      if(obj.imgLink)
+        a.post-modern-figure(href=links.post): +jpg(obj.imgLink)
+      .post-modern-footer
+        p.post-modern-title: a(href=links.post)=obj.title
+        .group-md
+          .post-modern-views
+            span.icon.mdi.mdi-eye
+            span= obj.views ? obj.views : '253'
+          .post-modern-time
+            if(obj.time)
+              time(datetime=obj.time.datetime)=obj.time.dateText
+            else
+              time(datetime='2018-04-20') April 20, 2018
+    .post-modern-dummy
+    if(obj.video)
+      .post-modern-play: a.link-play-classic(data-lightbox='iframe', href=obj.video)
+        span.icon.mdi.mdi-play
+
+mixin post-minimal(obj)
+  // Post Minimal
+  article.post.post-minimal(class=obj.mod)
+    .unit.unit-spacing-2.align-items-center(class=obj.unit)
+      .unit-left: a.post-minimal-figure(href=links.post): +jpg(obj.img)
+      .unit-body
+        p.post-minimal-title: a(href=links.post)=obj.title
+        .post-minimal-time
+          if(obj.time)
+            time(datetime=obj.time.datetime)=obj.time.dateText
+          else
+            time(datetime='2018-03-15') March 15, 2018
+
+mixin post-creative(obj)
+  // Post Creative
+  article.post.post-creative(class=obj.mod)&attributes(attributes)
+    a.post-creative-figure(href=links.post): +jpg(obj.img)
+    .post-creative-caption
+      h6.post-creative-title: a(href=links.post)!=obj.title
+      ul.list-inline.post-creative-panel
+        li: time.post-creative-time(datetime=obj.time.datetime)=obj.time.dateText
+        li: a(href='#')=obj.comments

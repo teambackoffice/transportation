@@ -1,0 +1,35 @@
+//- box comment
+
+mixin box-comment(obj)
+  .box-comment(class=obj.mod)
+    .unit.flex-column.flex-md-row
+      .unit-left: a.box-comment-figure(href='#'): +jpg(obj.img)
+      .unit-body
+        .group-md.group-justify
+          div
+            .group-md.group-middle
+              p.box-comment-author: a(href='#')=obj.author
+              if(obj.productComments == true)
+                .box-rating
+                  span.mdi.mdi-star
+                  span.mdi.mdi-star
+                  span.mdi.mdi-star
+                  span.mdi.mdi-star
+                  span.mdi.mdi-star-half
+
+          if(obj.productComments == true)
+            .box-comment-time: time(datetime=obj.datetime)=obj.time
+          else
+            .box-comment-days-ago=obj.dayAgo
+
+        p.box-comment-text=obj.text
+        if(obj.postComments == true)
+          .group-xl.group-middle.justify-content-start
+            .box-comment-like
+              span.icon.mdi.mdi-thumb-up-outline
+              a(href='#') 32
+            .box-comment-reply
+              span.icon.mdi.mdi-comment-outline
+              a(href='#') Reply
+
+    block

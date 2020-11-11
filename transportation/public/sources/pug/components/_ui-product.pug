@@ -1,0 +1,30 @@
+mixin product(obj)
+  // Product
+  article.product&attributes(attributes)
+    .product-figure: +png(obj.img)
+    .product-rating
+      if(obj.rating)
+        each ratingArrow in obj.rating
+          span.mdi.mdi-star(class=ratingArrow)
+    h6.product-title=obj.title
+    .product-price-wrap
+      if(obj.priceOld)
+        .product-price.product-price-old= '$' + obj.priceOld + '.00'
+      .product-price= '$' + obj.price + '.00'
+    .product-button
+      .button-wrap: a.button.button-xs.button-primary.button-winona(href='cart-page.html') Add to cart
+      .button-wrap: a.button.button-xs.button-secondary.button-winona(href='single-product.html') View Product
+    if(obj.priceOld)
+      span.product-badge.product-badge-sale Sale
+    if(obj.new == true)
+      span.product-badge.product-badge-new New
+
+mixin product-minimal(obj)
+  // Product Minimal
+  article.product-minimal.unit.unit-spacing-md
+    .unit-left
+      a.product-minimal-figure(href='single-product.html')
+        +png(obj.img)
+    .unit-body
+      p.product-minimal-title: a(href='single-product.html')=obj.title
+      p.product-minimal-price= '$' + obj.price + '.00'

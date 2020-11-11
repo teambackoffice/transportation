@@ -1,0 +1,59 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-box-services
+
+block variables
+  - var activeCategory = 'pages'
+  - var pageName = 'Services #4'
+
+block page  
+  // Page Header
+  include ../sections/_header-classic
+
+  +breadcrumbs({
+    category: activeCategory,
+    path: [pageName],
+    bgImage: 'bg-typography'
+  })
+
+  // Services 2
+  section.section.section-lg.bg-default
+    .container
+      .row.row-40.row-xl-60.justify-content-center.box-ordered
+        .col-sm-6.col-lg-4
+          +services-creative({
+            img: 'services-7-370x230',
+            title: 'Transportation'
+          })
+        .col-sm-6.col-lg-4
+          +services-creative({
+            img: 'services-8-370x230',
+            title: 'Logistics'
+          })
+        .col-sm-6.col-lg-4
+          +services-creative({
+            img: 'services-9-370x230',
+            title: 'Towing Service'
+          })
+        .col-sm-6.col-lg-4
+          +services-creative({
+            img: 'services-10-370x230',
+            title: 'Ocean Freight'
+          })
+        .col-sm-6.col-lg-4
+          +services-creative({
+            img: 'services-11-370x230',
+            title: 'Air Freight'
+          })
+        .col-sm-6.col-lg-4
+          +services-creative({
+            img: 'services-12-370x230',
+            title: 'Storage'
+          })
+
+  ='\n'
+
+  
+  // Page Footer
+  include ../sections/_footer-modern

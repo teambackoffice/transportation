@@ -1,0 +1,74 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-thumbnail
+
+block variables
+	- var activeCategory = 'projects'
+	- var pageName = 'Additional services'
+
+block page  
+	// Page Header
+	include ../sections/_header-classic
+	
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'bg-typography'
+	})
+	
+	// Services 2
+	section.section.section-lg.bg-default
+		.container
+			.isotope-filters.isotope-filters-horizontal
+				//- Isotope Filters
+				button.isotope-filters-toggle.button.button-sm.button-icon.button-icon-right.button-gray-3(data-custom-toggle='.isotope-filters-list', data-custom-toggle-hide-on-blur='true')
+					span.icon.mdi.mdi-chevron-down
+					| Filter
+				ul.isotope-filters-list
+					li: a.active(href='#', data-isotope-filter='*', data-isotope-group='gallery') All
+					li: a(href='#', data-isotope-filter='Type 1', data-isotope-group='gallery') shipping
+					li: a(href='#', data-isotope-filter='Type 2', data-isotope-group='gallery') trucking
+			.row.isotope(data-isotope-layout='fitRows', data-isotope-group='gallery', data-lightgallery='group')
+				.col-md-6.isotope-item(data-filter='Type 2')
+					+thumbnail-classic({
+						mod: 'thumbnail-lg',
+						nameImg: 'project',
+						sizeImg: '567x299',
+						numberImg: '1',
+						title: 'Less-Than-Truckload (LTL)',
+						description: 'leading provider of LTL'
+					}).wow.slideInUp
+				.col-md-6.isotope-item(data-filter='Type 1')
+					+thumbnail-classic({
+						mod: 'thumbnail-lg',
+						nameImg: 'project',
+						sizeImg: '567x299',
+						numberImg: '2',
+						title: 'Project Cargo & Breakbulk',
+						description: 'leading manager of project cargo logistics'
+					}).wow.slideInLeft
+				.col-md-6.isotope-item(data-filter='Type 2')
+					+thumbnail-classic({
+						mod: 'thumbnail-lg',
+						nameImg: 'project',
+						sizeImg: '567x299',
+						numberImg: '3',
+						title: 'Truckload Solutions',
+						description: 'leading provider of truckload services'
+					}).wow.slideInRight
+				.col-md-6.isotope-item(data-filter='Type 1')
+					+thumbnail-classic({
+						mod: 'thumbnail-lg',
+						nameImg: 'project',
+						sizeImg: '567x299',
+						numberImg: '4',
+						title: 'Customs Clearance & Compliance',
+						description: '#1 provider of customs brokerage'
+					}).wow.slideInDown
+
+	='\n'
+	
+	
+	// Page Footer
+	include ../sections/_footer-modern

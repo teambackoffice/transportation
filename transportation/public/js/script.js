@@ -847,12 +847,12 @@
 		}
 
 		// UI To Top
-		if (isDesktop && !isNoviBuilder) {
-			$().UItoTop({
-				easingType: 'easeOutQuad',
-				containerClass: 'ui-to-top mdi mdi-arrow-up'
-			});
-		}
+		// if (isDesktop && !isNoviBuilder) {
+		// 	$().UItoTop({
+		// 		easingType: 'easeOutQuad',
+		// 		containerClass: 'ui-to-top'
+		// 	});
+		// }
 
 		// RD Navbar
 		if (plugins.rdNavbar.length) {
@@ -891,8 +891,6 @@
 				}
 			}
 
-console.log("NAUNSA")
-console.log(plugins.rdNavbar)
 			plugins.rdNavbar.RDNavbar({
 				anchorNav: !isNoviBuilder,
 				stickUpClone: (plugins.rdNavbar.attr("data-stick-up-clone") && !isNoviBuilder) ? plugins.rdNavbar.attr("data-stick-up-clone") === 'true' : false,

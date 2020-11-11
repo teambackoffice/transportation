@@ -1,0 +1,129 @@
+//
+// RD-Range
+// --------------------------------------------------
+
+$rd-height: 6px;
+
+.rd-range {
+	height: 18px;
+	display: flex;
+	-webkit-align-items: center;
+
+	&__wrap {
+		position: relative;
+		width: 100%;
+		height: $rd-height;
+		border-radius: 3px;
+		background-color: $gray-12;
+		transition: background 100ms cubic-bezier(0.23, 1, 0.32, 1);
+	}
+
+	// Range Pointer
+	&__pointer {
+		position: absolute;
+		cursor: pointer;
+		top: 3px;
+		left: 6%;
+		z-index: 1;
+		width: 16px;
+		height: 16px;
+		border-radius: 50%;
+		transform: translate(-50%, -50%);
+		transform-origin: 0 15%;
+		transition: transform .2s cubic-bezier(.35, 0, .25, 1);
+		overflow: visible;
+		background-color: $primary;
+		background-clip: padding-box;
+
+		@include media-breakpoint-up(md) {
+
+			&.active {
+				transform: scale3d(1.1, 1.1, 1.1) translate(-50%, -50%);
+			}
+		}
+	}
+
+	// Range line
+	&__line {
+		background-color: $primary;
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: $rd-height;
+		transition: none;
+	}
+
+	.rd-range__pointer-tooltip {
+		display: none !important;
+	}
+}
+
+.rd-range-wrap {
+	display: flex;
+	align-items: center;
+}
+
+.rd-range-form-wrap span,
+.rd-range-input,
+.rd-range-title {
+	font-size: 15px;
+	line-height: 1;
+	letter-spacing: .05em;
+	font-family: $font-family-sec;
+}
+
+.rd-range-title {
+	margin-right: 4px;
+	color: $gray-800;
+}
+
+// Rd range form wrap
+.rd-range-form-wrap {
+	position: relative;
+	padding-left: 4px;
+	color: $gray-800;
+
+	span {
+		position: absolute;
+		top: 4px;
+		left: 0;
+	}
+}
+
+.rd-range-divider {
+	width: 10px;
+	margin-right: 5px;
+	margin-bottom: 2px;
+	border-top: 1px solid $gray-800;
+}
+
+// Rd range input
+.rd-range-input {
+	text-align: center;
+	outline: none;
+	border: none;
+	max-width: 36px;
+	background-color: transparent;
+	border-radius: $form-input-border-radius;
+}
+
+* + .rd-range { margin-top: 35px; }
+.rd-range + .group-md { margin-top: 30px; }
+
+// IE
+.ie-10,
+.ie-11,
+.ie-edge {
+
+	.rd-range-form-wrap {
+		padding-left: 8px;
+	}
+}
+
+.tablet,
+.mobile {
+	// Rd range input
+	.rd-range-input {
+		max-width: 44px;
+	}
+}

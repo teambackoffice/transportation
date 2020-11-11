@@ -1,0 +1,111 @@
+/*
+*
+* Progress Bars
+*/
+
+//
+// Linear Progress Bars
+//
+
+.progress-linear {
+	position: relative;
+	text-align: left;
+	line-height: 1;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-family: $font-family-sec;
+	color: $body-color;
+}
+
+.progress-header {
+	font-size: 12px;
+
+	> * {
+		max-width: 50%;
+	}
+}
+
+.progress-bar-linear-wrap {
+	height: 11px;
+	border-radius: 0;
+	background: $gray-6;
+}
+
+.progress-bar-linear {
+	position: relative;
+	width: 0;
+	height: inherit;
+	background: $secondary;
+	transition: .5s all ease-in-out;
+	
+	&::before {
+		position: absolute;
+		content: '';
+		right: 0;
+		bottom: 0;
+		width: 0;
+		height: 0;
+		margin-right: -9px;
+		border-style: solid;
+		border-width: 0 9px 16px 9px;
+		border-color: transparent transparent $secondary transparent;
+	}
+}
+
+.progress-value {
+	position: absolute;
+	bottom: 100%;
+	right: -4px;
+	margin-bottom: 12px;
+	font-size: 14px;
+	letter-spacing: .1em;
+	transform: translate3d(50%, 0, 0);
+	will-change: transform;
+
+	&::after {
+		content: "%";
+	}
+}
+
+.progress-orange {
+	.progress-bar-linear {
+		background: $primary;
+
+		&::before {
+			border-bottom-color: $primary;
+		}
+	}
+	.progress-marker { background: $primary; }
+}
+
+.progress-green {
+	.progress-bar-linear {
+		background: $gray-800;
+
+		&::before {
+			border-bottom-color: $gray-800;
+		}
+	}
+	.progress-marker { background: $gray-800; }
+}
+
+* + .progress-bar-linear-wrap {margin-top: 12px;}
+* + .progress-linear {margin-top: 35px;}
+.progress-linear + .progress-linear {margin-top: 40px;}
+
+// Medium ≥768px
+@include media-breakpoint-up(md) {
+
+	.progress-value {
+		font-size: 18px;
+	}
+
+	.progress-header {
+		font-size: 14px;
+		letter-spacing: .2em;
+	}
+}
+
+@include media-breakpoint-up(lg) {
+	.progress-linear + .progress-linear {margin-top: 50px;}
+}

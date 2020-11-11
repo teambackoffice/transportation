@@ -1,0 +1,204 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-box-icon
+include ../components/_ui-box-team
+include ../components/_ui-quote
+
+block variables
+	- var activeCategory = 'about'
+	- var pageName = 'About Us'
+
+block page 
+	// Page Header
+	include ../sections/_header-classic
+	
+	+breadcrumbs({
+		path: [pageName],
+		bgImage: 'bg-typography'
+	})
+	
+	// About
+	section.section.section-lg.bg-default
+		.container
+			#tabs-4.tabs-custom.row.row-50.justify-content-center.flex-lg-row-reverse.text-center.text-md-left
+				.col-lg-4.col-xl-3
+					h5.text-spacing-200 20+ years of experience
+					ul.nav.list-category.list-category-down-md-inline-block
+						li.list-category-item.wow.fadeInRight(role='presentation' data-wow-delay='0s'): a.active(href='#tabs-4-1' data-toggle='tab') About us
+						li.list-category-item.wow.fadeInRight(role='presentation' data-wow-delay='.1s'): a(href='#tabs-4-2' data-toggle='tab') Our Mission
+						li.list-category-item.wow.fadeInRight(role='presentation' data-wow-delay='.2s'): a(href='#tabs-4-3' data-toggle='tab') Our Goals
+						li.list-category-item.wow.fadeInRight(role='presentation' data-wow-delay='.3s'): a(href='#tabs-4-4' data-toggle='tab') Company values
+					a.button.button-lg.button-primary.button-winona(href='contacts.html') Contact us
+				.col-lg-8.col-xl-9
+					// Tab panes
+					.tab-content.tab-content-1
+						#tabs-4-1.tab-pane.fade.show.active
+							h4 A few words about us
+							p Mollitia voluptatum repellat voluptate ea, quos deleniti fuga dolor consectetur, eligendi fugiat doloribus sequi reprehenderit corrupti assumenda voluptates ullam, ipsam at quod repudiandae nam cupiditate
+							p Eius et, officiis exercitationem! Laudantium voluptatibus blanditiis, maiores assumenda nostrum hic expedita eaque voluptates, exercitationem dolores error. Tempore veritatis nobis quis eveniet eos cupiditate, libero obcaecati dolorem nesciunt, atque omnis. Tenetur est libero nostrum id cum voluptate eius accusamus minima eum omnis culpa quae obcaecati dolor suscipit eos ipsam, doloremque, modi nesciunt magni iure illum! Accusantium nam quo est qui.
+							+jpg('about-1-835x418')
+						
+						#tabs-4-2.tab-pane.fade
+							h4 Reliable transportation services
+							p Labore vel at aut amet minima perspiciatis ea similique dolorum explicabo, dolore quidem magni ab accusantium nesciunt itaque, tenetur accusamus adipisci! Labore, distinctio eum? Amet ex aut deserunt provident odio?
+							p Eius et, officiis exercitationem! Laudantium voluptatibus blanditiis, maiores assumenda nostrum hic expedita eaque voluptates, exercitationem dolores error. Tempore veritatis nobis quis eveniet eos cupiditate, libero obcaecati dolorem nesciunt, atque omnis. Perspiciatis consequuntur, sequi corrupti voluptates minus, molestias repellat aperiam totam adipisci incidunt consectetur labore repudiandae dolores non. Fugit eaque at illum, reiciendis, sapiente.
+							+jpg('about-2-835x418')
+						
+						#tabs-4-3.tab-pane.fade
+							h4 Distributing services worldwide
+							p Mollitia voluptatum repellat voluptate ea, quos deleniti fuga dolor consectetur, eligendi fugiat doloribus sequi reprehenderit corrupti assumenda voluptates ullam, ipsam at quod repudiandae nam cupiditate
+							p Eius et, officiis exercitationem! Laudantium voluptatibus blanditiis, maiores assumenda nostrum hic expedita eaque voluptates, exercitationem dolores error. Tempore veritatis nobis quis eveniet eos cupiditate, libero obcaecati dolorem nesciunt, atque omnis. Tenetur est libero nostrum id cum voluptate eius accusamus minima eum omnis culpa quae obcaecati dolor suscipit eos ipsam, doloremque, modi nesciunt magni iure illum! Accusantium nam quo est qui.
+							+jpg('about-3-835x418')
+						
+						#tabs-4-4.tab-pane.fade
+							h4 Trust, dedication, and integrity
+							p Labore vel at aut amet minima perspiciatis ea similique dolorum explicabo, dolore quidem magni ab accusantium nesciunt itaque, tenetur accusamus adipisci! Labore, distinctio eum? Amet ex aut deserunt provident odio?
+							p Eius et, officiis exercitationem! Laudantium voluptatibus blanditiis, maiores assumenda nostrum hic expedita eaque voluptates, exercitationem dolores error. Tempore veritatis nobis quis eveniet eos cupiditate, libero obcaecati dolorem nesciunt, atque omnis. Perspiciatis consequuntur, sequi corrupti voluptates minus, molestias repellat aperiam totam adipisci incidunt consectetur labore repudiandae dolores non. Fugit eaque at illum, reiciendis, sapiente.
+							+jpg('about-4-835x418')
+	='\n'
+	
+	// Icon Classic
+	section.section.section-lg.bg-gray-100
+		.container
+			.row.row-md.row-50
+				.col-sm-6.col-xl-4.wow.fadeInUp(data-wow-delay='0s')
+					+box-icon-classic({
+						unit: 'flex-column text-center flex-md-row text-md-left',
+						icon: 'linearicons-thumbs-up',
+						title: 'Best Service'
+					})
+				.col-sm-6.col-xl-4.wow.fadeInUp(data-wow-delay='.1s')
+					+box-icon-classic({
+						unit: 'flex-column text-center flex-md-row text-md-left',
+						icon: 'linearicons-star',
+						title: 'Reputation'
+					})
+				.col-sm-6.col-xl-4.wow.fadeInUp(data-wow-delay='.2s')
+					+box-icon-classic({
+						unit: 'flex-column text-center flex-md-row text-md-left',
+						icon: 'linearicons-shield-check',
+						title: 'Safety & Security'
+					})
+	='\n'
+	
+	// Our Team
+	section.section.section-lg.section-bottom-md-70.bg-default
+		.container
+			h3.oh: span.d-inline-block.wow.slideInUp(data-wow-delay='0s') Our team
+			.row.row-lg.row-40.justify-content-center
+				.col-sm-6.col-lg-3.wow.fadeInLeft(data-wow-delay='.2s' data-wow-duration='1s')
+					+team-modern({
+						img: 'team-1-270x236',
+						name: 'Sandra Ferguson',
+						status: 'Operations Manager'
+					})
+				.col-sm-6.col-lg-3.wow.fadeInLeft(data-wow-delay='0s' data-wow-duration='1s')
+					+team-modern({
+						img: 'team-2-270x236',
+						name: 'Andrew Green',
+						status: 'President'
+					})
+				.col-sm-6.col-lg-3.wow.fadeInRight(data-wow-delay='.1s' data-wow-duration='1s')
+					+team-modern({
+						img: 'team-3-270x236',
+						name: 'Steven Henderson',
+						status: 'Logistics Coordinator'
+					})
+				.col-sm-6.col-lg-3.wow.fadeInRight(data-wow-delay='.3s' data-wow-duration='1s')
+					+team-modern({
+						img: 'team-4-270x236',
+						name: 'Edward Bryant',
+						status: 'Finance Manager'
+					})
+	='\n'
+	
+	// Our History
+	section.section.section-lg.bg-gray-100.text-left.section-relative
+		.container
+			.row.row-60.justify-content-center.justify-content-xxl-between
+				.col-lg-6.col-xxl-5.position-static
+					h3 Our history
+					#tabs-5.tabs-custom
+						.tab-content.tab-content-1
+							#tabs-5-1.tab-pane.fade
+								h5.font-weight-normal.text-transform-none.text-spacing-75 The beginning of GlobalTrans success
+								p Cottas credere! Canis de neuter tabes, convertam contencio! Nunquam consumere triticum. Cum nomen favere, omnes byssuses carpseris nobilis, dexter.
+							#tabs-5-2.tab-pane.fade
+								h5.font-weight-normal.text-transform-none.text-spacing-75 National expansion and promotion of our services
+								p Historia de azureus index, perdere messor! Abactor raptus mensa est. Heu, uria! Regius, noster bubos virtualiter resuscitabo de clemens, velox pars.
+							#tabs-5-3.tab-pane.fade
+								h5.font-weight-normal.text-transform-none.text-spacing-75 Opening new offices in European countries
+								p Ire cito ducunt ad neuter ratione. Nunquam transferre mortem. Tumultumque de placidus burgus, carpseris mons! Index de velox fuga, acquirere solitudo.
+							#tabs-5-4.tab-pane.fade.show.active
+								h5.font-weight-normal.text-transform-none.text-spacing-75 International recognition and client trust
+								p Heuretes, caesium, et mens. Ubi est lotus domus? Nunquam gratia cobaltum. Superbus, rusticus decors grauiter fallere de fortis, raptus demolitione.
+						
+						.list-history-wrap: ul.nav.list-history
+							li.list-history-item(role='presentation'): a(href='#tabs-5-1' data-toggle='tab')
+								.list-history-circle
+								| 1980
+							li.list-history-item(role='presentation'): a(href='#tabs-5-2' data-toggle='tab')
+								.list-history-circle
+								| 1990
+							li.list-history-item(role='presentation'): a(href='#tabs-5-3' data-toggle='tab')
+								.list-history-circle
+								| 2010
+							li.list-history-item(role='presentation'): a.active(href='#tabs-5-4' data-toggle='tab')
+								.list-history-circle
+								| 2018
+				.col-md-9.col-lg-6.position-static.index-1
+					.bg-image-right-1.bg-image-right-lg
+						+jpg('about-5-1110x710')
+						.link-play-modern
+							a.icon.mdi.mdi-play(data-lightbox='iframe', href='https://www.youtube.com/watch?v=1UWpbtUupQQ')
+							.link-play-modern-title How we
+								span Work
+							.link-play-modern-decor
+						.box-transform(style='background-image: url(images/about-5-1110x710.jpg);')
+	='\n'
+	
+	// Our clients
+	section.section.section-lg.bg-default.text-md-left
+		.container: .row.row-60.justify-content-center.flex-lg-row-reverse
+			.col-md-8.col-lg-6.col-xl-5: .offset-left-xl-70
+				h3 Our clients
+				.slick-quote
+					// Slick Carousel
+					.slick-slider.carousel-parent(data-autoplay='true', data-swipe='true', data-items='1' data-child='#child-carousel-5', data-for='#child-carousel-5', data-slide-effect='true')
+						.item
+							+quote-modern({
+								text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi blanditiis quos ullam tempora beatae libero, reiciendis cupiditate consequatur,',
+								author: 'Stephen Adams',
+								status: '“AlphaIndustry”, CEO'
+							})
+						.item
+							+quote-modern({
+								text: 'Modi eaque reiciendis delectus itaque a nihil ipsa quo alias, rem facilis cupiditate saepe deserunt consequatur. Fugiat quae quis, dolores debitis unde?',
+								author: 'Sam Peterson',
+								status: '“Digitex”, CFO'
+							})
+						.item
+							+quote-modern({
+								text: 'Quod voluptates magnam explicabo veritatis, accusamus sapiente sunt repellendus dicta, nostrum ea praesentium aut obcaecati quae laborum necessitatibus quasi',
+								author: 'Jane McMillan',
+								status: '“South East Technologies”, Lead HR Manager'
+							})
+						.item
+							+quote-modern({
+								text: 'Labore vel at aut amet minima perspiciatis ea similique dolorum explicabo, dolore quidem magni ab accusantium nesciunt itaque, tenetur accusamus adipisci!',
+								author: 'Will Jones',
+								status: '“STC Ltd.”, Sales Manager'
+							})
+					.slick-slider.child-carousel#child-carousel-5(data-arrows='true' data-for='.carousel-parent', data-items='4', data-sm-items='4', data-md-items='4', data-lg-items='4', data-xl-items='4', data-slide-to-scroll='1')
+						.item: +jpg('team-5-83x83', 'img-circle')
+						.item: +jpg('team-6-83x83', 'img-circle')
+						.item: +jpg('team-7-83x83', 'img-circle')
+						.item: +jpg('team-8-83x83', 'img-circle')
+			.col-lg-6.col-xl-7
+				include ../sections/_clients-classic
+	='\n'
+	
+	
+	// Page Footer
+	include ../sections/_footer-modern

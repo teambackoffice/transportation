@@ -1,0 +1,138 @@
+extends  ../_skeleton
+
+//- Includes
+
+block variables
+  - var activeCategory = 'pages'
+  - var pageName = 'Forms'
+
+block page 
+  // Page Header
+  include ../sections/_header-classic
+
+  +breadcrumbs({
+    category: activeCategory,
+    path: [pageName],
+    bgImage: 'bg-typography'
+  })
+
+  // Forms
+  section.section.section-lg.bg-default.text-md-left
+    .container
+      .row.row-50.justify-content-center.justify-content-xl-between
+        .col-md-8.col-lg-6.col-xl-5
+          h3.text-spacing-50.font-weight-bold Contact Form
+          //- Contact forms
+          form.rd-form.rd-mailform(data-form-output='form-output-global', data-form-type='contact', method='post', action='bat/rd-mailform.php')
+            .form-wrap
+              input#contact-name.form-input(type='text' name='name' data-constraints='@Required')
+              label.form-label(for='contact-name') Your Name*
+            .form-wrap
+              input#contact-email.form-input(type='email' name='email' data-constraints='@Email @Required')
+              label.form-label(for='contact-email') Your E-mail*
+            .form-wrap
+              //Select 2
+              select.form-input(data-minimum-results-for-search="Infinity", data-constraints="@Required")
+                option(value="1") Select a Service
+                option(value="2") Oil Platforms
+                option(value="3") Gas Flares
+                option(value="4") Oil Pumps
+            .form-wrap
+              label.form-label(for='contact-message') Message
+              textarea#contact-message.form-input(name='message' data-constraints='@Required')
+
+            button.button.button-secondary.button-winona(type='submit') Send Message
+
+        .col-md-10.col-lg-6: .box-width-xl-520
+          h3.text-spacing-50.font-weight-bold Login form
+          .form-login
+            .button-social
+              a.button.button-sm.button-icon.button-icon-left.button-facebook.button-winona(href='#')
+                span.icon.fa.fa-facebook
+                span Facebook
+              a.button.button-sm.button-icon.button-icon-left.button-twitter.button-winona(href='#')
+                span.icon.fa.fa-twitter
+                span Twitter
+              a.button.button-sm.button-icon.button-icon-left.button-google.button-winona(href='#')
+                span.icon.fa.fa-google-plus
+                span Google+
+            p.text-divider or
+            form.rd-form.rd-form-center.rd-mailform
+              .form-wrap
+                label.form-label(for='login-name') Your Name*
+                input#login-name.form-input(type='text' name='form-input' data-constraints='@Required')
+              .form-wrap
+                label.form-label(for='login-password') Password
+                input#login-password.form-input(type='password' name='password' data-constraints='@Required')
+              label.checkbox-inline
+                input(name='input-checkbox-1' value='checkbox-1' type='checkbox')
+                | Remember Me
+
+              .row.row-14.gutters-14
+                .col-sm-6.col-lg-5.col-xl-6
+                  button.button.button-block.button-secondary.button-winona(type="submit") Login
+                .col-sm-6.col-lg-7.col-xl-6
+                  a.button.button-block.button-outline.button-default-outline.button-winona(href='#') Create an account
+  ='\n'
+
+  include ../sections/_section-parallax-newsletter
+
+  // Contact Us (with reCAPTCHA)
+  section.section.section-sm.section-first.bg-default
+    .container
+      h3.text-spacing-50.font-weight-bold Contact Form (with reCAPTCHA)
+      .row.row-lg.justify-content-center
+        .col-md-11.col-lg-9.col-xl-7
+          form.rd-form.rd-mailform(data-form-output='form-output-global', data-form-type='contact', method='post', action='bat/rd-mailform.php')
+            .row.row-14.gutters-14
+              .col-md-6: .form-wrap
+                input#contact-name-2.form-input(type='text' name='name' data-constraints='@Required')
+                label.form-label(for='contact-name-2') Your Name*
+              .col-md-6: .form-wrap
+                input#contact-email-2.form-input(type='email' name='email' data-constraints='@Email @Required')
+                label.form-label(for='contact-email-2') Your E-mail*
+              .col-12: .form-wrap
+                //Select 2
+                select.form-input(data-minimum-results-for-search="Infinity", data-constraints="@Required")
+                  option(value="1") Select a Service
+                  option(value="2") Oil Platforms
+                  option(value="3") Gas Flares
+                  option(value="4") Oil Pumps
+              .col-12: .form-wrap
+                label.form-label(for='contact-message-3') Message
+                textarea#contact-message-3.form-input(name='message' data-constraints='@Required')
+              .col-sm-7.col-md-6: .form-wrap.form-wrap-recaptcha
+                // Google captcha
+                .recaptcha#captcha1(data-sitekey='6LfZlSETAAAAAC5VW4R4tQP8Am_to4bM3dddxkEt')
+              .col-sm-5.col-md-6
+                button.button.button-block.button-secondary.button-winona(type='submit') Send Message
+  ='\n'
+
+  // Section Mailchimp
+  section.section.section-sm.bg-default.text-center
+    .container
+      h3.text-spacing-50.font-weight-bold MailChimp
+      // RD Mailform
+      form.rd-form.mailchimp-mailform.rd-form-inline.rd-form-inline-centered(data-form-output='form-output-global' action='https://templatemonster.us15.list-manage.com/subscribe/post?u=ba5bb362073a413f48e4a7b90&id=8dc95d9dec' method='post')
+        .form-wrap
+          label.form-label(for='mailchimp-email') Enter your e-mail
+          input#mailchimp-email.form-input(type='email' name='email' data-constraints='@Email @Required')
+        .form-button
+          button.button.button-sm.button-primary.button-winona(type='submit') Subscribe
+  ='\n'
+
+  // Section Campaign Monitor
+  section.section.section-sm.section-last.bg-default.text-center
+    .container
+      h3.text-spacing-50.font-weight-bold Campaign Monitor
+      // Campaign Monitor
+      form.rd-form.campaign-mailform.rd-form-inline.rd-form-inline-centered(data-form-output='form-output-global' action='https://templatermonster.createsend.com/t/j/s/zjjikd/' method='post')
+        .form-wrap
+          label.form-label(for='campaign-email') Enter your E-mail
+          input#campaign-email.form-input(type='email' name='cm-zjjikd-zjjikd' data-constraints='@Email @Required')
+        .form-button
+          button.button.button-sm.button-primary.button-winona(type='submit') Subscribe
+  ='\n'
+
+  // Page Footer
+  include ../sections/_footer-modern

@@ -1,0 +1,75 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-thumbnail
+
+block variables
+	- var activeCategory = 'projects'
+	- var pageName = 'Additional service page'
+
+block page  
+	// Page Header
+	include ../sections/_header-classic
+	
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'bg-typography'
+	})
+	
+	// Project Page
+	section.section.section-lg.bg-default.text-md-left
+		.container
+			.row.row-60.flex-lg-row-reverse
+				.col-lg-6.col-xl-7
+					.slick-project
+						// Slick Carousel
+						.slick-slider.carousel-parent(data-arrows='true', data-autoplay='true', data-swipe='true', data-items='1' data-child='#child-carousel-7', data-for='#child-carousel-7', data-slide-effect='true')
+							.item
+								+jpg('project-5-670x477')
+								.slick-project-caption: .slick-project-title Photo #1
+							.item
+								+jpg('project-6-670x477')
+								.slick-project-caption: .slick-project-title Photo #2
+							.item
+								+jpg('project-7-670x477')
+								.slick-project-caption: .slick-project-title Photo #3
+							.item
+								+jpg('project-8-670x477')
+								.slick-project-caption: .slick-project-title Photo #4
+						.slick-slider.child-carousel#child-carousel-7(data-for='.carousel-parent', data-items='3', data-sm-items='3', data-md-items='4', data-lg-items='3', data-xl-items='4', data-slide-to-scroll='1')
+							.item: +jpg('project-5-155x122')
+							.item: +jpg('project-6-155x122')
+							.item: +jpg('project-7-155x122')
+							.item: +jpg('project-8-155x122')
+					.table-custom-responsive
+						table.table-custom.table-custom-primary.table-project
+							tbody
+								tr
+									td: span.icon.icon-26.mdi.mdi-account
+									td #[span Client:] Smith Ltd.
+								tr
+									td: span.icon.mdi.mdi-calendar-today
+									td #[span Year:] 2010
+								tr
+									td: span.icon.mdi.mdi-map-marker
+									td #[span Location:] Los Angeles
+								tr
+									td: span.icon.icon-28.mdi.mdi-cash
+									td #[span Value:] $1.299.525,00
+				
+				.col-lg-6.col-xl-5: .project-page
+					h4 Less-Than-Truckload
+					p Lanistas accelerare in secundus rugensis civitas! Heu, castus lamia! Eheu. Pol. Tolerare inciviliter ducunt ad ferox devirginato. Genetrixs accelerare in cubiculum! Dominas ortum in vasa! Gabaliums velum in tolosa!
+					p Primus repressors ducunt ad buxum. Fluctuis sunt boreass de audax lixa. Fidess messis! Navis volares, tanquam emeritis decor. Sunt quadraes resuscitabo noster, nobilis victrixes. Extum de germanus luna, locus silva! Habitios crescere, tanquam fatalis contencio. Cum lacta manducare, omnes bromiumes aperto salvus, bi-color parmaes. Rector, heuretes, et scutum. Abactuss messis in gratis chremisa!
+					p Nunquam experientia consilium. Ridetis vix ducunt ad fidelis devirginato. Demolitiones favere, tanquam rusticus extum. Coordinatae potuss, tanquam azureus accola.
+					p Finis de gratis historia, attrahendam vortex! Ubi est brevis guttus? Nunquam contactus nomen. Credere aliquando ducunt ad albus calcaria. Cannabiss manducare! Nunquam captis fides. Cur hydra ridetis? Cum abactus studere, omnes demolitionees attrahendam velox, alter extumes.
+					.group-sm.group-middle
+						span.project-page-social-title Share
+						div: +widget-list([], '', 'project-page-social-list')
+					a.button.button-lg.button-primary.button-winona(href='contacts.html') Contact Us
+	='\n'
+	
+	
+	// Page Footer
+	include ../sections/_footer-modern

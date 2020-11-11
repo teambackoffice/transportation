@@ -1,0 +1,94 @@
+/*
+* Element groups
+*/
+
+html {
+	.group {
+		@include group(15px, 20px);
+	}
+
+	.group-xxs {
+		@include group(8px);
+	}
+
+	.group-sm {
+		@include group(16px);
+	}
+
+	.group-xmd {
+		@include group(20px, 10px);
+	}
+
+	.group-md {
+		@include group(20px);
+	}
+
+	.group-lg {
+		@include group(25px);
+	}
+
+	.group-xl {
+		@include group(30px, 20px);
+	}
+
+	.group-xxl {
+		@include group(50px, 30px);
+	}
+
+	.group-xxxl {
+		@include group(60px, 30px);
+	}
+
+	.group-custom-1 {
+		@include group(40px, 30px);
+	}
+
+	// Large ≥992px
+	@include media-breakpoint-up(lg) {
+		.group-custom-1 {
+			@include group(80px, 30px);
+		}
+	}
+
+	// Mods
+	.group-middle {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+
+		// Medium ≥768px
+		@include media-breakpoint-up(md) {
+			justify-content: flex-start;
+		}
+	}
+
+	.group-justify {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.group-sm-justify {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		
+		// Medium ≥576px
+		@include media-breakpoint-up(sm) {
+			justify-content: space-between;
+		}
+	}
+}
+
+* + .group-xxs {margin-top: 30px;}
+* + .group-sm {margin-top: 30px;}
+* + .group-md {margin-top: 30px;}
+* + .group-lg {margin-top: 30px;}
+* + .group-xl {margin-top: 30px;}
+* + .group-xxxl {margin-top: 35px;}
+* + .group-custom-1 {margin-top: 30px;}
+
+h4 + .group-md {margin-top: 40px;}

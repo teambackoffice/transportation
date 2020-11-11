@@ -1,0 +1,51 @@
+extends  ../_skeleton
+
+//- Includes
+
+block variables
+  - var activeCategory = 'pages'
+  - var pageName = 'Buttons'
+
+block page 
+  // Page Header
+  include ../sections/_header-classic
+
+  +breadcrumbs({
+    category: activeCategory,
+    path: [pageName],
+    bgImage: 'bg-typography'
+  })
+
+  // Button Sizes
+  section.section.section-sm.section-first.bg-default.text-md-left
+    .container
+      h4.text-spacing-50.font-weight-bold Button Sizes
+      .group-md.group-middle
+        .button.button-lg.button-primary.button-winona Large size
+        .button.button-primary.button-winona Medium size
+        .button.button-sm.button-primary.button-winona Small size
+  ='\n'
+
+  // Button Shapes
+  section.section.section-sm.bg-default.text-md-left
+    .container
+      h4.text-spacing-50.font-weight-bold Buttons with icons
+      .group-md.group-middle
+        .button.button-lg.button-icon.button-icon-left.button-primary.button-winona
+          span.icon.mdi.mdi-download
+          span Icon left
+        .button.button-lg.button-icon.button-icon-right.button-gray-3
+          span.icon.mdi.mdi-chevron-right
+          | Icon right
+  ='\n'
+
+  // Buttons with Shadow
+  section.section.section-sm.section-last.bg-default.text-md-left
+    .container
+      h4.text-spacing-50.font-weight-bold Button with shadow
+      .group-md.group-middle
+        .button.button-lg.button-primary.button-shadow.button-winona Shadow
+
+  
+  // Page Footer
+  include ../sections/_footer-modern

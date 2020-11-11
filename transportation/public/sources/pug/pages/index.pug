@@ -1,0 +1,384 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-box-services
+include ../components/_ui-quote
+include ../components/_ui-box-icon
+include ../components/_ui-box-team
+include ../components/_ui-posts
+include ../components/_ui-card
+include ../components/_ui-thumbnail
+include ../components/_ui-counters
+
+block variables
+	- var activeCategory = 'home'
+	- var pageName = 'Home'
+
+block page
+	// Page Header
+	include ../sections/_header-classic
+	
+	// Swiper
+	section.section.swiper-container.swiper-slider.swiper-slider-1.swiper-slider-4(data-loop='true' data-autoplay='5000' data-simulate-touch="false" data-slide-effect='fade')
+		.swiper-wrapper.text-center
+			.swiper-slide.context-dark(data-slide-bg='images/slide-1-1920x724.jpg')
+				.swiper-slide-caption.section-md: .container: .row.justify-content-lg-center: .col-lg-12
+					h6.oh: span.swiper-title-3(data-caption-animate='slideInDown' data-caption-delay='0') Safety, quality, professionalism
+					h2.oh: span.swiper-title-1(data-caption-animate='slideInLeft' data-caption-delay='300') The Best Logistics
+					h4.oh: span.swiper-title-2(data-caption-animate='slideInUp' data-caption-delay='0') Service Provider
+					a.button.button-lg.button-primary.button-winona.button-shadow-2(href='#' data-caption-animate='fadeInUp' data-caption-delay='400') view our services
+			
+			.swiper-slide.context-dark(data-slide-bg='images/slide-2-1920x724.jpg')
+				.swiper-slide-caption.section-md: .container: .row.justify-content-lg-center: .col-lg-12
+					h6.oh: span.swiper-title-3(data-caption-animate='slideInDown' data-caption-delay='0') reliable transportation services
+					h2.oh: span.swiper-title-1(data-caption-animate='slideInLeft' data-caption-delay='300') we make shipping
+					h4.oh: span.swiper-title-2(data-caption-animate='slideInUp' data-caption-delay='0') big stuff easy
+					a.button.button-lg.button-primary.button-winona.button-shadow-2(href='#' data-caption-animate='fadeInUp' data-caption-delay='400') view our services
+			
+			.swiper-slide.context-dark(data-slide-bg='images/slide-3-1920x724.jpg')
+				.swiper-slide-caption.section-md: .container: .row.justify-content-lg-center: .col-lg-12
+					h6.oh: span.swiper-title-3(data-caption-animate='slideInDown' data-caption-delay='0') worldwide delivery
+					h2.oh: span.swiper-title-1(data-caption-animate='slideInLeft' data-caption-delay='300') A partnership based
+					h4.oh: span.swiper-title-2(data-caption-animate='slideInUp' data-caption-delay='0') on trust
+					a.button.button-lg.button-primary.button-winona.button-shadow-2(href='#' data-caption-animate='fadeInUp' data-caption-delay='400') view our services
+		
+		// Swiper Pagination
+		.swiper-pagination(data-bullet-custom='true')
+		
+		// Swiper Navigation
+		.swiper-button-prev
+			svg(width='100%', height='100%', viewbox='0 0 78 78')
+				circle.swiper-button-line(cx='39', cy='39', r='36')
+				circle.swiper-button-line-2(cx='39', cy='39', r='36')
+		.swiper-button-next
+			svg(width='100%', height='100%', viewbox='0 0 78 78')
+				circle.swiper-button-line(cx='39', cy='39', r='36')
+				circle.swiper-button-line-2(cx='39', cy='39', r='36')
+	='\n'
+	
+	// Section Services
+	section.section.section-sm.bg-default
+		.container
+			.owl-carousel.owl-style-11.dots-style-2(data-items='1', data-sm-items='2', data-lg-items='3', data-xl-items='4', data-margin='30', data-dots='true', data-mouse-drag='false')
+				+box-icon-megan({
+					icon: 'linearicons-truck',
+					title: 'Transportation',
+					text: 'Our team specializes in the transportation of goods across the world.'
+				}).wow.fadeInUp
+				+box-icon-megan({
+					icon: 'linearicons-ship2',
+					title: 'Ocean Freight',
+					text: 'We are one of the largest ocean freight forwarders operating worldwide.'
+				}).wow.fadeInUp(data-wow-delay='.05s')
+				+box-icon-megan({
+					icon: 'linearicons-plane',
+					title: 'Air Freight',
+					text: 'We offer our customers a wide variety of air freight services on a regular basis.'
+				}).wow.fadeInUp(data-wow-delay='.1s')
+				+box-icon-megan({
+					icon: 'linearicons-home6',
+					title: 'Warehousing',
+					text: 'GlobalTrans is your one-stop shop when it comes to quality warehousing.'
+				}).wow.fadeInUp(data-wow-delay='.15s')
+	='\n'
+	
+	// About our Company
+	section.section.section-md.section-inset-2.bg-gray-100.text-left.section-relative
+		.container
+			.row.row-60.justify-content-center.justify-content-xxl-between
+				.col-md-9.col-lg-6.position-static.index-1
+					.bg-image-left-lg.bg-image-left-1
+						+jpg('video-1-1135x677')
+						.link-play-creative
+							a.icon.mdi.mdi-play(data-lightbox='iframe', href='https://www.youtube.com/watch?v=1UWpbtUupQQ')
+							h6.link-play-creative-title.wow.fadeInRight Video presentation of the company
+							.link-play-creative-decor.wow.slideInUp
+						.box-transform(style='background-image: url(images/video-1-1135x677.jpg);')
+				
+				.col-lg-6.position-static
+					.inset-left-lg-15.inset-left-xl-70
+						h3.text-spacing-50.font-weight-light.oh-desktop: span.d-inline-block.wow.slideInDown
+							span.font-weight-bold About
+							|  our Company
+						#accordion4.card-group-custom.card-group-corporate(role='tablist' aria-multiselectable='false')
+							+card({
+								show: true,
+								cardClass: 'card-corporate card-corporate-2',
+								parentId: 'accordion4',
+								number: '1',
+								header: 'A Few Words About Us'
+							}).wow.fadeInLeft
+								p At GlobalTrans, our goal is to provide outstanding service to our customers and we pride ourselves on the integrity of our company and our employees.
+							+card({
+								cardClass: 'card-corporate card-corporate-2',
+								parentId: 'accordion4',
+								number: '2',
+								header: 'Our Mission'
+							}).wow.fadeInLeft
+								p Our mission is to create value for our clients by delivering innovative tailored solutions to move products and information more efficiently and effectively.
+							+card({
+								cardClass: 'card-corporate card-corporate-2',
+								parentId: 'accordion4',
+								number: '3',
+								header: 'Our Vision'
+							}).wow.fadeInLeft
+								p Our vision is to be recognized as one of the most admired companies in the industry because of our commitments to clients, employees, and business partners.
+							+card({
+								cardClass: 'card-corporate card-corporate-2',
+								parentId: 'accordion4',
+								number: '4',
+								header: 'Company Values'
+							}).wow.fadeInLeft
+								p Our company is based on integrity, trust, teamwork, and quality. These values help us remain the leaders of the transportation industry and offer top-notch solutions.
+					
+					.bg-image-right.bg-image-right-3
+	='\n'
+	
+	// Additional Services
+	section.section.section-xl.bg-default.text-center
+		.container
+			h3.text-spacing-50.font-weight-light.oh-desktop
+				span.d-inline-block.wow.slideInDown Additional
+				=' '
+				span.font-weight-bold.d-inline-block.wow.slideInUp Services
+			.row.row-xl(data-lightgallery='group')
+				.col-md-6: .oh-desktop
+					+thumbnail-classic({
+						mod: 'thumbnail-lg',
+						nameImg: 'project',
+						sizeImg: '567x299',
+						numberImg: '1',
+						title: 'Less-Than-Truckload (LTL)',
+						description: 'leading provider of LTL'
+					}).wow.slideInUp
+				.col-md-6: .oh-desktop
+					+thumbnail-classic({
+						mod: 'thumbnail-lg',
+						nameImg: 'project',
+						sizeImg: '567x299',
+						numberImg: '2',
+						title: 'Project Cargo & Breakbulk',
+						description: 'leading manager of project cargo logistics'
+					}).wow.slideInLeft
+				.col-md-6: .oh-desktop
+					+thumbnail-classic({
+						mod: 'thumbnail-lg',
+						nameImg: 'project',
+						sizeImg: '567x299',
+						numberImg: '3',
+						title: 'Truckload Solutions',
+						description: 'leading provider of truckload services'
+					}).wow.slideInRight
+				.col-md.wow.slideInRight-6: .oh-desktop
+					+thumbnail-classic({
+						mod: 'thumbnail-lg',
+						nameImg: 'project',
+						sizeImg: '567x299',
+						numberImg: '4',
+						title: 'Customs Clearance & Compliance',
+						description: '#1 provider of customs brokerage'
+					}).wow.slideInDown
+			
+			a.button.button-lg.button-block.button-outline.button-outline-2.button-default-outline-4.button-winona.wow.fadeInUp(href='additional-services.html') See all services
+	='\n'
+	
+	// Company statistics
+	section.section.bg-blue-2.section-relative.context-dark.text-sm-left
+		.container: .row: .col-lg-6.position-static
+			.bg-image-left.bg-image-left-2
+			.section-md
+				.row.row-30
+					.col-sm-8.col-xl-7
+						.title-style-2
+							h4.text-spacing-50.font-weight-light.oh-desktop: span.d-inline-block.wow.slideInLeft
+								span.font-weight-bold Company
+								|  statistics
+						p.big.text-style-2.wow.fadeInLeft Since our establishment, we have been offering an extensive range of transportation services to our clients worldwide.
+						a.button.button-outline.button-default-outline-2.button-winona.wow.fadeInLeft(href='#') Read more
+					.col-sm-4.col-xl-5: .inset-right-lg-15.inset-right-xl-55: .row.justify-content-xl-end.bordered-5
+						.col-6.col-sm-12
+							+counter-creative({
+								number: '268',
+								title: 'Offices'
+							})
+						.col-6.col-sm-12
+							+counter-creative({
+								number: '234',
+								title: 'Partners'
+							})
+						.col-6.col-sm-12
+							+counter-creative({
+								number: '47',
+								symbol: 'k',
+								title: 'Employees'
+							})
+		
+		.gmap-classic
+			include ../sections/_section-gmap-2
+	='\n'
+	
+	// Our clients
+	section.section.section-xl.bg-default.text-center
+		.container
+			h3.text-spacing-50.font-weight-light.oh-desktop.d-inline-block
+				span.font-weight-bold.d-inline-block.wow.slideInUp Our
+				=' '
+				span.d-inline-block.wow.slideInRight clients
+			.owl-carousel.owl-style-8.dots-style-2.dots-style-3(data-items='1', data-sm-items='1', data-lg-items='2', data-margin='30', data-autoplay='true' data-dots='true', data-animation-in='fadeIn', data-animation-out='fadeOut')
+				.quote-modern-wrap
+					.unit.unit-spacing-xl.flex-column.flex-sm-row.align-items-center
+						.unit-left
+							a.quote-modern-figure(href='#'): +jpg('clients-27-215x349')
+						.unit-body
+							+quote-modern({
+								mod: 'quote-modern-2',
+								text: 'GlobalTrans have given us an opportunity to build and grow our business throughout years of partnership.',
+								author: 'Will McMillan',
+								status: 'CEO “AlfaIndustry”'
+							})
+				
+				.quote-modern-wrap
+					.unit.unit-spacing-xl.flex-column.flex-sm-row.align-items-center
+						.unit-left
+							a.quote-modern-figure(href='#'): +jpg('clients-28-215x349')
+						.unit-body
+							+quote-modern({
+								mod: 'quote-modern-2',
+								text: 'This team has proven to be a very dependable transportation company. This is highlighted by their excellent experience.',
+								author: 'Peter Smith',
+								status: 'CFO “Smith & Co.”'
+							})
+				
+				.quote-modern-wrap
+					.unit.unit-spacing-xl.flex-column.flex-sm-row.align-items-center
+						.unit-left
+							a.quote-modern-figure(href='#'): +jpg('clients-29-215x349')
+						.unit-body
+							+quote-modern({
+								mod: 'quote-modern-2',
+								text: 'If you are looking for reliable and affordable transportation services, I recommend trying this team’s solutions.',
+								author: 'Sam Wilson',
+								status: 'CEO & Founder “THP Industries”'
+							})
+				
+				.quote-modern-wrap
+					.unit.unit-spacing-xl.flex-column.flex-sm-row.align-items-center
+						.unit-left
+							a.quote-modern-figure(href='#'): +jpg('clients-30-215x349')
+						.unit-body
+							+quote-modern({
+								mod: 'quote-modern-2',
+								text: 'This company is an example of true partnership and impeccable customer support.',
+								author: 'Peter Williams',
+								status: 'CTO “iStep”'
+							})
+	='\n'
+	
+	// Section CTA
+	+parallax({
+		img: 'bg-index-8',
+		innerClass: 'section-sm section-inset-1 context-dark text-md-left'
+	})
+		.container: .row.row-30.justify-content-center.align-items-center
+			.col-sm-10.col-md-8.col-lg-6.col-xl-9
+				h5.text-xl-nowrap.font-weight-normal.text-transform-none.wow.fadeInDown Looking for Sustainable Transportation Solutions? We are Here to Help!
+			.col-md-4.col-xl-3.text-md-right.oh-desktop
+				a.button.button-width-auto.button-outline.button-default-outline-2.button-winona.wow.slideInRight(href='contacts.html') Get in touch
+	='\n'
+	
+	// Latest news
+	section.section.section-xl.bg-gray-100.text-center
+		.container
+			h3.text-spacing-50.font-weight-light.oh-desktop.d-inline-block
+				span.font-weight-bold.d-inline-block.wow.slideInLeft Latest
+				=' '
+				span.d-inline-block.wow.slideInRight news
+			.row.row-lg.row-30.justify-content-center
+				.col-sm-6.col-lg-4: .oh-desktop
+					+post-classic({
+						mod: 'post-classic-2',
+						img: 'post-2-370x365',
+						time: {datetime: '2018-04-05', dateText: 'April 05, 2018'},
+						title: 'The Importance  of Modernized Warehouses and Fulfillment Center'
+					}).wow.slideInRight
+				.col-sm-6.col-lg-4: .oh-desktop
+					+post-classic({
+						mod: 'post-classic-2',
+						img: 'post-4-370x365',
+						time: {datetime: '2018-04-05', dateText: 'April 05, 2018'},
+						title: 'Examples of Project Cargo Managed in June 2018'
+					}).wow.slideInUp
+				.col-sm-6.col-lg-4: .oh-desktop
+					+post-classic({
+						mod: 'post-classic-2',
+						img: 'post-6-370x365',
+						time: {datetime: '2018-04-15', dateText: 'April 15, 2018'},
+						title: 'Warehousing and Fulfillment Alternatives'
+					}).wow.slideInLeft
+	='\n'
+	
+	// Our Team
+	section.section.section-xl.bg-default.text-md-left
+		.container
+			.row.row-50.justify-content-center.justify-content-md-start
+				.col-lg-8.wow.fadeInLeft(data-wow-delay='.1s')
+					.slick-team-2: .slick-team
+						// Slick Carousel
+						.slick-slider.carousel-parent(data-autoplay='true', data-swipe='true', data-items='1' data-child='#child-carousel-3', data-for='#child-carousel-3', data-slide-effect='true')
+							.item
+								+team-creative({
+									img: 'team-26-270x367',
+									name: 'Andrew Green',
+									status: 'President',
+									text: 'Andrew Green joined GlobalTrans in 2005 after receiving an MBA from the University of North Carolina, Chapel Hill. He represents the third generation of his family to lead the company.'
+								})
+							.item
+								+team-creative({
+									img: 'team-27-270x367',
+									name: 'Steven Henderson',
+									status: 'Logistics Coordinator',
+									text: 'Steven is one of our most skilled employees in the technical demands of his role. He is always happy to resolve common freight problems by providing immediate and innovative solutions.'
+								})
+							.item
+								+team-creative({
+									img: 'team-28-270x367',
+									name: 'Edward Bryant',
+									status: 'Finance Manager',
+									text: 'Edward joined us in 2013 after completing his education at LA University. He is a dedicated employee and never stops to develop his financial management skills through continuing education.'
+								})
+							.item
+								+team-creative({
+									img: 'team-29-270x367',
+									name: 'Sandra Ferguson',
+									status: 'Operations Manager',
+									text: 'Sandra came on board of our team in 2006. Her industry expertise, strategic oversight, dedicated follow-up make her the #1 employee for the sphere of logistics operations management.'
+								})
+							.item
+								+team-creative({
+									img: 'team-38-270x367',
+									name: 'Casey Williams',
+									status: 'Office Manager',
+									text: 'As one of our newest employees, Casey is responsible  for managing everything that happens at our headquarters in LA, from welcoming our guests to ensuring the smooth work of the office.'
+								})
+						.child-team-carousel
+							.slick-slider.child-carousel#child-carousel-3(data-arrows='true' data-for='.carousel-parent', data-items='3', data-sm-items='4', data-md-items='4', data-lg-items='3', data-xl-items='4', data-slide-to-scroll='1')
+								.item: +jpg('team-30-80x78')
+								.item: +jpg('team-31-80x78')
+								.item: +jpg('team-32-80x78')
+								.item: +jpg('team-33-80x78')
+								.item: +jpg('team-39-80x78')
+				
+				.col-sm-8.col-lg-4.wow.fadeInLeft(data-wow-delay='0s'): .box-style-1
+					h3.text-spacing-50.font-weight-light.oh-desktop: span.d-inline-block.wow.slideInRight
+						span.font-weight-bold Key
+						|  people
+					.decor-classic.decor-classic-2.oh-desktop: span.wow.slideInLeft
+					h5.text-style-3.wow.fadeInRight GlobalTrans is a team of dedicated transportation experts.
+					a.button.button-lg.button-primary.button-winona.button-shadow-2.wow.fadeInUp(href='#') Join our team
+					a.link-style-1(href='#') 10 current vacancies available
+	='\n'
+	
+	include ../sections/_clients-jean
+	
+	// Page Footer
+	include ../sections/_footer-modern

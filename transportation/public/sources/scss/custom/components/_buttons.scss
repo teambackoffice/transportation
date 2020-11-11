@@ -1,0 +1,643 @@
+/*
+*
+* Buttons
+*/
+
+// Button General Styles
+
+.button {
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+	@include btn-size($input-btn-padding-y - 8, $input-btn-padding-x - 10, $input-btn-font-size, $input-btn-line-height);
+	min-width: 200px;
+	border: none;
+	font-family: $btn-font-family;
+	font-weight: $btn-font-weight;
+	letter-spacing: $btn-letter-spacing;
+	text-transform: $btn-text-transform;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-align: center;
+	cursor: pointer;
+	vertical-align: middle;
+	user-select: none;
+	transition: all .25s ease-in-out;
+
+	&.button-shadow,
+	&.button-icon {
+		min-width: auto;
+	}
+
+	// Medium ≥992px
+	@include media-breakpoint-up(lg) {
+		min-width: 230px;
+		padding: $input-btn-padding-y $input-btn-padding-x;
+	}
+}
+
+.button-block {
+	display: block;
+	width: 100%;
+}
+
+.button-outline {
+	z-index: 1;
+
+	&::before {
+		position: absolute;
+		content: '';
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		border: 2px solid;
+		transition: all .25s ease-in-out;
+		pointer-events: none;
+		z-index: -1;
+	}
+}
+
+.button-outline-2 {
+	&::before {
+		border-width: 1px;
+	}
+}
+
+//
+// Appearance style
+// 
+
+.button-default {
+	@include btn-variant($gray-300, $gray-700, $gray-700, $white-invariable, $primary, $primary);
+}
+
+.button-white {
+	@include btn-variant($primary, $white, $white, $white, $secondary, $secondary);
+}
+
+.button-gray-100 {
+	@include btn-variant($gray-800, $gray-100, $gray-100, $gray-800, darken($gray-100, 5%), darken($gray-100, 5%));
+}
+
+.button-gray-3 {
+	@include btn-variant($white-invariable, $gray-800, $gray-800, $white, $gray-4, $gray-4);
+}
+
+.button-gray-8 {
+	@include btn-variant($white-invariable, $gray-8, $gray-8, $gray-800, $secondary, $secondary);
+}
+
+.button-primary {
+	@include btn-variant($white-invariable, $primary, $primary, $white, $secondary, $secondary);
+}
+
+.button-primary-2 {
+	@include btn-variant($white-invariable, $primary, $primary, $white, $secondary, $secondary);
+}
+
+.button-secondary {
+	@include btn-variant($white, $secondary, $secondary, $white, $primary, $primary);
+}
+
+.button-secondary-2 {
+	@include btn-variant($white, $secondary, $secondary, $white, $primary, $primary);
+}
+
+// Outline
+.button-default-outline {
+	@include btn-variant($gray-800, transparent, $gray-800, $white-invariable, $gray-800, $gray-800);
+}
+
+.button-default-outline-2 {
+	@include btn-variant($gray-800, transparent, $gray-800, $white-invariable, $primary, $primary);
+}
+
+.button-default-outline-3 {
+	@include btn-variant($gray-800, transparent, $gray-300, $primary, transparent, rgba($primary, .3));
+}
+
+.button-default-outline-4 {
+	@include btn-variant($gray-800, transparent, $gray-300, $secondary, transparent, rgba($secondary, .3));
+}
+
+.button-ghost {
+	border: 0;
+	background-color: transparent;
+
+	&:hover {
+		color: $white;
+		background: $primary;
+	}
+}
+
+// Social
+.button-facebook {
+	@include btn-variant($white-invariable, $facebook, $facebook, $white-invariable, $facebook-darken, $facebook-darken);
+}
+
+.button-twitter {
+	@include btn-variant($white-invariable, $twitter, $twitter, $white-invariable, $twitter-darken, $twitter-darken);
+}
+
+.button-google {
+	@include btn-variant($white-invariable, $google, $google, $white-invariable, $google-darken, $google-darken);
+}
+
+// Btn with shadow
+.button-shadow {
+	position: relative;
+	z-index: 1;
+
+	&::before {
+	  position: absolute;
+	  content: '';
+		bottom: -5px;
+		left: 0;
+		width: 100%;
+		height: 5px;
+		transition: inherit;
+		z-index: -1;
+	}
+
+	&.button {
+		overflow: visible;
+	}
+
+	&.button-primary {
+		&::before {
+			background: $primary-1;
+		}
+
+		&:hover,
+		&:active {
+			&::before {
+				background: $secondary-1;
+			}
+		}
+	}
+
+	&.button-secondary {
+		&::before {
+			background: $secondary-1;
+		}
+
+		&:hover,
+		&:active {
+			&::before {
+				background: $primary-1;
+			}
+		}
+	}
+
+	&:focus,
+	&:active {
+		box-shadow: none;
+	}
+}
+
+.button-shadow-2 {
+	box-shadow: 7px 7px 13px 0 rgba($black, 0.13);
+}
+
+//
+// Button effects
+//
+.button-ujarak {
+	position: relative;
+	z-index: 0;
+	transition: background .4s, border-color .4s, color .4s;
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: $primary;
+		z-index: -1;
+		opacity: 0;
+		transform: scale3d(0.7, 1, 1);
+		transition: transform 0.42s, opacity 0.42s;
+		border-radius: inherit;
+	}
+
+	&,
+	&::before {
+		transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+	}
+
+	&:hover {
+		transition: background .4s .4s, border-color .4s 0s, color .2s 0s;
+		&::before {
+			opacity: 1;
+			transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+		}
+	}
+}
+
+//
+// Button Sizes
+//
+
+.button-xs {
+	@include btn-size($input-btn-padding-y-xs, $input-btn-padding-x-xs, 12px, $input-btn-line-height-xs);
+	min-width: auto;
+}
+
+.button-sm {
+	@include btn-size($input-btn-padding-y-sm - 5, $input-btn-padding-x-sm - 10, 12px, $input-btn-line-height-sm);
+	min-width: 160px;
+
+	// Medium ≥992px
+	@include media-breakpoint-up(lg) {
+		min-width: 200px;
+		padding: $input-btn-padding-y-sm $input-btn-padding-x-sm;
+	}
+}
+
+.button-lg {
+	@include btn-size($input-btn-padding-y-lg - 10, $input-btn-padding-x-lg - 10, 14px, $input-btn-line-height-lg);
+	min-width: 230px;
+
+	// Medium ≥992px
+	@include media-breakpoint-up(lg) {
+		min-width: 276px;
+		padding: $input-btn-padding-y-lg $input-btn-padding-x-lg;
+	}
+}
+
+//
+// Button Shapes
+// 
+
+.button-circle {
+	border-radius: 30px;
+}
+
+.button-round-1 {
+	border-radius: 5px;
+}
+
+.button-round-2 {
+	border-radius: 10px;
+}
+
+//
+// Button Icon styles
+//
+
+.button-icon {
+
+	.icon {
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+		line-height: 1;
+		color: inherit;
+	}
+}
+
+.button-icon-left {
+	.icon {
+		padding-right: 5px;
+		font-size: 17px;
+	}
+
+	span {
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
+
+.button-icon-right {
+	padding-right: 95px;
+
+	.icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 68px;
+		font-size: 27px;
+	}
+
+	&:hover {
+		.icon::before {
+			animation: btnIconTransform .2s ease;
+		}
+	}
+
+	&.button-outline {
+
+		.icon {
+			top: 1px;
+			right: 1px;
+			bottom: 1px;
+			background: transparent;
+			border-left: 1px solid;
+		}
+
+		&::before {
+			border-width: 1px;
+		}
+	}
+
+	&.button-primary {
+		.icon {
+			background: $primary-5;
+		}
+
+		&:hover,
+		&:active {
+			color: $white;
+			border-color: $primary-5;
+			background: $primary-5;
+
+			.icon {
+				background: $primary;
+			}
+		}
+	}
+
+	&.button-gray-3 {
+		.icon {
+			background: $gray-4;
+		}
+
+		&:hover,
+		&:active {
+			.icon {
+				background: $gray-800;
+			}
+		}
+	}
+
+	// Large ≥992px
+	@include media-breakpoint-up(lg) {
+
+		&.button-lg {
+			padding-right: 115px;
+		}
+
+		&.button-outline {
+			padding-left: 45px;
+		}
+	}
+}
+
+@keyframes btnIconTransform {
+	25% {
+		transform: translateX(5px);
+	}
+	75% {
+		transform: translateX(-5px);
+	}
+}
+
+
+
+//
+// Buttons Winona
+//
+.button-winona {
+	overflow: hidden;
+}
+
+.content-original,
+.content-dubbed {
+	transition: transform .3s, opacity .3s;
+	transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.content-dubbed {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transform: translate3d(0, 20%, 0);
+	pointer-events: none;
+}
+
+.button-winona:hover {
+	.content-original {
+		opacity: 0;
+		transform: translate3d(0, -50%, 0);
+	}
+
+	.content-dubbed {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+
+
+//
+// Bootstrap buttons
+//
+
+.btn-primary {
+	border-radius: 3px;
+	font-family: $btn-font-family;
+	font-weight: $btn-font-weight;
+	letter-spacing: .05em;
+	text-transform: uppercase;
+	transition: .33s;
+
+	&,
+	&:active,
+	&:focus {
+		color: $white;
+		background: $primary;
+		border-color: $primary;
+	}
+
+	&:hover {
+		color: $white;
+		background: $black;
+		border-color: $black;
+	}
+}
+
+
+
+//
+// Buttons Social
+//
+.button-social {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+
+	@include group(12px);
+
+	> * {
+		min-width: 175px;
+		flex-grow: 1;
+	}
+
+	.button {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	* + .button {margin-top: 0;}
+}
+
+
+// Button size
+.button-width-auto {
+	min-width: auto;
+}
+
+.button-width-240 {
+	min-width: 240px;
+}
+
+
+// Button tags
+.button-tags {
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+	@include btn-size(7px, 20px, 12px, 24px);
+	border-width: 1px;
+	border-style: solid;
+	font-weight: 700;
+	letter-spacing: .05em;
+	font-family: $btn-font-family;
+	text-transform: $btn-text-transform;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-align: center;
+	cursor: pointer;
+	vertical-align: middle;
+	user-select: none;
+	transition: all .25s ease-in-out;
+
+	&,
+	&:focus {
+		color: $gray-500;
+		background-color: transparent;
+		border-color: $gray-300;
+	}
+
+	&:hover,
+	&:active {
+		color: $gray-800;
+		background-color: $secondary;
+		border-color: $secondary;
+	}
+}
+
+
+
+.button-wrap {
+	&.oh {
+		padding-bottom: 15px;
+		margin-bottom: -15px;
+	}
+}
+
+
+
+// Custom buttons
+
+.button-style-1 {
+	position: relative;
+	text-align: center;
+	padding: 0;
+	color: $gray-800;
+	background: $white;
+	border: 2px solid $gray-800;
+	margin-bottom: 20px;
+	z-index: 1;
+
+	.icon {
+		display: none;
+		font-size: 28px;
+		line-height: inherit;
+		transition: all .2s ease;
+		transform: none;
+		opacity: 1;
+	}
+}
+
+.button-style-1-text {
+	display: inline-block;
+	padding: 18px 15px 17px;
+	white-space: nowrap;
+	font-size: 12px;
+	line-height: 1.75;
+	letter-spacing: .1em;
+	font-weight: 900;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: all .2s ease-in-out, padding .3s ease;
+
+	a {
+		@include link($gray-800, $primary);
+	}
+}
+
+// Media
+
+// Large ≥992px
+@include media-breakpoint-up(lg) {
+	.button-style-1-text {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}
+
+.desktop {
+	// Large ≥1200px
+	@include media-breakpoint-up(xl) {
+		.button-style-1 {
+			width: 78px;
+			height: 67px;
+			line-height: 63px;
+
+			.icon {
+				display: inline-block;
+			}
+		}
+
+		.button-style-1-text {
+			position: absolute;
+			top: -2px;
+			left: -2px;
+			padding: 21px 0;
+			letter-spacing: .2em;
+			background: inherit;
+			border: inherit;
+			visibility: hidden;
+			opacity: 0;
+		}
+
+		.button-style-1:hover {
+			.button-style-1-text {
+				opacity: 1;
+				visibility: visible;
+				padding-left: 34px;
+				padding-right: 34px;
+			}
+
+			.icon {
+				transform: scale(0);
+				opacity: 0;
+			}
+		}
+	}
+}

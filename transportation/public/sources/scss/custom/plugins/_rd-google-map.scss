@@ -1,0 +1,121 @@
+/*
+*
+* RD Google Map
+*/
+
+.gm-wrapper {
+	position: relative;
+	> div {
+		width: 385px !important;
+		max-width: 385px !important;
+		@include media-breakpoint-down(sm) {
+			width: 218px !important;
+			max-width: 218px !important;
+		}
+		> div:nth-child(1) > div {
+			&:nth-child(2), &:nth-child(4) {
+				width: 385px !important;
+				max-width: 385px !important;
+				border-radius: 8px !important;
+				@include media-breakpoint-down(sm) {
+					width: 218px !important;
+					max-width: 218px !important;
+				}
+			}
+		}
+
+	}
+}
+
+.gm-style-iw {
+	top: 1px !important;
+	left: 1px !important;
+	width: 385px !important;
+	@include media-breakpoint-down(sm) {
+		width: 218px !important;
+		max-width: 218px !important;
+	}
+}
+
+.gm-style-pbt {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: $gray-900;
+	color: $white;
+	padding: 5px 14px;
+	font-size: 16px;
+	border-radius: 3px;
+	box-shadow: $shadow-area-2;
+	width: 100%;
+	text-align: center;
+	max-width: 300px;
+}
+
+.rd-google-map__model {
+	color: $black;
+	height: $map-height;
+
+	.iw-content img {
+		border-top-right-radius: 8px;
+		border-top-left-radius: 8px;
+		max-width: 100% !important;
+	}
+
+	img {
+		max-width: none !important;
+	}
+
+	@include media-breakpoint-up(md) {
+		height: $map-md-height;
+	}
+
+	@include media-breakpoint-up(xl) {
+		height: $map-xl-height;
+	}
+}
+
+.map_locations {
+	display: none;
+}
+
+.map_locations-text {
+	padding: 21px 37px 8px;
+	margin: 0;
+	font-size: 15px;
+	letter-spacing: .08em;
+	font-family: $font-family-sec;
+	color: $body-color;
+	line-height: 1.65;
+	@include media-breakpoint-down(sm) {
+		padding: 15px 8px 0;
+		font-size: 14px;
+		line-height: 1.3;
+		text-align: center;
+	}
+}
+
+.iw-content {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Gmap Classic
+.gmap-classic {
+
+	// Large ≥992px
+	@include media-breakpoint-up(lg) {
+		position: absolute;
+		content: '';
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 50%;
+
+		.rd-google-map {
+			width: 100%;
+			height: 100%;
+		}
+	}
+}

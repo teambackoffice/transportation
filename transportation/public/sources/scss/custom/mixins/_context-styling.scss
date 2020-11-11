@@ -1,0 +1,182 @@
+/*
+*
+* Contexts
+*/
+
+@mixin context-dark {
+	&,
+	#{headings()} {
+		color: $white;
+	}
+
+	&:not(.section-single):not(.form-default) {
+		// forms
+		.form-validation,
+		.form-label,
+		.form-input {
+			color: $white;
+		}
+
+		.form-input {
+			background: rgba($white, .15);
+			border-color: transparent;
+		}
+
+		.form-wrap.has-error .form-input {border-color: $white;}
+	}
+
+	// buttons
+	.button-outline {
+		color: $white;
+
+		&::before { border-color: $white;	}
+
+		&:hover,
+		&:active {
+			&::before {
+				border-color: $primary;
+			}
+		}
+
+		&.button-icon-right {
+			.icon,
+			&::before {
+				border-color: $gray-18;
+			}
+
+			&:hover,
+			&:active {
+				background: $primary;
+
+				.icon,
+				&::before {
+					border-color: $primary;
+				}
+
+				.icon {
+					background: $primary-5;
+				}
+			}
+		}
+	}
+
+	// counters
+	.counter-classic-title {
+		color: rgba($white, .3);
+	}
+
+	// Header
+	&.rd-navbar-creative {
+		background: transparent;
+
+		&.rd-navbar-static {
+			.rd-nav-link {
+				color: $white;
+			}
+
+			.rd-navbar-contacts-3 {
+				color: $white;
+
+				.mail { @include link(rgba($white, .5), $primary); }
+			}
+
+			&.rd-navbar--is-stuck,
+			&.rd-navbar--is-clone {
+				background: $blue-2;
+			}
+		}
+
+		&.rd-navbar-fixed {
+			.rd-navbar-panel { background: $blue-2; }
+
+			.button-outline {
+				color: $gray-800;
+
+				&::before { border-color: $gray-800;	}
+
+				&:hover,
+				&:active {
+					color: $white;
+
+					&::before {
+						border-color: $primary;
+					}
+				}
+			}
+		}
+
+		.rd-navbar-toggle {
+			span {
+				&, &:before, &:after { background-color: $white; }
+			}
+
+			&.active {
+				span { background: transparent; }
+			}
+		}
+
+		.rd-navbar-collapse-toggle {
+			span {
+				&, &:before, &:after { background-color: $white; }
+			}
+		}
+	}
+
+	// Footer
+	p.rights {color: $white;}
+
+
+	&.footer-classic,
+	&.footer-corporate {
+		p.rights {color: rgba($white, .2);}
+	}
+
+	&.footer-modern {
+		color: rgba($white, .4);
+
+		p.rights {
+			color: rgba($white, .2);
+
+			a {
+				@include link(inherit, $secondary);
+			}
+		}
+	}
+
+	&.footer-creative {
+		color: rgba($white, .4);
+
+		p.rights {color: inherit;}
+
+		hr {
+			border-top-color: rgba($white, .13);
+		}
+	}
+	
+	// Quote Creative
+	.quote-creative-text {
+		&::before {
+			color: rgba($gray-16, .2);
+		}
+	}
+
+	.quote-creative-author {color: rgba($white, .4);}
+
+	// Owl
+	.owl-dot {
+		background: rgba($gray-16, .3);
+
+		&::before {
+			background: $secondary;
+		}
+	}
+}
+
+@mixin context-light {
+	color: $body-color;
+
+	#{headings()} {
+		color: $headings-color;
+	}
+}
+

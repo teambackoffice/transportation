@@ -1,0 +1,170 @@
+/*
+*
+* Preloader
+*/
+
+//
+// Base styles
+//
+.preloader {
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 10000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	background: $white;
+	transition: .3s all ease;
+
+	&.loaded {
+		opacity: 0;
+		visibility: hidden;
+
+		.triangle,
+		.pen {
+			animation: none;
+		}
+	}
+}
+
+.preloader-body {
+	text-align: center;
+
+	p {
+		position: relative;
+		right: -8px;
+	}
+}
+
+//
+// Custom Styles
+//
+
+$containerWidth: 250px;
+$wrapperWidth: 304px;
+$wrapperHeight: $containerWidth;
+
+$heightC: 0.86602540378;
+$triangleWidth: $containerWidth / 4;
+$triangleHeight: $heightC * $triangleWidth;
+
+$lineHeight: $triangleHeight;
+
+$animationTime: 1.5s;
+$color: $primary;
+
+
+.wrapper-triangle {
+	position: absolute;
+	overflow: hidden;
+	top: 50%;
+	left: 50%;
+	width: $wrapperWidth;
+	height: $wrapperHeight;
+	transform: translate(-50%, -50%);
+}
+
+.line-triangle {
+	position: absolute;
+	width: $containerWidth;
+	height: round($lineHeight);
+	border: 1px solid transparent;
+	transform-origin: 0 100%;
+
+	&:nth-last-of-type(1) {
+		left: round($containerWidth + $triangleWidth);
+		bottom: round(- ($lineHeight - ($containerWidth - $containerWidth*$heightC)));
+		transform: rotate(-120deg);
+		transform-origin: 0 100%;
+	}
+	&:nth-last-of-type(2) {
+		left: round($containerWidth/2 + $triangleWidth/2);
+		top: round(-$lineHeight);
+		transform: rotate(120deg);
+		transform-origin: 0 100%;
+	}
+
+	&:nth-last-of-type(3) {
+		top: round($containerWidth * $heightC);
+		left: 0;
+	}
+}
+
+
+@for $i from 1 through 7 {
+	.triangle:nth-of-type(#{$i}) {
+		animation: tri#{$i} $animationTime linear infinite;
+	}
+
+	@keyframes tri#{$i}{
+		0%{
+			opacity: 0;
+		}
+	#{($i - 1) * 100 / 7}%{
+	opacity: 0;
+}
+	100%{
+		opacity: 1;
+	}
+}
+}
+
+.triangle{
+	position: absolute;
+	bottom:0;
+	width: 0;
+	height: 0;
+	border: round($triangleWidth/2) solid transparent;
+	border-bottom: floor($triangleHeight) solid $color;
+	animation: tri $animationTime linear infinite;
+
+	@for $i from 1 through 7 {
+		&:nth-of-type(#{$i}) {
+			left: round(($triangleWidth/2) * ($i - 1));
+		}
+	}
+
+	&:nth-child(even){
+		transform: rotate(180deg);
+		top: 0;
+	}
+
+	&:nth-child(1){animation: none;}
+}
+.line:nth-child(2) .triangle:nth-child(1):before{
+	position: absolute;
+	content: "";
+	width: 0;
+	height: 0;
+	left: -22px;
+	bottom: -77px;
+	background: transparent;
+	border: round( ($triangleWidth/2) * (2/5) ) solid transparent;
+	border-bottom: floor( $triangleHeight * (2/5) ) solid #F1ECDB;
+	animation: tri $animationTime linear infinite;
+}
+
+
+.pen {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: $containerWidth + $triangleWidth;
+	transform-origin: 50% 0;
+	animation: move $animationTime cubic-bezier(0, 0, 0.500, 0.85) infinite;
+}
+
+@keyframes tri{
+	0%{opacity: 1;}
+	100%{opacity: 0;}
+}
+
+@keyframes move{
+	0%{transform: scale(2.45);}
+	100%{transform: scale(0.5);}
+}

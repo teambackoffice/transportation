@@ -1,0 +1,194 @@
+/*
+*
+* Offsets
+*/
+
+// Elements offset
+* + p { margin-top: 15px; }
+* + img { margin-top: 30px; }
+
+// Headings
+
+// Headings + Headings
+h5 + h2 { margin-top: 18px; }
+
+// Headings + Paragraph
+h1 + p { margin-top: 8px; }
+h2 + p { margin-top: 8px; }
+h3 + p { margin-top: 14px; }
+h4 + p { margin-top: 14px; }
+h5 + p { margin-top: 12px; }
+h6 + p { margin-top: 12px; }
+
+// Paragraph + Headings
+p + h2,
+p + .heading-2 {
+	margin-top: 15px;
+}
+
+// Tags + Tags
+p + p { margin-top: 12px; }
+img + p { margin-top: 35px; }
+h3 + img { margin-top: 42px; }
+
+// Classes
+* + .row { margin-top: 30px; }
+* + .row-xs {	margin-top: 20px; }
+* + .row-sm {	margin-top: 40px; }
+* + .row-md {	margin-top: 45px; }
+* + .row-lg {	margin-top: 50px; }
+* + .row-xl {	margin-top: 60px; }
+
+* + .big { margin-top: 20px; }
+* + .text-block { margin-top: 32px; }
+* + .button { margin-top: 30px; }
+* + .button-outline-2 { margin-top: 0; }
+* + .button-wrap { margin-top: 30px; }
+* + .owl-carousel { margin-top: 30px; }
+* + .owl-style-4 { margin-top: 30px; }
+
+// Classes + Tags
+.row + h3 { margin-top: 80px; }
+.heading-7 + h3 { margin-top: 16px; }
+
+// Classes + Classes
+.container + .container { margin-top: 35px; }
+.container + .container-fluid { margin-top: 45px; }
+.row + .button-wrap { margin-top: 40px; }
+.row + .row { margin-top: 35px; }
+
+// Tags + Classes
+h4 + .big,
+h3 + .big { margin-top: 14px; }
+
+// Medium ≥768px
+@include media-breakpoint-up(md) {
+
+	// Classes
+	* + .row-xxl { margin-top: 50px; }
+}
+
+// Large ≥992px
+@include media-breakpoint-up(lg) {
+
+	// Headings + Paragraph
+	h5 + p { margin-top: 16px; }
+	h6 + p { margin-top: 22px; }
+
+	// Classes + Classes
+	.row + .button-wrap { margin-top: 60px; }
+
+	// Classes
+	* + .owl-carousel { margin-top: 50px; }
+	* + .owl-style-4 { margin-top: 50px; }
+	* + .row-xxl { margin-top: 70px; }
+}
+
+// Media offsets
+@include media-breakpoint-up(xl) {
+	.container + .container { margin-top: 60px; }
+	.row + .row { margin-top: 60px; }
+}
+
+// Classes + Classes
+.container + .container-style-1 { margin-top: 26px; }
+
+// Range spacing
+.row-0 {
+	@include grid-offset(0px);
+}
+
+.row-8 {
+	@include grid-offset(8px);
+}
+
+.row-10 {
+	@include grid-offset(10px);
+}
+
+.row-15 {
+	@include grid-offset(15px);
+}
+
+.row-14 {
+	@include grid-offset(14px);
+}
+
+.row-20 {
+	@include grid-offset(20px);
+}
+
+.row-30 {
+	@include grid-offset(30px);
+}
+
+.row-40 {
+	@include grid-offset(40px);
+}
+
+.row-50 {
+	@include grid-offset(50px);
+}
+
+.row-60 {
+	@include grid-offset(60px);
+}
+
+// Medium ≥768px
+@include media-breakpoint-up(md) {
+	.row-md-40 {
+		@include grid-offset(40px);
+	}
+
+	.row-md-50 {
+		@include grid-offset(50px);
+	}
+}
+
+@include media-breakpoint-up(lg) {
+	.row-lg-0 {
+		@include grid-offset(0px);
+	}
+
+	.row-lg-50 {
+		@include grid-offset(50px);
+	}
+
+	.row-lg-60 {
+		@include grid-offset(60px);
+	}
+}
+
+.nav-custom-2 > * {
+	top: 70% !important;
+}
+
+// Extra large ≥1200px
+@include media-breakpoint-up(xl) {
+	.row-xl-60 {
+		@include grid-offset(60px);
+	}
+
+	.row-xl-75 {
+		@include grid-offset(75px);
+	}
+
+	.row-xl-90 {
+		@include grid-offset(90px);
+	}
+}
+
+.desktop {
+	// Large ≥992px
+	@include media-breakpoint-up(lg) {
+		.row-desktop-0 {
+			@include grid-offset(0px);
+		}
+
+		.row-desktop-8 {
+			@include grid-offset(8px);
+		}
+
+		* + .row-desktop-0 { margin-top: 20px; }
+	}
+}

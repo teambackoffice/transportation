@@ -1,0 +1,173 @@
+-
+	/**
+	* @desc Get the resolution of the image from its name
+	* @param {string} imgName - image name
+	* @return {Array} - image width and height
+	*/
+	function getImageSize( imgName ) {
+		var match = imgName.match( /\d+x\d+/i );
+		if ( match !== null && match.length !== 0 ) return match[0].split( 'x' );
+		else return [];
+	}
+
+	/**
+	* @desc Sets the image extension if it is missing and adds 'images/' if the link is not external
+	* @param {string} imgName - image name
+	* @return {string}
+	*/
+	function procImg( imgName ) {
+		var
+			extMatch = imgName.match( /(.jpg|.png|.gif)$/i ),
+			httpTest = /:\/\//.test( imgName );
+
+		if ( !httpTest && ( extMatch === null || extMatch.length === 0 ) ) imgName += '.jpg';
+		if ( !httpTest ) imgName = 'images/'+ imgName;
+
+		return imgName;
+	}
+
+	//- Get menu branch by category name
+	function getMenuCategory(category) {
+		for (var i = 0; i < menu.length; i++) {
+			if (menu[i].category === category) {
+				return menu[i];
+			}
+		}
+		return undefined;
+	}
+
+	//- Any page title to *.html link
+	function nameToLink(name) {
+		try { return name.trim().replace(/\s/g, '-').replace(/[\(\)]/g, '').toLowerCase() + '.html'; }
+		catch ( error ) {
+			throw new Error('Error in function nameToLink:\n' + error);
+		}
+	}
+
+
+//- Image
+	@param {string} name
+mixin img( name, options )
+	-
+		var size = getImageSize( name );
+		if( options && options.retina ) { size[0] = ~~(size[0]/2); size[1] = ~~(size[1]/2); }
+	img( src= procImg( name ), alt='', width= size[0], height= size[1] )&attributes( attributes )
+
+
+//- Jpg image
+mixin jpg(name, className)
+	- var size = getImageSize(name);
+	img(src='images/' + name + '.jpg', alt='', width=size[0], height=size[1], class=className)
+
+
+//- Png image
+mixin png(name, className)
+	- var size = getImageSize(name);
+	img(src='images/' + name + '.png', alt='', width=size[0], height=size[1], class=className)
+
+
+//- Loop without indexing mixin
+mixin loop(count)
+	- for (var i = 0; i < count; i++)
+		block
+
+
+//- Parallax Section
+mixin parallax(obj)
+	section.section.parallax-container(data-parallax-img= 'images/' + obj.img + '.jpg')&attributes(attributes)
+		.parallax-content(class= obj.innerClass)
+			block
+
+//- Parallax Block
+mixin parallax-block(obj)
+	.parallax-container(data-parallax-img= 'images/' + obj.img + '.jpg')&attributes(attributes)
+		.parallax-content(class= obj.innerClass)
+			block
+
+//- Breadcrumbs 
+mixin breadcrumbs(obj)
+	- var activeItemName= obj.path.pop();
+	- var category = getMenuCategory(obj.category);
+
+	// Breadcrumbs 
+	section.bg-gray-7
+		.breadcrumbs-custom.box-transform-wrap.context-dark
+			.container
+				h3.breadcrumbs-custom-title=activeItemName
+				.breadcrumbs-custom-decor
+			.box-transform(style=obj.bgImage ? 'background-image: url(images/' + obj.bgImage + '.jpg);' : '')
+		.container
+			ul.breadcrumbs-custom-path
+				li: a(href='index.html') Home
+				if (typeof(category) !== 'undefined' && (category.title !== activeItemName))
+					li: a(href=category.link ? category.link : nameToLink(category.title))=category.title
+					-for( var i = 0; i < obj.path.length; i++)
+						li: a(href=obj.path[i].link ? obj.path[i].link : nameToLink(obj.path[i].title))=obj.path[i].title
+
+				li.active=activeItemName
+
+
+//- Logo
+mixin logo( obj )
+	a.brand( href='./' )&attributes( attributes )
+		+img( logo.default, { retina: true } ).brand-logo-dark
+		+img( logo.inverse, { retina: true } ).brand-logo-light
+
+
+//- Copyright
+mixin rights
+	// Rights
+	p.rights
+		span &copy;&nbsp;
+		span.copyright-year
+		span &nbsp;
+		span= logo.name
+		span .&nbsp;
+		a(href='privacy-policy.html') Privacy policy
+
+
+//- Social List Widget
+//- socials - an array of {link}
+//- iclass - icon class
+//- lclass - list class
+
+mixin widget-list(socials, iclass, lclass)
+	- var iclass = iclass ? " " + iclass : " icon-xxs"
+	- var lclass = lclass
+
+	ul.list-inline(class=lclass)
+		if(socials.length)
+			each link in socials
+				li: a(href=link.href class=link.icon + iclass)
+		else
+			li: a(href='#' class='icon mdi mdi-facebook')
+			li: a(href='#' class='icon mdi mdi-twitter')
+			li: a(href='#' class='icon mdi mdi-instagram')
+			li: a(href='#' class='icon mdi mdi-google-plus')
+
+
+mixin box-icon-minimal(obj)
+	article.box-icon-minimal(class=obj.mod)
+		.unit.align-items-center(class=obj.unit)
+			.unit-left: .icon(class=obj.icon)
+			.unit-body
+				.box-icon-minimal-title=obj.title
+				p.box-icon-minimal-text=obj.text
+
+//- Title Panel
+mixin title-panel(obj)
+	.title-panel(class=obj.mod)
+		.group-xl.group-middle(class=obj.modGroup)
+			.title-panel-left
+				h5.oh-desktop.title-panel-title: span.d-inline-block.wow.slideInDown!=obj.title
+			if( obj.owlNav )
+				.owl-custom-nav-2.wow.fadeInRight(id='owl-custom-nav-' + obj.owlNav)
+			if( obj.list )
+				// Nav tabs
+				div.oh-desktop: ul.nav.nav-tabs-4
+					each itemList, i in obj.list
+						li.nav-item-4.wow.slideInUp(role='presentation' data-wow-delay= '.' + i + 's'): a.nav-link-4(class=itemList.class href=itemList.id data-toggle='tab')=itemList.text
+			if( obj.button )
+				a.button.button-winona.wow.fadeInRight(href='#' class= obj.classButton ? obj.classButton : 'button-primary')=obj.button
+
+		.title-panel-decor.wow.slideInLeft

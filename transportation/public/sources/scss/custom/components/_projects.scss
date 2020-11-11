@@ -1,0 +1,164 @@
+/*
+*
+* Projects
+*/
+
+//
+// Table of Contents: 
+//
+// Project Classic
+// Project Modern
+//
+
+//
+// Project Classic
+//
+.project-classic {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	min-height: 100%;
+}
+
+.project-classic-figure {
+	display: block;
+	overflow: hidden;
+
+	img {
+		display: block;
+		width: 100%;
+		transition: all .3s ease;
+		will-change: transform;
+	}
+}
+
+.project-classic-caption {
+	flex-grow: 1;
+	position: relative;
+	margin-top: 25px;
+	padding: 20px 14px;
+	background: $white;
+	transition: all .3s ease;
+	
+	&::before {
+		position: absolute;
+		content: '';
+		top: 0;
+		left: 50%;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 0 10.5px 12px 10.5px;
+		border-color: transparent transparent $white transparent;
+		transform: translate3d(-50%, -100%, 0);
+		transition: inherit;
+	}
+}
+
+.project-classic-title {
+	font-size: 20px;
+	letter-spacing: .05em;
+	text-transform: none;
+	color: $gray-800;
+}
+
+.project-classic-location {
+	font-size: 14px;
+	line-height: 1.71;
+	font-weight: 500;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	color: $secondary;
+
+	.icon {	font-size: 20px; }
+
+	> * {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	> * + * {	margin-left: 6px; }
+}
+
+.project-classic-text {
+	color: $body-color;
+}
+
+* + .project-classic-location { margin-top: 14px; }
+* + .project-classic-text { margin-top: 12px; }
+
+// Media
+
+// Medium ≥576px
+@include media-breakpoint-up(sm) {
+	.project-classic-caption {
+		padding: 30px 40px;
+	}
+}
+
+// Large ≥992px
+@include media-breakpoint-up(lg) {
+
+	.project-classic-caption {
+		margin-top: 48px;
+		padding: 40px 50px 40px 60px;
+	}
+}
+
+// Extra large ≥1200px
+@include media-breakpoint-up(xl) {
+
+	.project-classic-caption {
+		padding-right: 70px;
+		padding-left: 85px;
+	}
+
+	.project-classic-title { font-size: $h5-font-size; }
+}
+
+.desktop {
+	// Large ≥992px
+	@include media-breakpoint-up(lg) {
+		.project-classic-figure img {
+			transform: scale(1.1);
+		}
+
+		.project-classic:hover {
+			.project-classic-figure img {
+				transform: none;
+			}
+		}
+	}
+}
+
+// Context styling
+%context-dark {
+	.project-classic-title {
+		color: $gray-800;
+	}
+}
+
+.owl-style-4 {
+
+	.project-classic-caption {
+
+		&::after {
+			position: absolute;
+			content: '';
+			top: 50%;
+			left: 0;
+			width: 1px;
+			height: 61%;
+			background: $gray-200;
+			transform: translate3d(0, -50%, 0);
+		}
+	}
+	
+	// Large ≥768px
+	@include media-breakpoint-up(md) {
+		.project-classic-figure {
+			margin-left: 15px;
+			margin-right: 15px;
+		}
+	}
+}

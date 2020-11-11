@@ -1,0 +1,105 @@
+/*
+*
+* Dividers
+*/
+
+hr {
+	margin-top: 0;
+	margin-bottom: 0;
+	border-top: $hr-border-width solid $hr-border-color;
+}
+
+.hr-gray-300 {border-color: $gray-300;}
+.hr-gray-1 {border-color: $gray-1;}
+
+.divider {
+	font-size: 0;
+	line-height: 0;
+
+	&::before {
+		content: '';
+		display: inline-block;
+		width: 60px;
+		height: 2px;
+		background-color: $primary;
+	}
+}
+
+.title-decor-left {
+	position: relative;
+	padding-bottom: 20px;
+	font-size: 14px;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	color: $gray-800;
+	
+	&::before {
+		position: absolute;
+		display: inline-block;
+		content: '';
+		bottom: 0;
+		left: 50%;
+		width: 50px;
+		height: 2px;
+		margin-left: -25px;
+		background-color: $primary;
+	}
+
+	// Medium ≥768px
+	@include media-breakpoint-up(md) {
+		padding-left: 66px;
+		padding-bottom: 0;
+
+	   &::before {
+			 top: 50%;
+			 bottom: auto;
+			 left: 2px;
+			 margin-left: 0;
+			 margin-top: -1px;
+	   }
+	}
+}
+
+
+.text-divider {
+	text-align: center;
+	font-size: 12px;
+	letter-spacing: 0;
+	text-transform: uppercase;
+}
+
+* + .text-divider {margin-top: 20px;}
+.text-divider + .rd-form {margin-top: 20px;}
+h3 + .title-decor-left {margin-top: 22px;}
+.title-decor-left + p {margin-top: 26px;}
+
+
+
+//
+// Decor Classic
+//
+
+.decor-classic {
+	font-size: 0;
+	line-height: 0;
+
+	span {
+		display: inline-block;
+		width: 95px;
+		height: 1px;
+		background: $gray-300;
+	}
+}
+
+.decor-classic-2 {
+	span {
+		width: 123px;
+	}
+}
+
+* + .decor-classic-2 { margin-top: 26px; }
+
+%context-dark {
+	.decor-classic span { background: $white; }
+}
+

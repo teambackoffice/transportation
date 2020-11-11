@@ -1,0 +1,24 @@
+// shopping-cart
+.table-custom-responsive
+	table.table-custom.table-cart
+		thead
+			tr
+				th Product name
+				th Price
+				th Quantity
+				th Total
+		tbody
+			tr
+				td
+					a.table-cart-figure(href='single-product.html'): +png('product-mini-3-146x132')
+					a.table-cart-link(href='single-product.html') Spring collet set
+				td $250
+				td: div.table-cart-stepper: input.form-input(type="number" data-zeros="true" value="1" min="1" max="1000")
+				td $250
+			tr
+				td
+					a.table-cart-figure(href='single-product.html'): +png('product-mini-4-146x132')
+					a.table-cart-link(href='single-product.html') Wood cutting machine
+				td $450
+				td: div.table-cart-stepper: input.form-input(type="number" data-zeros="true" value="1" min="1" max="1000")
+				td $450

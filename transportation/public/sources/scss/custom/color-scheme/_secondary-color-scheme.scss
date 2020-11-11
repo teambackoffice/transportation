@@ -1,0 +1,133 @@
+//
+// Secondary Color Scheme
+//
+
+// Header
+.list-share a:hover { color: $white; }
+
+// Swiper
+.swiper-custom-container .list-share-2 a:hover {
+  color: $white;
+}
+
+// Footer
+.footer-social-list a:hover {
+  color: $white;
+}
+
+// Posts
+.post-classic-time {
+  color: $white;
+}
+
+.post-amy-figure a {
+  color: $white;
+}
+
+// Thumbnail
+.thumbnail-classic-time {
+  color: $secondary;
+}
+
+// Services
+.services-terri-icon {
+  color: $white;
+}
+
+// Product
+.product-badge-sale {
+  color: $white;
+}
+
+// Counter
+.counter-modern-decor {
+  background: $primary;
+}
+
+// Box Info
+.box-info-link {
+  &,
+  &:focus,
+  &:active {
+    color: $secondary;
+  }
+}
+
+// Button
+.button-primary {
+
+  &:hover,
+  &:active {
+    color: $white;
+  }
+}
+
+.button-secondary {
+
+  &,
+  &:focus {
+    color: $white;
+  }
+}
+
+// To Top
+.ui-to-top {
+  color: $white;
+}
+
+// Icon Animate
+// keyframes
+@keyframes iconClassic {
+  30% {
+    color: $gray-800;
+    background: $gray-7;
+  }
+
+  33% {
+    color: $white;
+    background: $primary;
+  }
+
+  64% {
+    color: $white;
+    background: $primary;
+  }
+
+  67% {
+    color: $white;
+    background: $secondary;
+  }
+
+  97% {
+    color: $white;
+    background: $secondary;
+  }
+}
+
+// keyframes
+@keyframes iconModern {
+  30% {
+    color: $gray-800;
+    background: $white;
+  }
+
+  33% {
+    color: $white;
+    background: $primary;
+  }
+
+  64% {
+    color: $white;
+    background: $primary;
+  }
+
+  67% {
+    color: $white;
+    background: $secondary;
+  }
+
+  97% {
+    color: $white;
+    background: $secondary;
+  }
+}

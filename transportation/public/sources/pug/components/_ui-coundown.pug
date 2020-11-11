@@ -1,0 +1,17 @@
+//- Countdown
+  @param {object} data       object for parameters storage
+  @param {string} data.from  countdown time (YYYY-MM-DDTHH:mm:ss, T-divider)
+  @param {string} data.to    end time (YYYY-MM-DDTHH:mm:ss, T-divider)
+mixin countdown( data )
+  .countdown-wrap( class= data.mod data-countdown, data-from= data.from, data-to= data.to )
+    each units in data.array
+      .countdown-circle( data-circle-countdown, data-units= units, class= 'countdown-' + units.toLowerCase() )
+        .countdown-number
+          svg(x='0px', y='0px', width='136px', height='136px', viewbox='0 0 100 100')
+            clipPath( class='progress-clip' )
+              path( d='' )
+            circle.countdown-bg( cx= 50, cy = 50, r= 41 )
+            circle.clipped.countdown-fg( cx= 50, cy = 50, r= 48 )
+          .countdown-overlay
+            h4.countdown-counter
+        h6.countdown-heading= units

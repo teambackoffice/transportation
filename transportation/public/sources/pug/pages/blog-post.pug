@@ -1,0 +1,177 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-posts
+include ../components/_ui-quote
+include ../components/_ui-box-comment
+
+block variables
+	- var activeCategory = 'blog'
+	- var pageName = 'Blog post'
+
+block page  
+	// Page Header
+	include ../sections/_header-classic
+	
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'bg-typography'
+	})
+	
+	// Grid Blog
+	section.section.section-lg.bg-default
+		.container
+			.row.row-60.row-xl-75
+				.col-lg-8
+					.single-post.section-style-2
+						h5.text-spacing-50.font-weight-normal.text-transform-none The Importance of Modernized Warehouses and Fulfillment
+						.group-md.group-middle
+							time.post-classic-time(datetime='2018-04-05') April 05, 2018
+							div: ul.list-inline.list-inline-xl.post-classic-info
+								li.post-classic-author
+									span.icon.mdi.mdi-account-outline
+									span by
+										=' '
+										a(href='#') Harry Burns
+								li.post-classic-views
+									span.icon.mdi.mdi-eye
+									span 3678
+								li.post-classic-comments
+									span.icon.mdi.mdi-comment-outline
+									a(href='#') 3
+						p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum
+						+jpg('post-16-770x403')
+						p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla
+						+quote-classic({
+							text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusa nt ium doloremque laudantium totam rem aperiam'
+						})
+						.unit.unit-spacing-xl.flex-column.flex-md-row.flex-lg-column.flex-xl-row
+							.unit-left
+								+jpg('post-17-333x243')
+							.unit-body
+								p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi
+								p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor
+						.single-post-footer
+							.group-lg.group-sm-justify
+								h6.text-transform-none.font-weight-normal Share this post
+								div: +widget-list([], '', 'single-post-social-list list-inline-md')
+					
+					.single-post-title Related Posts
+					.row.row-lg.row-30.justify-content-center
+						.col-sm-6
+							+post-classic({
+								mod: 'post-classic-2',
+								img: 'post-6-370x365',
+								time: {datetime: '2018-06-06', dateText: 'June 06, 2018'},
+								title: 'Warehousing and Fulfillment Alternatives to FBA'
+							})
+						.col-sm-6
+							+post-classic({
+								mod: 'post-classic-2',
+								img: 'post-4-370x365',
+								time: {datetime: '2018-06-11', dateText: 'June 11, 2018'},
+								title: 'Examples of Project Cargo Managed in June 2018'
+							})
+					.single-post-title
+						span 3
+						| Comments
+					+box-comment({
+						postComments: true,
+						mod: 'box-comment-post',
+						img: 'user-2-66x66',
+						author: 'Edward',
+						text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation',
+						dayAgo: '1 day ago'
+					})
+						+box-comment({
+							postComments: true,
+							mod: 'box-comment-post',
+							img: 'user-3-66x66',
+							author: 'Nina',
+							text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea com',
+							dayAgo: '3 days ago'
+						})
+					+box-comment({
+						postComments: true,
+						mod: 'box-comment-post',
+						img: 'user-4-66x66',
+						author: 'John',
+						text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ',
+						dayAgo: '1 days ago'
+					})
+					
+					.unit.flex-column.flex-md-row.box-comment-form
+						.unit-left: a.box-comment-figure(href='#'): +jpg('user-5-66x66')
+						.unit-body
+							p.box-comment-author: a(href='#') Miranda
+							form.rd-form.rd-mailform.form-comment-post
+								.form-wrap
+									label.form-label(for='form-comment-post') Your comment
+									textarea.form-input.textarea-lg(id='form-comment-post' name='message' data-constraints='@Required')
+								button.button.button-lg.button-primary.button-winona(type='submit') Submit
+				
+				.col-lg-4: .inset-left-xl-40
+					.aside.row.row-60.row-xl-75
+						.aside-item.col-12
+							// RD Search Form
+							form.form-search.rd-search.form-search(action='search-results.html', method='GET')
+								.form-wrap
+									label.form-label(for="search-form-2") Search the blog...
+									input#search-form-2.form-input(type='text', name='s', autocomplete='off')
+									button(type="submit").button-search.fl-bigmug-line-search74
+						.aside-item.col-md-6.col-lg-12
+							h6.aside-title Category
+							ul.list-marked-2.list-category-2
+								li
+									a(href='#') News
+									span.list-category-number 12
+								li
+									a(href='#') Transportation
+									span.list-category-number 10
+								li
+									a(href='#') Sea Freight
+									span.list-category-number 11
+								li
+									a(href='#') Air Freight
+									span.list-category-number 14
+						.aside-item.col-md-6.col-lg-12
+							h6.aside-title Popular Posts
+							.list-popular-post
+								.list-popular-post-item
+									+post-minimal({
+										unit: 'unit-spacing-md',
+										img: 'post-13-106x104',
+										title: 'Cargo Theft is a Threat to the Industry'
+									})
+								.list-popular-post-item
+									+post-minimal({
+										unit: 'unit-spacing-md',
+										img: 'post-14-106x104',
+										title: 'Things to Keep In Mind When Shipping Overseas'
+									})
+								.list-popular-post-item
+									+post-minimal({
+										unit: 'unit-spacing-md',
+										img: 'post-15-106x104',
+										title: 'Truck Driving Jobs Booming: New Hires on the Rise'
+									})
+						.aside-item.col-sm-6.col-lg-12
+							h6.aside-title Blog Archive
+							ul.list-marked-2
+								li: a(href='#') September 2018
+								li: a(href='#') August 2018
+						.aside-item.col-sm-6.col-lg-12
+							h6.aside-title Tags
+							.group-xxs.group-middle.justify-content-start
+								a.button-tags(href='#') News
+								a.button-tags(href='#') shipping
+								a.button-tags(href='#') trucking
+								a.button-tags(href='#') air freight
+								a.button-tags(href='#') Delivery
+								a.button-tags(href='#') logistics
+	='\n'
+	
+	
+	// Page Footer
+	include ../sections/_footer-modern

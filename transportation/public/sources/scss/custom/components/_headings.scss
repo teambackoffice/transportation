@@ -1,0 +1,257 @@
+/*
+*
+* Headings
+*/
+
+//
+// Table of Contents: 
+//
+// Title Creative
+// Title Custom
+//
+
+
+
+//
+// Title Creative
+//
+.title-modern {
+  font-size: 10em;
+  font-weight: 100;
+  line-height: 1;
+  letter-spacing: .05em;
+  color: rgba($white, .46);
+
+  animation: titleColor 3s linear infinite;
+}
+
+// Offsets
+.title-modern + h4 {margin-top: 34px;}
+
+// Media
+
+// Extra large ≥992px
+@include media-breakpoint-up(lg) {
+  .title-modern {font-size: 13em;}
+}
+
+// Extra large ≥1200px
+@include media-breakpoint-up(xl) {
+  .title-modern {font-size: 15.73em;}
+} 
+
+// Animation
+@keyframes titleColor {
+  50% {
+    color: rgba($white, .1);
+  }
+}
+
+
+
+// Title Custom
+.title-style-1 {
+  font-weight: 400;
+  letter-spacing: .05em;
+  color: $secondary;
+}
+
+* + .title-style-1 { margin-top: 22px; }
+
+.title-style-2 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  padding: 10px 0;
+}
+
+.text-style-2 {
+  line-height: 1.67;
+  letter-spacing: .075em
+}
+
+.text-style-3 {
+  line-height: 1.5;
+  font-weight: 300;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: .075em;
+}
+
+.text-style-4 {
+
+}
+
+* + .text-style-3 { margin-top: 26px; }
+
+// Medium ≥576px
+@include media-breakpoint-up(sm) {
+  .title-style-2 {
+    min-height: 123px;
+  }
+
+  .title-style-2 + .text-style-2 { margin-top: 30px; }
+}
+
+// Medium ≥768px
+@include media-breakpoint-up(md) {
+  .title-style-2 {
+    min-height: 158px;
+  }
+
+  .title-style-2 + .text-style-2 { margin-top: 46px; }
+  .text-style-2 + .button { margin-top: 55px; }
+}
+
+// Large ≥992px
+@include media-breakpoint-up(lg) {
+  .title-style-2 {
+    min-height: 166px;
+  }
+}
+
+// Large 992  ≤ 1200 Extra Large
+@include media-breakpoint-between(lg, lg) {
+  .text-style-3 {
+    font-size: 20px;
+  }
+}
+
+// Extra large ≥1200px
+@include media-breakpoint-up(xl) {
+  .title-style-2 {
+    min-height: 170px;
+  }
+
+  .text-style-2 {
+    max-width: 95%;
+  }
+}
+
+
+
+// Heading Classic
+.title-classic {
+  font-weight: 400;
+  letter-spacing: .05em;
+  text-transform: none;
+}
+
+.title-classic-2 {
+  letter-spacing: .05em;
+  text-transform: none;
+}
+
+.title-classic-3 {
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: none;
+}
+
+.subtitle-classic {
+  letter-spacing: .2em;
+  color: rgba($gray-800, .6);
+}
+
+.subtitle-classic-2 {
+  font-weight: 400;
+  letter-spacing: .2em;
+  color: rgba($gray-800, .6);
+}
+
+* + .title-classic { margin-top: 10px; }
+* + .title-classic-2 { margin-top: 16px; }
+
+
+
+// Heading Creative
+.title-creative {
+  font-weight: 300;
+  letter-spacing: .075em;
+}
+
+.title-creative-decor {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 20px);
+  width: 1000%;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+  border-top: 1px solid $gray-300;
+}
+
+.subtitle-creative {
+  position: relative;
+  letter-spacing: .2em;
+}
+
+* + .title-creative { margin-top: 20px; }
+.title-creative + .card-group-custom { margin-top: 30px; }
+.title-creative + .group-justify { margin-top: 40px; }
+
+%context-dark {
+  .subtitle-creative {
+    color: rgba($white, .3);
+  }
+
+  .title-creative-decor {
+    border-color: rgba($white, .2);
+  }
+}
+
+
+
+// Title Panel
+.title-panel {
+  position: relative;
+  padding-bottom: 1px;
+
+  .button {
+    min-width: auto;
+    padding: 12px 15px;
+    line-height: 1.86;
+    font-weight: 500;
+    letter-spacing: .1em;
+  }
+}
+
+.title-panel-title {
+  letter-spacing: .3em;
+}
+
+.title-panel-decor {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 35px);
+  width: 400%;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+  border-top: 1px solid $gray-300;
+}
+
+.title-panel + .tab-content { margin-top: 35px; }
+
+// Medium ≥768px
+@include media-breakpoint-up(md) {
+  .title-panel + .tab-content { margin-top: 50px; }
+}
+
+// Extra large ≥1200px
+@include media-breakpoint-up(xl) {
+
+  .title-panel-decor {
+    display: block;
+  }
+}
+
+%context-dark {
+  .title-panel-2 {
+    .title-panel-decor { border-color: rgba($gray-300, .6); }
+  }
+
+  .title-panel-decor { border-color: rgba($gray-300, .2); }
+}

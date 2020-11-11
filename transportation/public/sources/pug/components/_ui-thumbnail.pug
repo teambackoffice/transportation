@@ -1,0 +1,35 @@
+mixin thumbnail-classic(obj)
+  // Thumbnail Classic
+  article.thumbnail.thumbnail-classic(class=obj.mod)&attributes(attributes)
+    a.thumbnail-classic-figure(href='images/' + (obj.nameImgOriginal ? obj.nameImgOriginal : obj.nameImg + '-' + (obj.numberImgOriginal ? obj.numberImgOriginal : obj.numberImg)) + '-1200x800-original.jpg' data-lightgallery='item')
+      +jpg(obj.nameImg + '-' + obj.numberImg + '-' + obj.sizeImg)
+
+    .thumbnail-classic-caption
+      h6.thumbnail-classic-title: a(href='additional-service-page.html')=obj.title
+      .thumbnail-classic-time
+        p=obj.description
+
+mixin thumbnail-modern(obj)
+  // Thumbnail Modern
+  article.thumbnail.thumbnail-modern(class=obj.mod)&attributes(attributes)
+    a.thumbnail-modern-figure(href='images/' + (obj.nameImgOriginal ? obj.nameImgOriginal : obj.nameImg + '-' + (obj.numberImgOriginal ? obj.numberImgOriginal : obj.numberImg)) + '-1200x800-original.jpg' data-lightgallery='item')
+      +jpg(obj.nameImg + '-' + obj.numberImg + '-' + obj.sizeImg)
+
+    .thumbnail-modern-caption
+      h5.thumbnail-modern-title: a(href='additional-service-page.html')=obj.nameProject ? obj.nameProject : 'Project name #' + (obj.numberProject ? obj.numberProject : obj.numberImg)
+      .thumbnail-modern-badge=obj.badge ? obj.badge : 'Latest Technology'
+
+mixin thumbnail-creative(obj)
+  // Thumbnail Creative
+  article.thumbnail.thumbnail-creative(class=obj.mod)&attributes(attributes)
+    a(href='images/' + (obj.nameImgOriginal ? obj.nameImgOriginal : obj.nameImg + '-' + (obj.numberImgOriginal ? obj.numberImgOriginal : obj.numberImg)) + '-1200x800-original.jpg' data-lightgallery='item')
+      .thumbnail-creative-figure: +jpg(obj.nameImg + '-' + obj.numberImg + '-' + obj.sizeImg)
+      .thumbnail-creative-caption: span.icon.thumbnail-creative-icon.linearicons-magnifier
+
+mixin thumbnail-mary(obj)
+  // Thumbnail Mary
+  article.thumbnail.thumbnail-mary(class=obj.mod)&attributes(attributes)
+    a.thumbnail-mary-figure(href='images/' + (obj.nameImgOriginal ? obj.nameImgOriginal : obj.nameImg + '-' + (obj.numberImgOriginal ? obj.numberImgOriginal : obj.numberImg)) + '-1200x800-original.jpg' data-lightgallery='item'): +jpg(obj.nameImg + '-' + obj.numberImg + '-' + obj.sizeImg)
+    .thumbnail-mary-caption: div
+      h6.thumbnail-mary-title: a(href='additional-service-page.html')=obj.title
+      .thumbnail-mary-location=obj.location

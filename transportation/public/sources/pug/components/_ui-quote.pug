@@ -1,0 +1,47 @@
+//- quote
+
+mixin quote-classic(obj)
+  // Quote Classic
+  article.quote-classic(class=obj.mod)&attributes(attributes)
+    .quote-classic-text: p.q=obj.text
+    if(obj.author)
+      p.quote-classic-author=obj.author
+
+mixin quote-modern(obj)
+  // Quote Modern
+  article.quote-modern(class=obj.mod)
+    h5.quote-modern-text: span.q= obj.text ? obj.text : 'The scale of the project proved to be quite a challenge, but they presented their plan and executed it without a problem as true professionals.'
+    h5.quote-modern-author=obj.author + ','
+    p.quote-modern-status=obj.status
+
+mixin quote-creative(obj)
+  // Quote Creative
+  article.quote-creative(class=obj.mod)
+    .quote-creative-figure: +jpg(obj.img)
+    .quote-creative-caption
+      .quote-creative-text: p.q=obj.text
+      if(obj.author)
+        p.quote-creative-author=obj.author
+
+mixin quote-ella(obj)
+  // Quote Ella
+  article.quote-ella(class=obj.mod)
+    .quote-ella-text: p.q=obj.text
+
+mixin quote-tara(obj)
+  // Quote Tara
+  article.quote-tara(class=obj.mod)
+    .quote-tara-caption
+      .quote-tara-text: p.q=obj.text
+      .quote-tara-figure: +jpg(obj.img)
+    h6.quote-tara-author=obj.author
+    .quote-tara-status=obj.status
+
+mixin quote-paris(obj)
+  // Quote Paris
+  article.quote-paris(class=obj.mod)
+    .row.row-30
+      .col-lg-6: h5.quote-paris-text: span.q=obj.text
+      .col-lg-6
+        p=obj.text2
+        .quote-paris-author=obj.author

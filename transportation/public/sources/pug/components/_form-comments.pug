@@ -1,0 +1,25 @@
+//- Form Comments
+mixin form-comments(obj)
+  -  var uniquePrefix = commentsFormCounter
+  if (obj.customUnique)
+    - var uniquePrefix = obj.customUnique
+  else
+    - commentsFormCounter = commentsFormCounter + 1
+
+  h5 Your Comment
+  form.rd-form.rd-mailform
+    .row.row-14.gutters-14
+      .col-md-4: .form-wrap
+        input.form-input(id='contact-your-name-' + uniquePrefix type='text' name='name' data-constraints='@Required')
+        label.form-label(for='contact-your-name-' + uniquePrefix) Your Name*
+      .col-md-4: .form-wrap
+        input.form-input(id='contact-email-' + uniquePrefix type='email' name='email' data-constraints='@Email @Required')
+        label.form-label(for='contact-email-' + uniquePrefix) Your E-mail*
+      .col-md-4: .form-wrap
+        input.form-input(id='contact-phone-' + uniquePrefix type='text' name='phone' data-constraints='@Numeric')
+        label.form-label(for='contact-phone-' + uniquePrefix) Phone
+      .col-12: .form-wrap
+        label.form-label(for='contact-message-' + uniquePrefix) Message*
+        textarea.form-input.textarea-lg(id='contact-message-' + uniquePrefix name='message' data-constraints='@Required')
+
+    button.button.button-secondary.button-winona(type='submit') Submit

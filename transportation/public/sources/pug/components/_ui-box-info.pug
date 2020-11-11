@@ -1,0 +1,10 @@
+//- box info
+
+mixin box-info(obj)
+  .box-info
+    .unit.flex-column.flex-md-row.align-items-center
+      .unit-left: .box-info-figure: +jpg(obj.img)
+      .unit-body: .box-info-content
+        h5.box-info-title=obj.title
+        p.box-info-text=obj.text
+        a.box-info-link(href='#') Read More

@@ -1,0 +1,83 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-counters
+
+block variables
+  - var activeCategory = 'pages'
+  - var pageName = 'Counters'
+
+block page  
+  // Page Header
+  include ../sections/_header-classic
+
+  +breadcrumbs({
+    category: activeCategory,
+    path: [pageName],
+    bgImage: 'bg-typography'
+  })
+
+  // Counter Classic
+  section.section.section-sm.section-first.bg-default
+    .container
+      h3.font-weight-bold.text-spacing-50 #1
+    +parallax-block({
+      img: 'bg-counter-1',
+      innerClass: 'section-inset-9 context-dark'
+    })
+      .container
+        .row.row-30.justify-content-center.justify-content-xl-between.align-items-lg-end
+          .col-sm-6.col-md-3
+            +counter-classic({
+              number: '640',
+              title: 'storages'
+            })
+          .col-sm-6.col-md-3
+            +counter-classic({
+              number: '15',
+              title: 'awards won'
+            })
+          .col-sm-6.col-md-3
+            +counter-classic({
+              number: '24',
+              title: 'specialists'
+            })
+          .col-sm-6.col-md-3
+            +counter-classic({
+              number: '150',
+              title: 'new services'
+            })
+  ='\n'
+
+  // Counter Modern
+  section.section.section-sm.section-bottom-0.bg-default
+    .container
+      h3.font-weight-bold.text-spacing-50 #2
+    +parallax-block({
+      img: 'bg-counter-2',
+      innerClass: 'section-xxl context-dark'
+    })
+      .container
+        h5.font-weight-light.text-spacing-200 We are focused on results
+        h2.font-weight-light.text-spacing-200 Our Facts
+        .counter-modern-wrap
+          +counter-modern({
+            number: '101',
+            symbol: '+',
+            title: 'Clients'
+          })
+          +counter-modern({
+            number: '53',
+            title: 'Awards'
+          })
+          +counter-modern({
+            number: '246',
+            symbol: '+',
+            title: 'People'
+          })
+  ='\n'
+
+
+  
+  // Page Footer
+  include ../sections/_footer-modern

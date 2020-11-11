@@ -1,0 +1,81 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-posts
+include ../components/_ui-pagination
+
+block variables
+	- var activeCategory = 'blog'
+	- var pageName = 'Masonry blog'
+
+block page  
+	// Page Header
+	include ../sections/_header-classic
+	
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		bgImage: 'bg-typography'
+	})
+	
+	hr.hr-gray-1
+	// Grid Blog
+	section.section.section-lg.bg-gray-7
+		.container
+			.row.row-30.justify-content-center
+				.col-md-10.col-lg-6
+					.row.row-30
+						.col-12
+							+post-modern-big({
+								mod: 'post-modern-3',
+								img: 'post-7-570x528',
+								title: 'GlobalTrans Dallas Warehouse Open For Fulfillment Business!',
+								video: 'https://www.youtube.com/watch?v=1UWpbtUupQQ'
+							})
+						.col-sm-6
+							+post-modern({
+								mod: 'post-modern-quote',
+								title: 'Truck Driving Jobs Booming: New Hires on the Rise'
+							})
+						.col-sm-6
+							+post-modern({
+								mod: 'post-modern-2',
+								img: 'post-8-270x247',
+								title: 'Benefits of Air Freight Shipping'
+							})
+						.col-12
+							+post-modern-horizontal({
+								mod: 'post-modern-4',
+								img: 'post-9-195x191',
+								title: 'Turning Internships into Careers'
+							})
+				.col-md-10.col-lg-6
+					.row.row-30
+						.col-sm-6
+							+post-modern({
+								mod: 'post-modern-2',
+								img: 'post-10-270x247',
+								title: 'Examples of Project Cargo Managed'
+							})
+						.col-sm-6
+							+post-modern({
+								title: 'Cargo Theft is a Threat to the Industry'
+							})
+						.col-12
+							+post-modern-horizontal({
+								mod: 'post-modern-4',
+								img: 'post-11-195x191',
+								title: 'Things to Keep In Mind When Shipping Overseas'
+							})
+						.col-12
+							+post-modern-big({
+								imgLink: 'post-12-570x316',
+								title: 'Loaders, Transformers, Tubes, and Platforms'
+							})
+			
+			.pagination-wrap: +pagination-bootstrap(null, 1, 3)
+	='\n'
+	
+	
+	// Page Footer
+	include ../sections/_footer-modern
