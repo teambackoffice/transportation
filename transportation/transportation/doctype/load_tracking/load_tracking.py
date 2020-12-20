@@ -10,6 +10,9 @@ from frappe.core.doctype.sms_settings.sms_settings import send_sms
 from iwhatsapp.iwhatsapp.doctype.iwhatsapp_settings.iwhatsapp_settings import send_whatsapp
 from datetime import datetime
 class LoadTracking(Document):
+    def validate(self):
+        name_ = self.name.split("-")
+        self.shipment_number = "3EX-.2020.-" + name_[2]
     def on_submit(self):
         frappe.get_doc({
             "doctype": "Load Tracking Locations",

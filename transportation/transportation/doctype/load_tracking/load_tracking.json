@@ -47,6 +47,7 @@
    "read_only": 1
   },
   {
+   "fetch_from": "quotation.party_name",
    "fieldname": "customer",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -196,7 +197,8 @@
   {
    "fieldname": "shipment_number",
    "fieldtype": "Data",
-   "label": "Shipment Number"
+   "label": "Shipment Number",
+   "read_only": 1
   },
   {
    "fieldname": "customer_reference",
@@ -216,9 +218,10 @@
    "options": "Load Tracking Locations"
   }
  ],
+ "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2020-09-24 07:25:13.095002",
+ "modified": "2020-12-20 21:28:46.409034",
  "modified_by": "Administrator",
  "module": "Transportation",
  "name": "Load Tracking",
