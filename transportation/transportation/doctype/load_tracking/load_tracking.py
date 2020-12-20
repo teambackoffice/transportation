@@ -11,7 +11,6 @@ from iwhatsapp.iwhatsapp.doctype.iwhatsapp_settings.iwhatsapp_settings import se
 from datetime import datetime
 class LoadTracking(Document):
     def on_submit(self):
-
         frappe.get_doc({
             "doctype": "Load Tracking Locations",
             "parent": self.name,
@@ -23,7 +22,8 @@ class LoadTracking(Document):
         }).insert()
         self.reload()
     def update_status(self, status):
-        print(status)
+        print("===========================================")
+        print("Your shipment " + cstr(self.shipment_number) + " " + cstr(status) + " from " + cstr(self.source_location))
         frappe.db.sql(""" UPDATE `tabLoad Tracking` SET status=%s WHERE name=%s""", (status, self.name))
         frappe.db.commit()
         get_idx = frappe.db.sql(""" SELECT COUNT(*) as idx_count FROM `tabLoad Tracking Locations` WHERE parent=%s """, self.name, as_dict=1)
@@ -36,8 +36,8 @@ class LoadTracking(Document):
             "location_time": datetime.now(),
             "idx": 5 - get_idx[0].idx_count
         }).insert()
-        # receiver_list = [self.mobile_number]
-        # send_whatsapp(receiver_list, cstr(status))
+        receiver_list = [self.mobile_number]
+        send_whatsapp(receiver_list, "Your shipment " + cstr(self.shipment_number) + " " + cstr(status) + " from " + cstr(self.source_location))
 
 
     def on_cancel(self):
