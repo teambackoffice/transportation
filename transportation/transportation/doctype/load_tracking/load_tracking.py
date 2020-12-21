@@ -12,7 +12,10 @@ from datetime import datetime
 class LoadTracking(Document):
     def validate(self):
         name_ = self.name.split("-")
-        self.shipment_number = "3EX-.2020.-" + name_[2]
+        year = datetime.now().date().year
+        print("YEAR")
+        print(year)
+        self.shipment_number = "3EX-" + str(year) +"-" + name_[2]
     def on_submit(self):
         frappe.get_doc({
             "doctype": "Load Tracking Locations",
