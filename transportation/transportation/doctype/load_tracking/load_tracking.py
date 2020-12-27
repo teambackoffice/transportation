@@ -13,9 +13,8 @@ class LoadTracking(Document):
     def validate(self):
         name_ = self.name.split("-")
         year = datetime.now().date().year
-        print("YEAR")
-        print(year)
         self.shipment_number = "3EX-" + str(year) +"-" + name_[2]
+
     def on_submit(self):
         frappe.get_doc({
             "doctype": "Load Tracking Locations",
@@ -26,10 +25,22 @@ class LoadTracking(Document):
             "location_time": datetime.now(),
             "idx": 5
         }).insert()
+        for i in self.items:
+            remaining_q = frappe.db.sql(""" 
+                                SELECT * FROM `tabSales Order Item` 
+                                WHERE parent=%s and item_code=%s and rate=%s""",(self.sales_order, i.item_code,i.rate),as_dict=1)
+            if len(remaining_q) > 0:
+                frappe.db.sql(""" 
+                        UPDATE `tabSales Order Item` SET load_tracking_qty=%s 
+                        WHERE parent=%s and item_code=%s and rate=%s""", (remaining_q[0].load_tracking_qty - i.qtys,self.sales_order,i.item_code,i.rate))
+                frappe.db.commit()
+        remaining_quantities_check = frappe.db.sql(""" SELECT COUNT(*) as count FROM `tabSales Order Item` WHERE parent=%s and load_tracking_qty > 0""", self.sales_order,as_dict=1)
+        if remaining_quantities_check[0].count == 0:
+            frappe.db.sql(""" UPDATE `tabSales Order` SET load_tracking_available=0 WHERE name=%s""", self.sales_order)
+            frappe.db.commit()
         self.reload()
+
     def update_status(self, status):
-        print("===========================================")
-        print("Your shipment " + cstr(self.shipment_number) + " " + cstr(status) + " from " + cstr(self.source_location))
         frappe.db.sql(""" UPDATE `tabLoad Tracking` SET status=%s WHERE name=%s""", (status, self.name))
         frappe.db.commit()
         get_idx = frappe.db.sql(""" SELECT COUNT(*) as idx_count FROM `tabLoad Tracking Locations` WHERE parent=%s """, self.name, as_dict=1)

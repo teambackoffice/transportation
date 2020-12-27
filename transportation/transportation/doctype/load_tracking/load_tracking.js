@@ -1,39 +1,93 @@
 // Copyright (c) 2020, jan and contributors
 // For license information, please see license.txt
 
-frappe.ui.form.on('Load Tracking', {
-	quotation: function(frm) {
-	    if(cur_frm.doc.quotation){
-            frappe.db.get_doc('Quotation', cur_frm.doc.quotation)
+cur_frm.cscript.qtys = function (frm, cdt, cdn) {
+    console.log("aha")
+    console.log("NAA MAN DIRI QTY")
+
+    var row = locals[cdt][cdn]
+     frappe.db.get_doc('Sales Order', cur_frm.doc.sales_order)
                 .then(doc => {
-                    cur_frm.doc.items = doc.items
-            cur_frm.doc.total = doc.items.reduce((a, b) => a + (b['amount'] || 0), 0)
-            cur_frm.refresh_field("items")
+                    for(var i=0;i<doc.items.length;i+=1){
+                        if(doc.items[i].load_tracking_qty < row.qtys){
+                            var temp_qty = row.qtys
+                            row.qtys = doc.items[i].load_tracking_qty
+                            cur_frm.refresh_field("items")
+                             cur_frm.doc.total = cur_frm.doc.items.reduce((a, b) => a + (b['amount'] || 0), 0)
+    cur_frm.refresh_field("total")
+                            frappe.msgprint("Qty(" + temp_qty.toString() +  ") exceeded the maximum allowed qty(" + doc.items[i].load_tracking_qty.toString() + ")")
+
+                        } else {
+                            row.amount = row.qtys * row.rate
+                            cur_frm.refresh_field("items")
+                             cur_frm.doc.total = cur_frm.doc.items.reduce((a, b) => a + (b['amount'] || 0), 0)
+    cur_frm.refresh_field("total")
+
+                        }
+                    }
+
+                })
+
+
+}
+frappe.ui.form.on('Load Tracking', {
+	sales_order: function(frm) {
+	    if(cur_frm.doc.sales_order){
+	        var exclude_fields = ["doctype","docstatus","modified","modified_by","creation","name","owner","parent","parenttype","parentfield"]
+            frappe.db.get_doc('Sales Order', cur_frm.doc.sales_order)
+                .then(doc => {
+                    var final_objects = []
+                    for(var i=0;i < doc.items.length;i+=1){
+                        if(doc.items[i].load_tracking_qty > 0){
+                            for(var ii=0;ii<exclude_fields.length;ii+=1){
+                                delete doc.items[i][exclude_fields[ii]]
+                            }
+
+                            doc.items[i]['qtys'] = doc.items[i].load_tracking_qty
+                            doc.items[i]['amount'] = doc.items[i].load_tracking_qty * doc.items[i].rate
+
+
+                            cur_frm.add_child('items', doc.items[i]);
+
+                                cur_frm.refresh_field('items');
+                        }
+                    }
+
+            cur_frm.doc.total = cur_frm.doc.items.reduce((a, b) => a + (b['amount'] || 0), 0)
             cur_frm.refresh_field("total")
+
                 })
         }
 
 	},
 	refresh: function(frm) {
+    console.log("NAA MAN DIRI REFRESH")
 
-	     cur_frm.get_field("load_tracking_locations").grid.cannot_add_rows = true;
+        cur_frm.get_field("load_tracking_locations").grid.cannot_add_rows = true;
         cur_frm.get_field("load_tracking_locations").grid.only_sortable();
         cur_frm.refresh_field("load_tracking_locations")
 
 
-	  frm.set_query('quotation', () => {
+	  frm.set_query('sales_order', () => {
             return {
                 filters: {
-                    docstatus: 1
+                    docstatus: 1,
+                    load_tracking_available:1
                 }
             }
 
         })
         if(cur_frm.doc.docstatus){
 	      var status = cur_frm.doc.status === "Collecting" ? "Collected" :
-                    cur_frm.doc.status === "Collected" ? "In Transit":
-                        cur_frm.doc.status === "In Transit" ? "Bay Bill" :
-                            cur_frm.doc.status === "Bay Bill" ? "Delivered" : ""
+                        cur_frm.doc.status === "Collected" ? "In Transit":
+                        cur_frm.doc.status === "In Transit" ? "Under Clearance" :
+                        cur_frm.doc.status === "Under Clearance" ? "Cleared" :
+                        cur_frm.doc.status === "Cleared" ? "Under Clearance" :
+                        cur_frm.doc.status === "Under Clearance" ? "Waiting for Bayan" :
+                        cur_frm.doc.status === "Waiting for Bayan" ? "Bayan Received" :
+                        cur_frm.doc.status === "Bayan Received" ? "Ready to pay" :
+                        cur_frm.doc.status === "Ready to pay" ? "Shipment Cleared" :
+                        cur_frm.doc.status === "Shipment Cleared" ? "Delivered" : ""
 
         if(status){
 	          console.log(cur_frm.doc.status)
@@ -64,6 +118,8 @@ cur_frm.reload_doc()
 });
 
 cur_frm.cscript.form_render = function (frm, cdt, cdn) {
+        console.log("NAA MAN DIRI RENDER")
+
  $.getScript("https://cdn.jsdelivr.net/npm/places.js@1.19.0", function () {
               var placesAutocomplete = places({
                 appId: 'plAZSGZU5TP8',

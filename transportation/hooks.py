@@ -31,7 +31,8 @@ app_include_css = {
 # page_js = {"page" : "public/js/file.js"}
 # include js in doctype views
 doctype_js = {
-    "Quotation" : "public/quotation.js"
+    "Quotation" : "public/quotation.js",
+    "Sales Order" : "public/quotation.js"
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -85,13 +86,11 @@ doctype_js = {
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-#	}
-# }
+doc_events = {
+	"Sales Order": {
+		"validate": "transportation.doc_events.sales_order.generate_remaining_quantities",
+	}
+}
 
 # Scheduled Tasks
 # ---------------
@@ -146,9 +145,11 @@ fixtures = [
                 "name",
                 "in",
                 [
-                    "Quotation-destination_location",
-                    "Quotation-source_location",
+                    "Sales Order-destination_location",
+                    "Sales Order-source_location",
                     "Customer-user_id",
+                    "Sales Order Item-load_tracking_qty",
+                    "Sales Order-load_tracking_available",
                 ]
             ]
         ]

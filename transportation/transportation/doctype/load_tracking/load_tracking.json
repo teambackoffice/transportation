@@ -13,7 +13,7 @@
   "mobile_number",
   "customer_address",
   "column_break_5",
-  "quotation",
+  "sales_order",
   "source_location",
   "destination_location",
   "shipment_number",
@@ -43,11 +43,11 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Collecting\nCollected\nIn Transit\nBay Bill\nDelivered",
+   "options": "Collecting\nCollected\nTransit\nUnder Clearance\nCleared\nUnder Clearance\nWaiting for Bayan\nBayan Received\nReady to pay\nShipment Cleared\nDelivered",
    "read_only": 1
   },
   {
-   "fetch_from": "quotation.party_name",
+   "fetch_from": "sales_order.customer",
    "fieldname": "customer",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -72,20 +72,14 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "quotation",
-   "fieldtype": "Link",
-   "label": "Quotation",
-   "options": "Quotation"
-  },
-  {
-   "fetch_from": "quotation.source_location",
+   "fetch_from": "sales_order.source_location",
    "fieldname": "source_location",
    "fieldtype": "Data",
    "label": "Source Location",
    "read_only": 1
   },
   {
-   "fetch_from": "quotation.destination_location",
+   "fetch_from": "sales_order.destination_location",
    "fieldname": "destination_location",
    "fieldtype": "Data",
    "label": "Destination Location",
@@ -99,7 +93,7 @@
    "fieldname": "items",
    "fieldtype": "Table",
    "label": "Items",
-   "options": "Quotation Item"
+   "options": "Load Tracking Item"
   },
   {
    "default": "0",
@@ -190,9 +184,11 @@
   },
   {
    "fetch_from": "customer.mobile_no",
+   "fetch_if_empty": 1,
    "fieldname": "mobile_number",
    "fieldtype": "Data",
-   "label": "Mobile Number"
+   "label": "Mobile Number",
+   "reqd": 1
   },
   {
    "fieldname": "shipment_number",
@@ -216,12 +212,18 @@
    "fieldtype": "Table",
    "label": "Load Tracking Locations",
    "options": "Load Tracking Locations"
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2020-12-20 21:28:46.409034",
+ "modified": "2020-12-26 19:49:15.014898",
  "modified_by": "Administrator",
  "module": "Transportation",
  "name": "Load Tracking",
