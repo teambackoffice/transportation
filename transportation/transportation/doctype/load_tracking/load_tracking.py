@@ -53,9 +53,17 @@ class LoadTracking(Document):
             "location_time": datetime.now(),
             "idx": 5 - get_idx[0].idx_count
         }).insert()
-        receiver_list = [self.mobile_number]
-        send_whatsapp(receiver_list, "Your shipment " + cstr(self.shipment_number) + " " + cstr(status) + " from " + cstr(self.source_location))
 
+    def send_message(self, status, description, location, time):
+        receiver_list = [self.mobile_number]
+        message = "Your Shipment " + cstr(self.shipment_number) + " " + cstr(status) + "\n\n" +\
+                  "Time : " + time +"\n" +\
+                  "Location : " + location + "\n" +\
+                  "Remarks : " + description +"\n" +\
+                  "From location : " + self.source_location +"\n" +\
+                  "To Location : " + self.destination_location
+
+        send_whatsapp(receiver_list,message)
 
     def on_cancel(self):
         frappe.db.sql(""" UPDATE `tabLoad Tracking` SET status=%s WHERE name=%s""", ("Cancelled", self.name))

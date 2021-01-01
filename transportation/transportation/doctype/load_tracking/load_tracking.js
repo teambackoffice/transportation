@@ -1,6 +1,22 @@
 // Copyright (c) 2020, jan and contributors
 // For license information, please see license.txt
+cur_frm.cscript.description = function (frm, cdt, cdn) {
+    var d = locals[cdt][cdn]
 
+
+      cur_frm.call({
+        doc: cur_frm.doc,
+        method: 'send_message',
+          args: {status: d.status, description: d.description, location: d.location, time: d.location_time},
+         async: false,
+          freeze: true,
+          freeze_message: "Changing Status...",
+        callback: (r) => {
+            cur_frm.save_or_update()
+        }
+    })
+
+}
 cur_frm.cscript.qtys = function (frm, cdt, cdn) {
     console.log("aha")
     console.log("NAA MAN DIRI QTY")
