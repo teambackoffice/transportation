@@ -67,5 +67,5 @@ class LoadTracking(Document):
 
     def on_cancel(self):
         frappe.db.sql(""" UPDATE `tabLoad Tracking` SET status=%s WHERE name=%s""", ("Cancelled", self.name))
-        frappe.db.sql(""" UPDATE `tabSales Order` SET load_tracking_available=0 WHERE name=%s""", (self.sales_order))
+        frappe.db.sql(""" UPDATE `tabSales Order` SET load_tracking_available=1 WHERE name=%s""", (self.sales_order))
         frappe.db.commit()
