@@ -153,16 +153,7 @@ cur_frm.cscript.form_render = function (frm, cdt, cdn) {
           });
         })
     var d = locals[cdt][cdn]
-    var locations = frappe.meta.get_docfield("Load Tracking Locations", "location", cur_frm.doc.name);
 
-    if(d.status !== cur_frm.doc.status){
-        locations.read_only = 1
-        cur_frm.refresh_field("load_tracking_locations")
-    } else {
-        locations.read_only = 0
-        cur_frm.refresh_field("load_tracking_locations")
-
-    }
 }
 
 
