@@ -65,3 +65,8 @@ class LoadTracking(Document):
         frappe.db.sql(""" UPDATE `tabLoad Tracking` SET status=%s WHERE name=%s""", ("Cancelled", self.name))
         frappe.db.sql(""" UPDATE `tabSales Order` SET load_tracking_available=1 WHERE name=%s""", (self.sales_order))
         frappe.db.commit()
+
+        for i in self.items:
+            old_qty = frappe.db.sql(""" SELECT * FROM `tabSales Order Item` WHERE parent=%s and item_code=%s """, (self.sales_order, i.item_code),as_dict=1)
+            frappe.db.sql(""" UPDATE `tabSales Order Item` SET load_tracking_qty =%s WHERE parent=%s and item_code=%s""", (old_qty[0].load_tracking_qty + i.qtys,self.sales_order, i.item_code))
+            frappe.db.commit()
