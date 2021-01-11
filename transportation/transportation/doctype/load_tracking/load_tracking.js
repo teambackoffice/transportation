@@ -1,6 +1,6 @@
 // Copyright (c) 2020, jan and contributors
 // For license information, please see license.txt
-cur_frm.cscript.description = function (frm, cdt, cdn) {
+cur_frm.cscript.send_whatsapp_notification = function (frm, cdt, cdn) {
     var d = locals[cdt][cdn]
 
 
@@ -152,7 +152,6 @@ cur_frm.cscript.form_render = function (frm, cdt, cdn) {
             $address.textContent = 'none';
           });
         })
-    var d = locals[cdt][cdn]
 
 }
 

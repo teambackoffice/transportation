@@ -8,7 +8,8 @@
   "status",
   "location_time",
   "location",
-  "description"
+  "description",
+  "send_whatsapp_notification"
  ],
  "fields": [
   {
@@ -39,12 +40,17 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Description"
+  },
+  {
+   "fieldname": "send_whatsapp_notification",
+   "fieldtype": "Button",
+   "label": "Send WhatsApp Notification"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2020-12-28 08:33:59.405241",
+ "modified": "2021-01-11 17:02:30.807629",
  "modified_by": "Administrator",
  "module": "Transportation",
  "name": "Load Tracking Locations",
