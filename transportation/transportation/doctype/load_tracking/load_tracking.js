@@ -78,12 +78,6 @@ frappe.ui.form.on('Load Tracking', {
 	},
 	refresh: function(frm) {
     console.log("NAA MAN DIRI REFRESH")
-
-        cur_frm.get_field("load_tracking_locations").grid.cannot_add_rows = true;
-        cur_frm.get_field("load_tracking_locations").grid.only_sortable();
-        cur_frm.refresh_field("load_tracking_locations")
-
-
 	  frm.set_query('sales_order', () => {
             return {
                 filters: {
@@ -140,10 +134,10 @@ cur_frm.cscript.form_render = function (frm, cdt, cdn) {
               var placesAutocomplete = places({
                 appId: 'plAZSGZU5TP8',
                 apiKey: '7e4ad27c79270c079fd22a9bbd7dd9fe',
-                container: document.querySelectorAll('[data-fieldname = "location"]')[3]
+                container: document.querySelectorAll('[data-fieldname = "location"]')[10]
               });
 
-          var $address = document.querySelectorAll('[data-fieldname = "location"]')[3]
+          var $address = document.querySelectorAll('[data-fieldname = "location"]')[10]
           placesAutocomplete.on('change', function(e) {
             $address.textContent = e.suggestion.value
           });

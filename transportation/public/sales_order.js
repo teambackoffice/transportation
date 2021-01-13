@@ -45,7 +45,7 @@ $.getScript("https://cdn.jsdelivr.net/npm/places.js@1.19.0", function () {
 //         // action to perform if No is selected
 //     })
 // }
-cur_frm.cscript.onload_post_render = function () {
+cur_frm.cscript.refresh = function () {
     $.getScript("https://cdn.jsdelivr.net/npm/places.js@1.19.0", function () {
 	  var placesAutocomplete = places({
 		appId: 'plAZSGZU5TP8',
