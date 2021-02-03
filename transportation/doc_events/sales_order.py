@@ -13,10 +13,12 @@ def generate_remaining_quantities(doc, method):
         #         "qty": i.qty
         #     })
     doc.load_tracking_available = 1
-#
-# def check_existing(item_code, rate, doc):
-#     for ii in doc.remaining_quantities:
-#         if ii.item == item_code and rate == ii.rate:
-#             return False
-#
-#     return True
+
+@frappe.whitelist()
+def generate_load_tracking(doc):
+    import json
+    data = json.loads(doc)
+    print(data)
+    print(data['source_location'])
+
+

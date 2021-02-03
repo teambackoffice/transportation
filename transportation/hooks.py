@@ -32,7 +32,7 @@ app_include_css = {
 # include js in doctype views
 doctype_js = {
     "Quotation" : "public/quotation.js",
-    "Sales Order" : "public/quotation.js"
+    "Sales Order" : "public/sales_order.js"
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
