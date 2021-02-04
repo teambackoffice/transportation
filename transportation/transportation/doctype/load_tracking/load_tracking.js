@@ -134,10 +134,10 @@ cur_frm.cscript.form_render = function (frm, cdt, cdn) {
               var placesAutocomplete = places({
                 appId: 'plAZSGZU5TP8',
                 apiKey: '7e4ad27c79270c079fd22a9bbd7dd9fe',
-                container: document.querySelectorAll('[data-fieldname = "location"]')[10]
+                container: document.querySelectorAll('[data-fieldname = "location"]')[3]
               });
 
-          var $address = document.querySelectorAll('[data-fieldname = "location"]')[10]
+          var $address = document.querySelectorAll('[data-fieldname = "location"]')[3]
           placesAutocomplete.on('change', function(e) {
             $address.textContent = e.suggestion.value
           });
