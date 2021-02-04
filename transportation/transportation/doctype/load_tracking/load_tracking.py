@@ -11,6 +11,8 @@ from iwhatsapp.iwhatsapp.doctype.iwhatsapp_settings.iwhatsapp_settings import se
 from datetime import datetime
 class LoadTracking(Document):
     def validate(self):
+        if self.mobile_number and self.mobile_number[0] != "+":
+            frappe.throw("Mobile Number must start with +")
         name_ = self.name.split("-")
         year = datetime.now().date().year
         self.shipment_number = "3EX-" + str(year) +"-" + name_[2]

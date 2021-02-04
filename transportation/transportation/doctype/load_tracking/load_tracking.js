@@ -150,4 +150,13 @@ cur_frm.cscript.form_render = function (frm, cdt, cdn) {
 }
 
 
+cur_frm.cscript.customer = function () {
+    frappe.db.get_doc('Customer', cur_frm.doc.customer)
+        .then(customer => {
+            if (customer.mobile_no && customer.mobile_no[0] !== "+"){
+                frappe.throw("Mobile Number must start with +")
+            }
+    })
+}
+
 
