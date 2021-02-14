@@ -59,7 +59,7 @@ class LoadTracking(Document):
     def send_message(self, status, description, location, time):
         receiver_list = [self.mobile_number]
 
-        message = "Your Shipment " + cstr(self.shipment_number) + " " + cstr(status) + " at " + location + "," + time +"," + "from " + self.source_location + " to " + self.destination_location + "." + " Remarks: " + description
+        message = "Your Shipment " + cstr(self.shipment_number) + " " + cstr(status) + " at " + location + ", " + time +"," + "from " + self.source_location + " to " + self.destination_location + "." + " Remarks: " + description
         print(message)
         send_whatsapp(receiver_list,message)
 
