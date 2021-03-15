@@ -92,8 +92,7 @@ frappe.ui.form.on('Load Tracking', {
                         cur_frm.doc.status === "Collected" ? "In Transit":
                         cur_frm.doc.status === "In Transit" ? "Under Clearance" :
                         cur_frm.doc.status === "Under Clearance" ? "Cleared" :
-                        cur_frm.doc.status === "Cleared" ? "Under Clearance" :
-                        cur_frm.doc.status === "Under Clearance" ? "Waiting for Bayan" :
+                        cur_frm.doc.status === "Cleared" ? "Waiting for Bayan" :
                         cur_frm.doc.status === "Waiting for Bayan" ? "Bayan Received" :
                         cur_frm.doc.status === "Bayan Received" ? "Ready to pay" :
                         cur_frm.doc.status === "Ready to pay" ? "Shipment Cleared" :
