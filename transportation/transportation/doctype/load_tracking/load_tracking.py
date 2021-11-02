@@ -10,6 +10,7 @@ from frappe.core.doctype.sms_settings.sms_settings import send_sms
 from iwhatsapp.iwhatsapp.doctype.iwhatsapp_settings.iwhatsapp_settings import send_whatsapp
 from datetime import datetime
 class LoadTracking(Document):
+    @frappe.whitelist()
     def validate(self):
         if self.mobile_number and self.mobile_number[0] != "+":
             frappe.throw("Mobile Number must start with +")
@@ -17,6 +18,7 @@ class LoadTracking(Document):
         year = datetime.now().date().year
         self.shipment_number = "3EX-" + str(year) +"-" + name_[2]
 
+    @frappe.whitelist()
     def on_submit(self):
         frappe.get_doc({
             "doctype": "Load Tracking Locations",
@@ -41,7 +43,7 @@ class LoadTracking(Document):
             frappe.db.sql(""" UPDATE `tabSales Order` SET load_tracking_available=0 WHERE name=%s""", self.sales_order)
             frappe.db.commit()
         self.reload()
-
+    @frappe.whitelist()
     def update_status(self, status):
         frappe.db.sql(""" UPDATE `tabLoad Tracking` SET status=%s WHERE name=%s""", (status, self.name))
         frappe.db.commit()
@@ -56,6 +58,7 @@ class LoadTracking(Document):
             "idx": 5 - get_idx[0].idx_count
         }).insert()
 
+    @frappe.whitelist()
     def send_message(self, status, description, location, time):
         receiver_list = [self.mobile_number]
 
@@ -63,6 +66,7 @@ class LoadTracking(Document):
         print(message)
         send_whatsapp(receiver_list,message)
 
+    @frappe.whitelist()
     def on_cancel(self):
         frappe.db.sql(""" UPDATE `tabLoad Tracking` SET status=%s WHERE name=%s""", ("Cancelled", self.name))
         frappe.db.sql(""" UPDATE `tabSales Order` SET load_tracking_available=1 WHERE name=%s""", (self.sales_order))
